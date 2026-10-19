@@ -1,0 +1,26 @@
+{
+  "name": "smart-agriculture-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-Ready Smart Agriculture & Soil Telemetry Platform",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "test:backend": "cd backend && npm test",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend"
+  },
+  "keywords": [
+    "smart-agriculture",
+    "soil-moisture",
+    "iot",
+    "irrigation-intelligence",
+    "telemetry",
+    "ble"
+  ],
+  "author": "[Author / Organization]",
+  "license": "MIT"
+}

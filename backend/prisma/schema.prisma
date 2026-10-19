@@ -1,0 +1,231 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  passwordHash     String   @map("password_hash")
+  fullName         String   @map("full_name")
+  role             String   @default("FARM_MANAGER")
+  organizationName String   @default("[Platform Name] Farm Org") @map("organization_name")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  farms  Farm[]
+  orders Order[]
+
+  @@map("users")
+}
+
+model Farm {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  location    String
+  latitude    Float?
+  longitude   Float?
+  timezone    String?  @default("UTC")
+  totalAreaHa Float?   @default(0) @map("total_area_ha")
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fields  Field[]
+  devices Device[]
+
+  @@map("farms")
+}
+
+model Field {
+  id                String   @id @default(uuid())
+  farmId            String   @map("farm_id")
+  name              String
+  cropType          String   @map("crop_type")
+  plantingDate      String?  @map("planting_date")
+  soilType          String   @default("Loam") @map("soil_type")
+  targetMinMoisture Float?   @default(20.0) @map("target_min_moisture")
+  targetMaxMoisture Float?   @default(40.0) @map("target_max_moisture")
+  areaHa            Float?   @default(1.0) @map("area_ha")
+  rootDepthCm       Int?     @default(40) @map("root_depth_cm")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  farm             Farm              @relation(fields: [farmId], references: [id], onDelete: Cascade)
+  devices          Device[]
+  sensorReadings   SensorReading[]
+  alertRules       AlertRule[]
+  alerts           Alert[]
+  irrigationEvents IrrigationEvent[]
+
+  @@map("fields")
+}
+
+model Device {
+  id              String   @id @default(uuid())
+  farmId          String?  @map("farm_id")
+  fieldId         String?  @map("field_id")
+  deviceUid       String   @unique @map("device_uid")
+  name            String
+  model           String   @default("ProbeX5")
+  hardwareType    String   @default("SDI-12 Multi-Depth") @map("hardware_type")
+  firmwareVersion String?  @default("v2.4.1") @map("firmware_version")
+  batteryLevel    Int?     @default(100) @map("battery_level")
+  signalQuality   Int?     @default(-70) @map("signal_quality")
+  status          String   @default("ONLINE")
+  lastSeenAt      DateTime @default(now()) @map("last_seen_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  farm               Farm?               @relation(fields: [farmId], references: [id], onDelete: SetNull)
+  field              Field?              @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+  sensorReadings     SensorReading[]
+  alerts             Alert[]
+  maintenanceRecords MaintenanceRecord[]
+
+  @@map("devices")
+}
+
+model SensorReading {
+  id           String   @id @default(uuid())
+  deviceId     String   @map("device_id")
+  fieldId      String?  @map("field_id")
+  depthCm      Int      @map("depth_cm")
+  vwcPercent   Float    @map("vwc_percent")
+  tempC        Float?   @map("temp_c")
+  ecDsM        Float?   @map("ec_ds_m")
+  qualityScore Float?   @default(1.0) @map("quality_score")
+  source       String   @default("SENSOR")
+  isDemo       Int?     @default(0) @map("is_demo")
+  measuredAt   DateTime @map("measured_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  field  Field? @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+
+  @@unique([deviceId, depthCm, measuredAt], name: "idx_sensor_depth_time")
+  @@index([deviceId])
+  @@index([fieldId])
+  @@index([measuredAt])
+  @@map("sensor_readings")
+}
+
+model AlertRule {
+  id        String   @id @default(uuid())
+  fieldId   String   @map("field_id")
+  ruleName  String   @map("rule_name")
+  metric    String   @default("VWC")
+  operator  String   @default("<")
+  threshold Float
+  severity  String   @default("WARNING")
+  isActive  Int?     @default(1) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  field Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@map("alert_rules")
+}
+
+model Alert {
+  id             String    @id @default(uuid())
+  fieldId        String?   @map("field_id")
+  deviceId       String?   @map("device_id")
+  title          String
+  message        String
+  severity       String    @default("WARNING")
+  status         String    @default("ACTIVE")
+  triggeredAt    DateTime  @default(now()) @map("triggered_at")
+  acknowledgedAt DateTime? @map("acknowledged_at")
+  resolvedAt     DateTime? @map("resolved_at")
+
+  field  Field?  @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+  device Device? @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+
+  @@map("alerts")
+}
+
+model IrrigationEvent {
+  id              String   @id @default(uuid())
+  fieldId         String   @map("field_id")
+  scheduledAt     DateTime @map("scheduled_at")
+  durationMinutes Int      @map("duration_minutes")
+  waterAppliedMm  Float    @map("water_applied_mm")
+  method          String   @default("Drip Irrigation")
+  notes           String?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  field Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@map("irrigation_events")
+}
+
+model MaintenanceRecord {
+  id          String   @id @default(uuid())
+  deviceId    String   @map("device_id")
+  type        String   @default("CALIBRATION")
+  description String
+  performedBy String   @map("performed_by")
+  notes       String?
+  performedAt DateTime @default(now()) @map("performed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@map("maintenance_records")
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  category    String
+  price       Float
+  description String
+  specsJson   String   @map("specs_json")
+  imageUrl    String   @map("image_url")
+  inStock     Int?     @default(1) @map("in_stock")
+  stockQty    Int?     @default(50) @map("stock_qty")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("products")
+}
+
+model Order {
+  id                  String   @id @default(uuid())
+  userId              String?  @map("user_id")
+  customerEmail       String   @map("customer_email")
+  customerName        String   @map("customer_name")
+  totalAmount         Float    @map("total_amount")
+  status              String   @default("CONFIRMED")
+  shippingAddressJson String   @map("shipping_address_json")
+  itemsJson           String   @map("items_json")
+  paymentReference    String   @map("payment_reference")
+  createdAt           DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("orders")
+}
+
+model ContactInquiry {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  farmSize  String?  @map("farm_size")
+  interest  String?
+  message   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contact_inquiries")
+}
+
+model IdempotencyKey {
+  key          String   @id
+  responseJson String   @map("response_json")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("idempotency_keys")
+}

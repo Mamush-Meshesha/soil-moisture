@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  agtech-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agtech-platform
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_PATH=/app/data/soil_moisture.sqlite
+      - JWT_SECRET=agtech-docker-secret-key-2026
+    volumes:
+      - agtech-data:/app/data
+
+volumes:
+  agtech-data:
+    driver: local
