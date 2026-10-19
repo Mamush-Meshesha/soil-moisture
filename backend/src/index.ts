@@ -1,73 +1,44 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import path from 'path';
-import { initDatabase } from './db';
-import authRoutes from './routes/auth';
-import farmsRoutes from './routes/farms';
-import fieldsRoutes from './routes/fields';
-import devicesRoutes from './routes/devices';
-import telemetryRoutes from './routes/telemetry';
-import alertsRoutes from './routes/alerts';
-import irrigationRoutes from './routes/irrigation';
-import storeRoutes from './routes/store';
-import reportsRoutes from './routes/reports';
-import contactRoutes from './routes/contact';
+import app from './app';
+import config from './config/env';
+import { initDatabase, prisma } from './db';
 
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Middleware
-app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
-
-// Health Check
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    platform: '[Platform Name] Smart Agriculture & Soil Telemetry Platform',
-    version: '1.0.0',
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/farms', farmsRoutes);
-app.use('/api/fields', fieldsRoutes);
-app.use('/api/devices', devicesRoutes);
-app.use('/api/telemetry', telemetryRoutes);
-app.use('/api/alerts', alertsRoutes);
-app.use('/api/irrigation', irrigationRoutes);
-app.use('/api/store', storeRoutes);
-app.use('/api/reports', reportsRoutes);
-app.use('/api/contact', contactRoutes);
-
-// Global Error Handler
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error('Unhandled server error:', err);
-  res.status(500).json({ error: 'Internal server error', details: err.message });
-});
+const PORT = config.port;
 
 // Start server
 async function startServer() {
   try {
     await initDatabase();
-    app.listen(PORT, () => {
-      console.log(`[Platform Name] Backend Server listening on port ${PORT}`);
+    const server = app.listen(PORT, () => {
+      console.log(`[Platform Name] Backend Server running in ${config.nodeEnv} mode on port ${PORT}`);
     });
-  } catch (err) {
-    console.error('Failed to start server:', err);
+
+    // Graceful shutdown handling
+    const shutdown = async (signal: string) => {
+      console.log(`Received ${signal}. Shutting down gracefully...`);
+      server.close(async () => {
+        try {
+          await prisma.$disconnect();
+          console.log('Database connections closed.');
+          process.exit(0);
+        } catch (err) {
+          console.error('Error during shutdown:', err);
+          process.exit(1);
+        }
+      });
+    };
+
+    process.on('SIGTERM', () => shutdown('SIGTERM'));
+    process.on('SIGINT', () => shutdown('SIGINT'));
+  } catch (err: any) {
+    console.error('Failed to start server:', err.message);
     process.exit(1);
   }
 }
 
-// Only start when not imported for testing
-if (process.env.NODE_ENV !== 'test') {
+// Only start listener when not in test environment
+if (config.nodeEnv !== 'test') {
   startServer();
 }
 
 export default app;
+export { app };

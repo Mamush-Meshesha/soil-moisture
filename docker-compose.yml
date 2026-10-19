@@ -1,22 +1,61 @@
-version: '3.8'
-
 services:
-  agtech-platform:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: agtech-platform
+  # Relational Database: PostgreSQL 16
+  postgres:
+    image: postgres:16-alpine
+    container_name: agtech-db
     restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-soil_moisture_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-soil_moisture_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Express + Prisma API Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agtech-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      # Defaults to containerized PostgreSQL, or override with Neon connection string in .env
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/soil_moisture_db?schema=public}
+      JWT_SECRET: ${JWT_SECRET:-agtech-super-secure-production-jwt-token-2026}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      SEED_ON_START: ${SEED_ON_START:-true}
     ports:
       - "5000:5000"
-    environment:
-      - NODE_ENV=production
-      - PORT=5000
-      - DB_PATH=/app/data/soil_moisture.sqlite
-      - JWT_SECRET=agtech-docker-secret-key-2026
-    volumes:
-      - agtech-data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Vite + React Frontend served via Nginx with API reverse proxy
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agtech-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
 
 volumes:
-  agtech-data:
+  pgdata:
     driver: local

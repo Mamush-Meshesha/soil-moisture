@@ -1,19 +1,10 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import config from '../config/env';
+import { AuthRequest, AuthUser } from '../types';
 
-export const JWT_SECRET = process.env.JWT_SECRET || 'agritech-platform-secret-key-2026';
-
-export interface AuthUser {
-  id: string;
-  email: string;
-  role: string;
-  fullName: string;
-  organizationName: string;
-}
-
-export interface AuthRequest extends Request {
-  user?: AuthUser;
-}
+export { AuthRequest, AuthUser };
+export const JWT_SECRET = config.jwtSecret;
 
 export function authenticate(req: AuthRequest, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
@@ -23,7 +14,7 @@ export function authenticate(req: AuthRequest, res: Response, next: NextFunction
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as AuthUser;
+    const decoded = jwt.verify(token, config.jwtSecret) as AuthUser;
     req.user = decoded;
     next();
   } catch (err) {
