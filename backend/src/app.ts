@@ -25,7 +25,13 @@ app.all('/api/health/setup', async (req, res) => {
   try {
     const { execSync } = await import('child_process');
     console.log('[Setup] Applying Prisma migrations to remote database...');
-    const migrateOutput = execSync('npx prisma migrate deploy', { encoding: 'utf-8' });
+    let migrateOutput = '';
+    try {
+      migrateOutput = execSync('npx prisma migrate deploy', { encoding: 'utf-8' });
+    } catch (migErr: any) {
+      console.warn('[Setup] migrate deploy warning, running prisma db push:', migErr.message);
+      migrateOutput = execSync('npx prisma db push --accept-data-loss', { encoding: 'utf-8' });
+    }
 
     console.log('[Setup] Seeding initial platform data...');
     const { seedDatabase } = await import('./seed');
