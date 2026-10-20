@@ -229,3 +229,26 @@ model IdempotencyKey {
 
   @@map("idempotency_keys")
 }
+
+model Project {
+  id               String   @id @default(uuid())
+  slug             String   @unique
+  title            String
+  category         String
+  categoryKey      String   @default("field") @map("category_key")
+  date             String
+  location         String
+  image            String
+  summary          String
+  objective        String
+  method           String
+  keyFindingsJson  String   @map("key_findings_json")
+  partner          String?
+  translationsJson String?  @map("translations_json")
+  order            Int?     @default(0)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("projects")
+}
+

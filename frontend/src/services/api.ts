@@ -9,9 +9,10 @@ import {
   IrrigationEvent,
   IrrigationGuidance,
   Product,
+  Project,
 } from '../types';
 
-const BASE_URL = '/api';
+const BASE_URL = ((import.meta as any).env?.VITE_API_URL || '').replace(/\/$/, '') + '/api';
 
 function getAuthHeader(): Record<string, string> {
   const token = localStorage.getItem('agtech_auth_token');
@@ -292,6 +293,32 @@ export const api = {
     return handleResponse(res);
   },
 
+  async createProduct(data: any): Promise<{ success: boolean; product: Product; message: string }> {
+    const res = await fetch(`${BASE_URL}/store/products`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+
+  async updateProduct(id: string, data: any): Promise<{ success: boolean; product: Product; message: string }> {
+    const res = await fetch(`${BASE_URL}/store/products/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+
+  async deleteProduct(id: string): Promise<{ success: boolean; message: string }> {
+    const res = await fetch(`${BASE_URL}/store/products/${id}`, {
+      method: 'DELETE',
+      headers: { ...getAuthHeader() },
+    });
+    return handleResponse(res);
+  },
+
   async checkout(orderData: any): Promise<any> {
     const res = await fetch(`${BASE_URL}/store/checkout`, {
       method: 'POST',
@@ -300,6 +327,52 @@ export const api = {
     });
     return handleResponse(res);
   },
+
+  // Field Initiatives & Projects (Our Work)
+  async getProjects(params?: { category?: string; lang?: string; limit?: number }): Promise<{ projects: Project[]; count: number }> {
+    const searchParams = new URLSearchParams();
+    if (params?.category && params.category !== 'all') searchParams.append('category', params.category);
+    if (params?.lang) searchParams.append('lang', params.lang);
+    if (params?.limit) searchParams.append('limit', String(params.limit));
+
+    const query = searchParams.toString();
+    const url = query ? `${BASE_URL}/projects?${query}` : `${BASE_URL}/projects`;
+    const res = await fetch(url);
+    return handleResponse(res);
+  },
+
+  async getProject(id: string, lang?: string): Promise<{ project: Project }> {
+    const query = lang ? `?lang=${lang}` : '';
+    const res = await fetch(`${BASE_URL}/projects/${id}${query}`);
+    return handleResponse(res);
+  },
+
+  async createProject(data: any): Promise<{ success: boolean; project: Project; message: string }> {
+    const res = await fetch(`${BASE_URL}/projects`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+
+  async updateProject(id: string, data: any): Promise<{ success: boolean; project: Project; message: string }> {
+    const res = await fetch(`${BASE_URL}/projects/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+
+  async deleteProject(id: string): Promise<{ success: boolean; message: string }> {
+    const res = await fetch(`${BASE_URL}/projects/${id}`, {
+      method: 'DELETE',
+      headers: { ...getAuthHeader() },
+    });
+    return handleResponse(res);
+  },
+
 
   // Reports
   getExportCsvUrl(fieldId?: string, deviceId?: string): string {
@@ -323,6 +396,32 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+    return handleResponse(res);
+  },
+
+  // Cloudinary Image Upload
+  async uploadImage(
+    fileOrDataUrl: File | string,
+    folder: string = 'aquascope'
+  ): Promise<{ success: boolean; url: string; publicId: string }> {
+    let imagePayload = '';
+    if (typeof fileOrDataUrl === 'string') {
+      imagePayload = fileOrDataUrl;
+    } else {
+      imagePayload = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = (err) => reject(err);
+        reader.readAsDataURL(fileOrDataUrl);
+      });
+    }
+
+    const res = await fetch(`${BASE_URL}/upload`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify({ image: imagePayload, folder }),
+    });
+
     return handleResponse(res);
   },
 };

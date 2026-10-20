@@ -86,7 +86,90 @@ export class StoreService {
       items: JSON.parse(order.items_json),
     };
   }
+
+  async createProduct(data: any) {
+    const { name, category = 'Equipment', price = 0, description = '', specs = {}, imageUrl = '/images/portable-kit-system.jpg', stockQty = 50, inStock = 1 } = data;
+    if (!name) {
+      const err: any = new Error('Product name is required');
+      err.statusCode = 400;
+      throw err;
+    }
+
+    const slug = data.slug || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + Math.floor(100 + Math.random() * 900);
+
+    const product = await prisma.product.create({
+      data: {
+        slug,
+        name,
+        category,
+        price: parseFloat(price) || 0,
+        description,
+        specsJson: typeof specs === 'string' ? specs : JSON.stringify(specs),
+        imageUrl,
+        inStock: inStock ? 1 : 0,
+        stockQty: parseInt(stockQty, 10) || 0,
+      },
+    });
+
+    return {
+      ...product,
+      specs: JSON.parse(product.specsJson || '{}'),
+      inStock: Boolean(product.inStock),
+    };
+  }
+
+  async updateProduct(id: string, data: any) {
+    const existing = await prisma.product.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
+
+    if (!existing) {
+      const err: any = new Error('Product not found');
+      err.statusCode = 404;
+      throw err;
+    }
+
+    const updateData: any = {};
+    if (data.name !== undefined) updateData.name = data.name;
+    if (data.slug !== undefined) updateData.slug = data.slug;
+    if (data.category !== undefined) updateData.category = data.category;
+    if (data.price !== undefined) updateData.price = parseFloat(data.price) || 0;
+    if (data.description !== undefined) updateData.description = data.description;
+    if (data.specs !== undefined) {
+      updateData.specsJson = typeof data.specs === 'string' ? data.specs : JSON.stringify(data.specs);
+    }
+    if (data.imageUrl !== undefined) updateData.imageUrl = data.imageUrl;
+    if (data.inStock !== undefined) updateData.inStock = data.inStock ? 1 : 0;
+    if (data.stockQty !== undefined) updateData.stockQty = parseInt(data.stockQty, 10) || 0;
+
+    const updated = await prisma.product.update({
+      where: { id: existing.id },
+      data: updateData,
+    });
+
+    return {
+      ...updated,
+      specs: JSON.parse(updated.specsJson || '{}'),
+      inStock: Boolean(updated.inStock),
+    };
+  }
+
+  async deleteProduct(id: string) {
+    const existing = await prisma.product.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
+
+    if (!existing) {
+      const err: any = new Error('Product not found');
+      err.statusCode = 404;
+      throw err;
+    }
+
+    await prisma.product.delete({ where: { id: existing.id } });
+    return { success: true, message: 'Product deleted successfully' };
+  }
 }
 
 export const storeService = new StoreService();
 export default storeService;
+

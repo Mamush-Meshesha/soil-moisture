@@ -14,7 +14,7 @@ describe('[Platform Name] Backend API Suite', () => {
       const res = await request(app).get('/api/health');
       expect(res.status).toBe(200);
       expect(res.body.status).toBe('healthy');
-      expect(res.body.platform).toContain('[Platform Name]');
+      expect(res.body.platform).toContain('AquaScope');
     });
   });
 

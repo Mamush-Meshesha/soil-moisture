@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Check, ShieldCheck, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Check, ShieldCheck, ChevronRight, Droplets, Filter, ArrowRight } from 'lucide-react';
 import { api } from '../../services/api';
 import { Product } from '../../types';
+import { WATER_PRODUCTS } from '../../data/waterProducts';
 import { useCart } from '../../context/CartContext';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
@@ -10,7 +11,7 @@ import { useLanguage } from '../../i18n/LanguageContext';
 import { formatBirr } from '../../utils/currency';
 
 export const ProductsPage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(WATER_PRODUCTS);
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [addedSlug, setAddedSlug] = useState<string | null>(null);
   const { addToCart } = useCart();
@@ -19,27 +20,29 @@ export const ProductsPage: React.FC = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const { products } = await api.getProducts(activeCategory === 'ALL' ? undefined : activeCategory);
-        setProducts(products);
+        const data = await api.getProducts(activeCategory === 'ALL' ? undefined : activeCategory);
+        if (data && data.products && data.products.length > 0) {
+          setProducts(data.products);
+        } else {
+          // Filter fallback products
+          if (activeCategory === 'ALL') {
+            setProducts(WATER_PRODUCTS);
+          } else {
+            setProducts(WATER_PRODUCTS.filter((p) => p.category === activeCategory));
+          }
+        }
       } catch (err) {
-        console.error('Failed to load products:', err);
+        if (activeCategory === 'ALL') {
+          setProducts(WATER_PRODUCTS);
+        } else {
+          setProducts(WATER_PRODUCTS.filter((p) => p.category === activeCategory));
+        }
       }
     }
     fetchProducts();
   }, [activeCategory]);
 
-  const categories = ['ALL', 'Sensors', 'Gateways', 'Accessories', 'Tools'];
-
-  const getCategoryLabel = (cat: string) => {
-    switch (cat) {
-      case 'ALL': return t('store.all');
-      case 'Sensors': return t('store.sensors');
-      case 'Gateways': return t('store.gateways');
-      case 'Accessories': return t('store.accessories');
-      case 'Tools': return t('store.tools');
-      default: return cat;
-    }
-  };
+  const categories = ['ALL', 'Testing Kits', 'Equipment', 'Consumables', 'Accessories'];
 
   const handleAdd = (p: Product) => {
     addToCart(p, 1);
@@ -51,27 +54,67 @@ export const ProductsPage: React.FC = () => {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
 
-      <section style={{ backgroundColor: 'var(--color-surface)', padding: '56px 24px', borderBottom: '1px solid var(--color-border)' }}>
+      <section
+        style={{
+          backgroundColor: 'var(--color-surface)',
+          padding: '64px 24px 48px',
+          borderBottom: '1px solid var(--color-border)',
+        }}
+      >
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-          <span className="ts-badge ts-badge-success" style={{ marginBottom: '16px' }}>
-            {t('products.badge')}
-          </span>
-          <h1 style={{ fontSize: '38px', fontWeight: 800, color: 'var(--color-primary-dark)', marginBottom: '12px' }}>
-            {t('products.title')}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 16px',
+              borderRadius: '9999px',
+              backgroundColor: 'var(--color-primary-subtle)',
+              border: '1px solid rgba(14, 165, 233, 0.25)',
+              color: 'var(--color-primary)',
+              fontSize: '13.5px',
+              fontWeight: 700,
+              marginBottom: '16px',
+            }}
+          >
+            <Droplets size={16} /> Water Testing Hardware &amp; Consumables
+          </div>
+
+          <h1
+            style={{
+              fontSize: '40px',
+              fontWeight: 900,
+              color: 'var(--color-heading)',
+              letterSpacing: '-0.025em',
+              marginBottom: '14px',
+            }}
+          >
+            Water Quality Testing Catalog
           </h1>
-          <p style={{ fontSize: '17px', color: 'var(--color-text-muted)', maxWidth: '680px', margin: '0 auto' }}>
-            {t('products.subtitle')}
+
+          <p
+            style={{
+              fontSize: '17px',
+              color: 'var(--color-text-muted)',
+              maxWidth: '720px',
+              margin: '0 auto 32px',
+              lineHeight: 1.6,
+            }}
+          >
+            Explore our field-tested equipment, portable incubators, membrane filtration units, and
+            single-use consumables designed for reliable bacteriological water testing.
           </p>
 
           {/* Category Tabs */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '32px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`ts-btn ts-btn-sm ${activeCategory === cat ? 'ts-btn-primary' : 'ts-btn-secondary'}`}
+                style={{ borderRadius: '20px', padding: '7px 18px' }}
               >
-                {getCategoryLabel(cat)}
+                {cat === 'ALL' ? 'All Products' : cat}
               </button>
             ))}
           </div>
@@ -79,8 +122,14 @@ export const ProductsPage: React.FC = () => {
       </section>
 
       <section style={{ padding: '64px 24px', backgroundColor: 'var(--color-bg)', flex: 1 }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '28px' }}>
+        <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+              gap: '32px',
+            }}
+          >
             {products.map((p) => (
               <div
                 key={p.id}
@@ -89,84 +138,167 @@ export const ProductsPage: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  borderRadius: 'var(--radius-lg)',
+                  borderRadius: 'var(--radius-xl)',
+                  padding: '0',
+                  overflow: 'hidden',
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                    <span className="ts-badge ts-badge-neutral">{p.category}</span>
-                    <span className={`ts-badge ${p.inStock ? 'ts-badge-success' : 'ts-badge-error'}`}>
-                      {p.inStock ? `${t('store.inStock')} (${p.stock_qty})` : t('products.backordered')}
-                    </span>
+                {/* Product Photo */}
+                <div
+                  style={{
+                    height: '210px',
+                    backgroundColor: 'var(--color-surface-sunken)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <img
+                    src={p.image_url || p.image || '/images/portable-kit-system.jpg'}
+                    alt={p.name}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      backgroundColor: 'rgba(11, 37, 69, 0.85)',
+                      backdropFilter: 'blur(8px)',
+                      color: '#FFFFFF',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                    }}
+                  >
+                    {p.category}
                   </div>
-
-                  <Link to={`/products/${p.slug}`}>
-                    <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text)', marginBottom: '8px' }}>
-                      {p.name}
-                    </h3>
-                  </Link>
-
-                  <p style={{ fontSize: '14px', color: 'var(--color-text-muted)', lineHeight: '1.6', marginBottom: '16px' }}>
-                    {p.description}
-                  </p>
-
-                  {/* Highlights from specs */}
-                  <div style={{ backgroundColor: 'var(--color-bg)', padding: '12px', borderRadius: '8px', marginBottom: '20px', fontSize: '13px' }}>
-                    {p.specs.depths && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ color: 'var(--color-text-muted)' }}>{t('products.specsHorizons')}:</span>
-                        <span style={{ fontWeight: 600 }}>{p.specs.depths}</span>
-                      </div>
-                    )}
-                    {p.specs.interface && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ color: 'var(--color-text-muted)' }}>{t('products.specsInterface')}:</span>
-                        <span style={{ fontWeight: 600 }}>{p.specs.interface}</span>
-                      </div>
-                    )}
-                    {p.specs.cellular && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                        <span style={{ color: 'var(--color-text-muted)' }}>{t('products.specsCellular')}:</span>
-                        <span style={{ fontWeight: 600 }}>{p.specs.cellular}</span>
-                      </div>
-                    )}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      right: '12px',
+                      backgroundColor: p.inStock ? 'rgba(5, 150, 105, 0.9)' : 'rgba(225, 29, 72, 0.9)',
+                      color: '#FFFFFF',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                    }}
+                  >
+                    {p.inStock ? `In Stock (${p.stock_qty || 25})` : 'Order on Request'}
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    paddingTop: '16px',
-                    borderTop: '1px solid var(--color-border)',
-                  }}
-                >
+                {/* Details */}
+                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                   <div>
-                    <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', display: 'block' }}>{t('products.unitPrice')}</span>
-                    <span style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
-                      {formatBirr(p.price, language)}
-                    </span>
+                    <Link to={`/products/${p.slug}`}>
+                      <h3
+                        style={{
+                          fontSize: '19px',
+                          fontWeight: 800,
+                          color: 'var(--color-heading)',
+                          marginBottom: '8px',
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {p.name}
+                      </h3>
+                    </Link>
+
+                    <p
+                      style={{
+                        fontSize: '14px',
+                        color: 'var(--color-text-muted)',
+                        lineHeight: 1.6,
+                        marginBottom: '16px',
+                      }}
+                    >
+                      {p.description}
+                    </p>
+
+                    {/* Specs preview */}
+                    <div
+                      style={{
+                        backgroundColor: 'var(--color-bg)',
+                        padding: '12px 14px',
+                        borderRadius: '8px',
+                        marginBottom: '20px',
+                        fontSize: '12.5px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '4px',
+                      }}
+                    >
+                      {p.specs.method && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'var(--color-text-muted)' }}>Standard:</span>
+                          <span style={{ fontWeight: 600 }}>{p.specs.method}</span>
+                        </div>
+                      )}
+                      {p.specs.speed && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'var(--color-text-muted)' }}>Speed:</span>
+                          <span style={{ fontWeight: 600 }}>{p.specs.speed}</span>
+                        </div>
+                      )}
+                      {p.specs.target && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'var(--color-text-muted)' }}>Target:</span>
+                          <span style={{ fontWeight: 600 }}>{p.specs.target}</span>
+                        </div>
+                      )}
+                      {p.specs.poreSize && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'var(--color-text-muted)' }}>Pore Size:</span>
+                          <span style={{ fontWeight: 600 }}>{p.specs.poreSize}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <Link to={`/products/${p.slug}`} className="ts-btn ts-btn-secondary ts-btn-sm">
-                      {t('products.details')}
-                    </Link>
-                    <button
-                      onClick={() => handleAdd(p)}
-                      className={`ts-btn ts-btn-sm ${addedSlug === p.slug ? 'ts-btn-secondary' : 'ts-btn-primary'}`}
-                    >
-                      {addedSlug === p.slug ? (
-                        <>
-                          <Check size={14} color="var(--color-primary)" /> {t('store.itemAdded')}
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingCart size={14} /> {t('store.addToCart')}
-                        </>
-                      )}
-                    </button>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingTop: '16px',
+                      borderTop: '1px solid var(--color-border)',
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', display: 'block' }}>
+                        Unit Price
+                      </span>
+                      <span style={{ fontSize: '22px', fontWeight: 900, color: 'var(--color-primary)' }}>
+                        {formatBirr(p.price, language)}
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <Link to={`/products/${p.slug}`} className="ts-btn ts-btn-secondary ts-btn-sm">
+                        Specifications
+                      </Link>
+                      <button
+                        onClick={() => handleAdd(p)}
+                        className={`ts-btn ts-btn-sm ${addedSlug === p.slug ? 'ts-btn-secondary' : 'ts-btn-primary'}`}
+                      >
+                        {addedSlug === p.slug ? (
+                          <>
+                            <Check size={14} color="var(--color-primary)" /> Added
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart size={14} /> Add to Cart
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -179,3 +311,5 @@ export const ProductsPage: React.FC = () => {
     </div>
   );
 };
+
+export default ProductsPage;

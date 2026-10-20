@@ -57,7 +57,7 @@ export const FarmsPage: React.FC = () => {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!window.confirm(`Are you sure you want to delete farm "${name}" and all associated fields?`)) {
+    if (!window.confirm(`Are you sure you want to delete community/district "${name}" and all associated water points?`)) {
       return;
     }
     try {
@@ -245,10 +245,10 @@ export const FarmsPage: React.FC = () => {
                 </div>
 
                 <div className="ts-form-group">
-                  <label className="ts-label">Description / Cropping Notes</label>
+                  <label className="ts-label">Description / Water Quality Notes</label>
                   <textarea
                     rows={2}
-                    placeholder="Commercial specialty row crops and pivot drip irrigation..."
+                    placeholder="Borehole distribution network, chlorination units, and community tapstands..."
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     className="ts-textarea"
@@ -261,7 +261,7 @@ export const FarmsPage: React.FC = () => {
                   Cancel
                 </button>
                 <button type="submit" className="ts-btn ts-btn-primary">
-                  Create Property
+                  Create District / Community
                 </button>
               </div>
             </form>

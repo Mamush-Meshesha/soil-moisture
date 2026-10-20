@@ -51,7 +51,7 @@ export class ReportService {
       'Field Name',
       'Depth (cm)',
       'Volumetric Water Content (% VWC)',
-      'Soil Temperature (C)',
+      'Water / Incubation Temperature (C)',
       'Electrical Conductivity (dS/m)',
       'Data Quality Score',
       'Source',

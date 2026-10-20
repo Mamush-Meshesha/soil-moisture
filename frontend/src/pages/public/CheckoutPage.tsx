@@ -13,13 +13,13 @@ export const CheckoutPage: React.FC = () => {
   const { t, language } = useLanguage();
 
   const [formData, setFormData] = useState({
-    name: '[Customer Name / Farm Manager]',
-    email: 'farmer@example.com',
-    street: '[123 Farm Road, Plot Alpha]',
-    city: '[City]',
-    state: '[State / Region]',
-    zip: '[Postal Code]',
-    country: '[Country]',
+    name: 'Dr. Sarah Jenkins',
+    email: 'sarah.jenkins@wash-initiative.org',
+    street: '15 Health & Water Crescent',
+    city: 'Cambridge',
+    state: 'Cambridgeshire',
+    zip: 'CB3 0HE',
+    country: 'United Kingdom',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);

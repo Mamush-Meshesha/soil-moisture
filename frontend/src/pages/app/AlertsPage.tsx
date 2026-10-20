@@ -259,7 +259,7 @@ export const AlertsPage: React.FC = () => {
         <div className="ts-modal-backdrop" onClick={() => setShowRuleModal(false)}>
           <div className="ts-modal" onClick={(e) => e.stopPropagation()}>
             <div className="ts-modal-header">
-              <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Add Soil Threshold Rule</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Add Contamination & Safety Threshold Rule</h3>
               <button onClick={() => setShowRuleModal(false)} style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>
                 &times;
               </button>
@@ -267,7 +267,7 @@ export const AlertsPage: React.FC = () => {
             <form onSubmit={handleCreateRule}>
               <div className="ts-modal-body">
                 <div className="ts-form-group">
-                  <label className="ts-label">Target Field Plot *</label>
+                  <label className="ts-label">Target Water Point / Site *</label>
                   <select
                     value={ruleForm.fieldId}
                     onChange={(e) => setRuleForm({ ...ruleForm, fieldId: e.target.value })}

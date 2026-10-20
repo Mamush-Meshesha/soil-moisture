@@ -1,21 +1,21 @@
 import React, { useState, useMemo } from 'react';
 import { SensorReading } from '../types';
 
-interface SoilDepthChartProps {
+interface WaterDepthChartProps {
   readings: SensorReading[];
   targetMin?: number;
   targetMax?: number;
 }
 
 const DEPTH_COLORS: Record<number, { stroke: string; label: string }> = {
-  10: { stroke: '#74B875', label: '10 cm (Topsoil)' },
-  20: { stroke: '#176B45', label: '20 cm (Upper Root)' },
-  30: { stroke: '#3678B7', label: '30 cm (Mid Root)' },
-  40: { stroke: '#8558A8', label: '40 cm (Deep Root)' },
-  50: { stroke: '#D99A23', label: '50 cm (Subsoil Horizon)' },
+  10: { stroke: '#088395', label: '10 cm (Surface Sample)' },
+  20: { stroke: '#0A4D68', label: '20 cm (Inflow Horizon)' },
+  30: { stroke: '#05BFDB', label: '30 cm (Filtration Core)' },
+  40: { stroke: '#0E8388', label: '40 cm (Deep Sample)' },
+  50: { stroke: '#2E4F4F', label: '50 cm (Reservoir Baseline)' },
 };
 
-export const SoilDepthChart: React.FC<SoilDepthChartProps> = ({
+export const WaterDepthChart: React.FC<WaterDepthChartProps> = ({
   readings,
   targetMin = 20.0,
   targetMax = 38.0,
@@ -167,7 +167,7 @@ export const SoilDepthChart: React.FC<SoilDepthChartProps> = ({
             fill="var(--color-primary)"
             fontWeight="600"
           >
-            Field Capacity ({targetMax}%)
+            WHO Safe Baseline ({targetMax}%)
           </text>
           <text
             x={padding.left + chartW - 6}
@@ -177,7 +177,7 @@ export const SoilDepthChart: React.FC<SoilDepthChartProps> = ({
             fill="var(--color-warning)"
             fontWeight="600"
           >
-            Refill Threshold ({targetMin}%)
+            Action Limit Threshold ({targetMin}%)
           </text>
 
           {/* Plot Series Lines per Depth */}
@@ -296,3 +296,5 @@ export const SoilDepthChart: React.FC<SoilDepthChartProps> = ({
     </div>
   );
 };
+
+export const SoilDepthChart = WaterDepthChart;

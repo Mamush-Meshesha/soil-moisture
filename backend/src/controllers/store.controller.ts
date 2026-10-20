@@ -38,7 +38,43 @@ export class StoreController {
       next(error);
     }
   }
+
+  async createProduct(req: Request, res: Response, next: NextFunction) {
+    try {
+      const product = await storeService.createProduct(req.body);
+      return res.status(201).json({
+        success: true,
+        message: 'Product added to store catalog successfully.',
+        product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async updateProduct(req: Request, res: Response, next: NextFunction) {
+    try {
+      const product = await storeService.updateProduct(req.params.id, req.body);
+      return res.json({
+        success: true,
+        message: 'Product updated successfully.',
+        product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deleteProduct(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await storeService.deleteProduct(req.params.id);
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const storeController = new StoreController();
 export default storeController;
+

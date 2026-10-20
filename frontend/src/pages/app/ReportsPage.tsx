@@ -142,18 +142,18 @@ export const ReportsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 24-Hour Horizon Soil Moisture Profile */}
+        {/* 24-Hour Water Incubation Profile */}
         <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '12px' }}>
-          24-Hour Average Moisture Profile Across Root Depths
+          24-Hour Average Water Contamination & Safety Profile
         </h3>
         <div className="ts-table-container" style={{ marginBottom: '24px' }}>
           <table className="ts-table">
             <thead>
               <tr>
-                <th>Horizon Depth</th>
-                <th>24h Mean Volumetric Water Content (% VWC)</th>
-                <th>Mean Soil Temperature (°C)</th>
-                <th>Agronomic Classification</th>
+                <th>Surveillance Depth / Point</th>
+                <th>24h Bacterial Colony Status</th>
+                <th>Mean Incubation Temperature (°C)</th>
+                <th>WHO Water Safety Classification</th>
               </tr>
             </thead>
             <tbody>

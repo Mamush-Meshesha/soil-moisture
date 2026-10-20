@@ -11,8 +11,13 @@ export const config = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   databaseUrl:
     process.env.DATABASE_URL ||
-    'postgresql://postgres:postgres@localhost:5439/soil_moisture_db?schema=public',
+    'postgresql://postgres:postgres@localhost:5432/soil_moisture_db?schema=public',
   corsOrigin: process.env.CORS_ORIGIN || '*',
+  cloudinary: {
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME || 'dmjtytstd',
+    apiKey: process.env.CLOUDINARY_API_KEY || '216288979336725',
+    apiSecret: process.env.CLOUDINARY_API_SECRET || 'MJufkalWaCALwEvLyXT7cd-48hY',
+  },
 };
 
 export default config;

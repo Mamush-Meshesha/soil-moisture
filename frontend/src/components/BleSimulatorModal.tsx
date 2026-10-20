@@ -208,7 +208,7 @@ export const BleSimulatorModal: React.FC<BleSimulatorModalProps> = ({
               )}
 
               <p style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
-                Field sensor readings have been indexed and are now available on the dashboard and soil monitoring views.
+                Field sensor and water quality readings have been indexed and are now available on the dashboard and water testing views.
               </p>
             </div>
           )}

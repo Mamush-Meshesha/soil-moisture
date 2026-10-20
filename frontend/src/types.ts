@@ -142,8 +142,11 @@ export interface Product {
   description: string;
   specs: Record<string, string>;
   image_url: string;
+  imageUrl?: string;
+  image?: string;
   inStock: boolean;
   stock_qty: number;
+  stockQty?: number;
 }
 
 export interface CartItem {
@@ -160,3 +163,29 @@ export interface MaintenanceRecord {
   notes?: string;
   performed_at: string;
 }
+
+export interface Project {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  categoryKey: 'all' | 'field' | 'humanitarian' | 'research' | 'community';
+  date: string;
+  location: string;
+  image: string;
+  summary: string;
+  objective?: string;
+  method?: string;
+  keyFindings?: string[];
+  partner?: string | null;
+  translations?: Record<string, any>;
+  translationsJson?: any;
+  order?: number;
+  details?: {
+    objective: string;
+    method: string;
+    keyFindings: string[];
+    partner?: string;
+  };
+}
+

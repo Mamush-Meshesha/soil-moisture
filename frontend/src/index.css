@@ -1,41 +1,43 @@
 /* ==========================================================================
-   Smart Agriculture Design System & Accessible Theme Tokens
+   AquaScope Water Quality & Drinking Safety Design System Tokens
    ========================================================================== */
 
 :root {
-  /* Brand Agricultural Palette */
-  --color-primary: #176B45;        /* Primary forest green */
-  --color-primary-dark: #123B2B;   /* Dark forest */
-  --color-primary-light: #74B875;  /* Fresh green */
-  --color-primary-subtle: #E8F4EC;
+  /* Brand Water & Laboratory Palette */
+  --color-primary: #006699;        /* Signature WaterScope ocean blue */
+  --color-primary-dark: #0B2545;   /* Deep clinical navy */
+  --color-primary-light: #0EA5E9;  /* Crisp vibrant cyan water blue */
+  --color-primary-subtle: #F0F8FF; /* Lightest water tint */
+  --color-secondary: #0D9488;      /* Clean laboratory teal */
+  --color-secondary-subtle: #E6FFFA;
 
   /* Neutrals & Surfaces */
-  --color-bg: #F7F8F4;             /* Warm off-white */
-  --color-surface: #FFFFFF;        /* Pure white */
-  --color-surface-hover: #F2F5F0;
-  --color-surface-sunken: #EFF2EC;
-  --color-text: #18251E;           /* Primary text */
-  --color-text-muted: #68746C;     /* Secondary text */
-  --color-text-subtle: #96A39A;
-  --color-border: #E1E7E0;         /* Accessible borders */
-  --color-border-subtle: #EDF1EC;
+  --color-bg: #F7F9FC;             /* Clean scientific soft slate */
+  --color-surface: #FFFFFF;        /* Pure sterile white */
+  --color-surface-hover: #F0F4F8;
+  --color-surface-sunken: #EDF2F7;
+  --color-text: #102A43;           /* High contrast deep navy text */
+  --color-text-muted: #486581;     /* Secondary text */
+  --color-text-subtle: #829AB1;
+  --color-border: #D9E2EC;         /* Accessible borders */
+  --color-border-subtle: #EBF0F5;
 
   /* Semantic Feedback Tokens */
-  --color-warning: #D99A23;        /* Warning amber */
-  --color-warning-bg: #FDF7EA;
-  --color-warning-border: #F3DCAC;
+  --color-warning: #D97706;        /* Warning amber (e.g. moderate risk) */
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
 
-  --color-error: #C94B48;          /* Error red */
-  --color-error-bg: #FDF2F2;
-  --color-error-border: #F5C7C6;
+  --color-error: #E11D48;          /* High risk / Coliform detected */
+  --color-error-bg: #FFF1F2;
+  --color-error-border: #FECDD3;
 
-  --color-info: #3678B7;           /* Informational blue */
-  --color-info-bg: #EFF6FC;
-  --color-info-border: #BCD8F2;
+  --color-info: #0284C7;           /* Informational telemetry */
+  --color-info-bg: #F0F9FF;
+  --color-info-border: #BAE6FD;
 
-  --color-success: #176B45;
-  --color-success-bg: #E8F4EC;
-  --color-success-border: #B2D8C3;
+  --color-success: #059669;        /* Safe drinking water standard (0 CFU) */
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #A7F3D0;
 
   /* Spacing Scale */
   --spacing-xxs: 4px;
@@ -57,12 +59,12 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(24, 37, 30, 0.05);
-  --shadow-md: 0 4px 12px rgba(24, 37, 30, 0.08);
-  --shadow-lg: 0 10px 24px rgba(24, 37, 30, 0.12);
-  --shadow-card: 0 4px 20px -2px rgba(18, 59, 43, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
-  --shadow-card-hover: 0 20px 38px -6px rgba(18, 59, 43, 0.12), 0 6px 14px rgba(0, 0, 0, 0.03);
-  --shadow-glow: 0 0 32px rgba(116, 184, 117, 0.28);
+  --shadow-sm: 0 1px 2px rgba(11, 37, 69, 0.05);
+  --shadow-md: 0 4px 12px rgba(11, 37, 69, 0.08);
+  --shadow-lg: 0 10px 24px rgba(11, 37, 69, 0.12);
+  --shadow-card: 0 4px 20px -2px rgba(11, 37, 69, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 20px 38px -6px rgba(11, 37, 69, 0.14), 0 6px 14px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 32px rgba(14, 165, 233, 0.28);
 
   --color-heading: var(--color-primary-dark);
 
@@ -73,29 +75,31 @@
   --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Optional Dark Mode (Class-based toggle or media query) */
+/* Dark Mode - Deep Marine Navy */
 [data-theme='dark'] {
-  --color-bg: #0A140F;
-  --color-surface: #112018;
-  --color-surface-hover: #172B20;
-  --color-surface-sunken: #070E0A;
-  --color-text: #F1F6F3;
-  --color-text-muted: #9BB3A5;
-  --color-text-subtle: #6D8577;
-  --color-heading: #EBF7F0;
-  --color-border: #1C3527;
-  --color-border-subtle: #15291E;
-  --color-primary: #298F5E;
-  --color-primary-dark: #1E6B45;
-  --color-primary-light: #74B875;
-  --color-primary-subtle: #122E21;
-  --color-warning-bg: #291E0A;
-  --color-error-bg: #2E1212;
-  --color-info-bg: #0E2235;
+  --color-bg: #07121E;
+  --color-surface: #0E1E30;
+  --color-surface-hover: #142840;
+  --color-surface-sunken: #050B13;
+  --color-text: #F0F6FC;
+  --color-text-muted: #94A9C0;
+  --color-text-subtle: #627D98;
+  --color-heading: #F8FAFC;
+  --color-border: #1C3550;
+  --color-border-subtle: #122538;
+  --color-primary: #0284C7;
+  --color-primary-dark: #075985;
+  --color-primary-light: #38BDF8;
+  --color-primary-subtle: #08243D;
+  --color-secondary: #14B8A6;
+  --color-secondary-subtle: #0D2D2E;
+  --color-warning-bg: #2E1F07;
+  --color-error-bg: #301016;
+  --color-info-bg: #0C2840;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
   --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 20px 38px -6px rgba(0, 0, 0, 0.65), 0 6px 14px rgba(41, 143, 94, 0.15);
+  --shadow-card-hover: 0 20px 38px -6px rgba(0, 0, 0, 0.65), 0 6px 14px rgba(2, 132, 199, 0.18);
 }
 
 /* ==========================================================================
@@ -555,28 +559,28 @@ button, input, select, textarea {
 
 /* Subtle Animated Ambient Gradients */
 .ts-gradient-mesh {
-  background: radial-gradient(circle at 15% 20%, rgba(116, 184, 117, 0.12) 0%, transparent 45%),
-              radial-gradient(circle at 85% 80%, rgba(23, 107, 69, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(54, 120, 183, 0.04) 0%, transparent 60%);
+  background: radial-gradient(circle at 15% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 45%),
+              radial-gradient(circle at 85% 80%, rgba(0, 102, 153, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(13, 148, 136, 0.05) 0%, transparent 60%);
 }
 
 [data-theme='dark'] .ts-gradient-mesh {
-  background: radial-gradient(circle at 15% 20%, rgba(116, 184, 117, 0.08) 0%, transparent 45%),
-              radial-gradient(circle at 85% 80%, rgba(41, 143, 94, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(18, 59, 43, 0.25) 0%, transparent 60%),
+  background: radial-gradient(circle at 15% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 85% 80%, rgba(2, 132, 199, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(14, 30, 48, 0.35) 0%, transparent 60%),
               var(--color-bg);
 }
 
 .ts-gradient-pill {
-  background: linear-gradient(135deg, rgba(23, 107, 69, 0.08) 0%, rgba(116, 184, 117, 0.18) 100%);
-  border: 1px solid rgba(116, 184, 117, 0.35);
+  background: linear-gradient(135deg, rgba(0, 102, 153, 0.08) 0%, rgba(14, 165, 233, 0.16) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.3);
   color: var(--color-primary-dark);
 }
 
 [data-theme='dark'] .ts-gradient-pill {
-  background: linear-gradient(135deg, rgba(41, 143, 94, 0.15) 0%, rgba(116, 184, 117, 0.22) 100%);
-  border: 1px solid rgba(116, 184, 117, 0.4);
-  color: #B2E4C9;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(14, 165, 233, 0.22) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  color: #7DD3FC;
 }
 
 .pulse-indicator {
@@ -587,6 +591,69 @@ button, input, select, textarea {
   0% { transform: scale(1); opacity: 0.9; }
   50% { transform: scale(1.18); opacity: 1; }
   100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* Smart Executive Water Dashboard Components */
+.ts-smart-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.ts-smart-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(14, 165, 233, 0.35);
+}
+
+.ts-live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  display: inline-block;
+  box-shadow: 0 0 8px #10B981;
+  animation: live-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes live-pulse {
+  0% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 4px #10B981; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #10B981; }
+  100% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 4px #10B981; }
+}
+
+.ts-telemetry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-telemetry-badge-safe {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme='dark'] .ts-telemetry-badge-safe {
+  background-color: rgba(16, 185, 129, 0.18);
+  color: #34D399;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.ts-telemetry-badge-warning {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+  border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
 /* Accessible Reduced Motion Fallback */

@@ -4,14 +4,17 @@ import {
   ShoppingCart,
   Check,
   ShieldCheck,
-  Wrench,
   Layers,
   ArrowLeft,
   Package,
   HelpCircle,
+  Droplets,
+  Microscope,
+  FileCheck,
 } from 'lucide-react';
 import { api } from '../../services/api';
 import { Product } from '../../types';
+import { WATER_PRODUCTS } from '../../data/waterProducts';
 import { useCart } from '../../context/CartContext';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
@@ -34,10 +37,16 @@ export const ProductDetailPage: React.FC = () => {
       if (!slug) return;
       try {
         setLoading(true);
-        const { product } = await api.getProduct(slug);
-        setProduct(product);
+        const data = await api.getProduct(slug);
+        if (data && data.product) {
+          setProduct(data.product);
+        } else {
+          const found = WATER_PRODUCTS.find((p) => p.slug === slug) || WATER_PRODUCTS[0];
+          setProduct(found);
+        }
       } catch (err) {
-        console.error('Failed to load product detail:', err);
+        const found = WATER_PRODUCTS.find((p) => p.slug === slug) || WATER_PRODUCTS[0];
+        setProduct(found);
       } finally {
         setLoading(false);
       }
@@ -63,12 +72,12 @@ export const ProductDetailPage: React.FC = () => {
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
         <div style={{ padding: '80px 24px', textAlign: 'center', flex: 1 }}>
-          <h2>{t('products.notFound')}</h2>
+          <h2>Testing Equipment Not Found</h2>
           <p style={{ color: 'var(--color-text-muted)', margin: '16px 0 24px' }}>
-            {t('products.notFoundDesc')}
+            The requested testing item could not be found.
           </p>
           <Link to="/products" className="ts-btn ts-btn-primary">
-            {t('products.backCatalog')}
+            Back to Water Testing Catalog
           </Link>
         </div>
         <Footer />
@@ -86,93 +95,135 @@ export const ProductDetailPage: React.FC = () => {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
 
-      <section style={{ backgroundColor: 'var(--color-surface)', padding: '24px 24px 16px', borderBottom: '1px solid var(--color-border)' }}>
+      <section
+        style={{
+          backgroundColor: 'var(--color-surface)',
+          padding: '20px 24px',
+          borderBottom: '1px solid var(--color-border)',
+        }}
+      >
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--color-text-muted)' }}>
-            <ArrowLeft size={16} /> {t('products.backCatalog')}
+          <Link
+            to="/products"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '13.5px',
+              color: 'var(--color-primary)',
+              fontWeight: 600,
+            }}
+          >
+            <ArrowLeft size={16} /> Back to Water Testing Catalog
           </Link>
         </div>
       </section>
 
-      <section style={{ padding: '48px 24px', backgroundColor: 'var(--color-bg)', flex: 1 }}>
+      <section style={{ padding: '48px 24px 80px', backgroundColor: 'var(--color-bg)', flex: 1 }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '40px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+              gap: '48px',
               alignItems: 'start',
               marginBottom: '48px',
             }}
           >
-            {/* Visual Hardware Schematic */}
+            {/* Real Product Photograph */}
             <div
               style={{
                 backgroundColor: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
-                borderRadius: 'var(--radius-lg)',
-                padding: '40px',
-                textAlign: 'center',
-                boxShadow: 'var(--shadow-sm)',
+                borderRadius: 'var(--radius-xl)',
+                overflow: 'hidden',
+                boxShadow: 'var(--shadow-card)',
               }}
             >
-              <div
+              <img
+                src={product.image_url || product.image || '/images/portable-kit-system.jpg'}
+                alt={product.name}
                 style={{
-                  width: '120px',
-                  height: '120px',
-                  borderRadius: '24px',
-                  backgroundColor: 'var(--color-primary-subtle)',
-                  color: 'var(--color-primary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 24px',
+                  width: '100%',
+                  height: '380px',
+                  objectFit: 'cover',
+                  display: 'block',
                 }}
-              >
-                <Layers size={64} />
-              </div>
-              <span className="ts-badge ts-badge-neutral" style={{ marginBottom: '8px' }}>
-                {product.category}
-              </span>
-              <div style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
-                {t('products.schematicSubtitle')}
+              />
+              <div style={{ padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span className="ts-badge ts-badge-neutral">{product.category}</span>
+                <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
+                  ISO 9308-1 Benchmarked
+                </span>
               </div>
             </div>
 
-            {/* Product Purchase Actions & Core Info */}
+            {/* Product Purchase Actions & Info */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
                 <span className={`ts-badge ${product.inStock ? 'ts-badge-success' : 'ts-badge-error'}`}>
-                  {product.inStock ? `${t('store.inStock')} (${product.stock_qty})` : t('products.backordered')}
+                  {product.inStock ? `In Stock (${product.stock_qty || 25} units)` : 'Available on Request'}
                 </span>
-                <span style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>{t('products.sku')}: {product.slug.toUpperCase()}</span>
+                <span style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                  SKU: {product.slug.toUpperCase()}
+                </span>
               </div>
 
-              <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-primary-dark)', marginBottom: '12px' }}>
+              <h1
+                style={{
+                  fontSize: '32px',
+                  fontWeight: 900,
+                  color: 'var(--color-heading)',
+                  marginBottom: '14px',
+                  lineHeight: 1.25,
+                }}
+              >
                 {product.name}
               </h1>
 
-              <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-text)', marginBottom: '16px' }}>
+              <div
+                style={{
+                  fontSize: '28px',
+                  fontWeight: 900,
+                  color: 'var(--color-primary)',
+                  marginBottom: '18px',
+                }}
+              >
                 {formatBirr(product.price, language)}
               </div>
 
-              <p style={{ fontSize: '15px', color: 'var(--color-text-muted)', lineHeight: '1.6', marginBottom: '24px' }}>
+              <p
+                style={{
+                  fontSize: '15.5px',
+                  color: 'var(--color-text-muted)',
+                  lineHeight: '1.65',
+                  marginBottom: '28px',
+                }}
+              >
                 {product.description}
               </p>
 
               {/* Quantity Selector & Add to Cart */}
-              <div style={{ display: 'flex', gap: '14px', alignItems: 'center', marginBottom: '24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '8px', overflow: 'hidden' }}>
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'center', marginBottom: '20px' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                  }}
+                >
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    style={{ padding: '10px 14px', background: 'var(--color-surface)', border: 'none', cursor: 'pointer' }}
+                    style={{ padding: '10px 16px', background: 'var(--color-surface)', border: 'none', cursor: 'pointer' }}
                   >
                     -
                   </button>
-                  <span style={{ padding: '0 12px', fontWeight: 700, fontSize: '14px' }}>{quantity}</span>
+                  <span style={{ padding: '0 14px', fontWeight: 700, fontSize: '15px' }}>{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    style={{ padding: '10px 14px', background: 'var(--color-surface)', border: 'none', cursor: 'pointer' }}
+                    style={{ padding: '10px 16px', background: 'var(--color-surface)', border: 'none', cursor: 'pointer' }}
                   >
                     +
                   </button>
@@ -181,72 +232,62 @@ export const ProductDetailPage: React.FC = () => {
                 <button
                   onClick={handleAddToCart}
                   className={`ts-btn ts-btn-lg ${added ? 'ts-btn-secondary' : 'ts-btn-primary'}`}
-                  style={{ flex: 1 }}
+                  style={{ flex: 1, padding: '12px 20px' }}
                 >
                   {added ? (
                     <>
-                      <Check size={18} color="var(--color-primary)" /> {t('store.itemAdded')}
+                      <Check size={18} color="var(--color-primary)" /> Item Added to Cart
                     </>
                   ) : (
                     <>
-                      <ShoppingCart size={18} /> {t('store.addToCart')} ({formatBirr(product.price * quantity, language)})
+                      <ShoppingCart size={18} /> Add to Cart ({formatBirr(product.price * quantity, language)})
                     </>
                   )}
                 </button>
               </div>
 
               <div style={{ display: 'flex', gap: '12px' }}>
-                <Link to="/checkout" className="ts-btn ts-btn-secondary" style={{ width: '100%' }}>
-                  {t('store.checkout')}
+                <Link to="/checkout" className="ts-btn ts-btn-secondary" style={{ flex: 1, justifyContent: 'center' }}>
+                  Proceed to Checkout
+                </Link>
+                <Link to="/contact" className="ts-btn ts-btn-secondary" style={{ flex: 1, justifyContent: 'center' }}>
+                  Request Institutional Quote
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Detailed Technical Specifications Table */}
-          <div className="ts-card" style={{ marginBottom: '32px' }}>
+          {/* Technical Specifications Breakdown */}
+          <div className="ts-card" style={{ padding: '32px', borderRadius: 'var(--radius-xl)' }}>
             <h3 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '20px' }}>
-              {t('products.fullSpecs')}
+              Microbiological &amp; Hardware Specifications
             </h3>
-            <div className="ts-table-container">
-              <table className="ts-table">
-                <tbody>
-                  {Object.entries(product.specs).map(([key, val]) => (
-                    <tr key={key}>
-                      <td style={{ fontWeight: 600, width: '35%', color: 'var(--color-text-muted)' }}>
-                        {key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())}
-                      </td>
-                      <td style={{ fontWeight: 600, color: 'var(--color-text)' }}>{val}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* What's in the Box & Installation Guidance */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            <div className="ts-card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                <Package size={20} color="var(--color-primary)" />
-                <h4 style={{ fontSize: '17px', fontWeight: 700 }}>{t('products.whatsIncluded')}</h4>
-              </div>
-              <ul style={{ fontSize: '14px', color: 'var(--color-text-muted)', lineHeight: '1.8', listStyle: 'none' }}>
-                <li>• {t('products.item1')}</li>
-                <li>• {t('products.item2')}</li>
-                <li>• {t('products.item3')}</li>
-                <li>• {t('products.item4')}</li>
-              </ul>
-            </div>
-
-            <div className="ts-card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                <Wrench size={20} color="var(--color-primary)" />
-                <h4 style={{ fontSize: '17px', fontWeight: 700 }}>{t('products.installationGuidance')}</h4>
-              </div>
-              <p style={{ fontSize: '14px', color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
-                {t('products.installationDesc')}
-              </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+              {Object.entries(product.specs).map(([key, val]) => (
+                <div
+                  key={key}
+                  style={{
+                    padding: '14px',
+                    backgroundColor: 'var(--color-bg)',
+                    borderRadius: 'var(--radius-md)',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: '12px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-text-muted)',
+                      display: 'block',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {key.replace(/([A-Z])/g, ' $1')}
+                  </span>
+                  <strong style={{ fontSize: '14px', color: 'var(--color-text)' }}>
+                    {val}
+                  </strong>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -256,3 +297,5 @@ export const ProductDetailPage: React.FC = () => {
     </div>
   );
 };
+
+export default ProductDetailPage;

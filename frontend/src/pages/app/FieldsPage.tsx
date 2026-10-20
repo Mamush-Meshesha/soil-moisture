@@ -16,9 +16,9 @@ export const FieldsPage: React.FC = () => {
   const [formData, setFormData] = useState({
     farmId: selectedFarmId || '',
     name: '',
-    cropType: '',
+    cropType: 'Deep Borehole (Potable)',
     plantingDate: '2026-04-15',
-    soilType: 'Silt Loam',
+    soilType: 'Deep Borehole Groundwater',
     targetMinMoisture: '20.0',
     targetMaxMoisture: '38.0',
     areaHa: '25.0',
@@ -56,9 +56,9 @@ export const FieldsPage: React.FC = () => {
       setFormData({
         farmId: selectedFarmId || (farms[0]?.id || ''),
         name: '',
-        cropType: '',
+        cropType: 'Deep Borehole (Potable)',
         plantingDate: '2026-04-15',
-        soilType: 'Silt Loam',
+        soilType: 'Deep Borehole Groundwater',
         targetMinMoisture: '20.0',
         targetMaxMoisture: '38.0',
         areaHa: '25.0',
@@ -71,7 +71,7 @@ export const FieldsPage: React.FC = () => {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    if (!window.confirm(`Are you sure you want to delete plot "${name}"?`)) return;
+    if (!window.confirm(`Are you sure you want to delete water site "${name}"?`)) return;
     try {
       await api.deleteField(id);
       loadData();
@@ -102,70 +102,68 @@ export const FieldsPage: React.FC = () => {
         <table className="ts-table">
           <thead>
             <tr>
-              <th>{t('fields.fieldName')}</th>
-              <th>{t('overview.selectFarm')}</th>
-              <th>{t('fields.cropType')}</th>
-              <th>{t('fields.soilType')}</th>
-              <th>{t('fields.moistureRange')}</th>
-              <th>{t('fields.rootDepth')}</th>
-              <th>{t('fields.area')}</th>
-              <th>{t('monitoring.vwc')}</th>
-              <th>{t('fields.actions')}</th>
+              <th>Water Point & Facility</th>
+              <th>Monitored District</th>
+              <th>Source Classification</th>
+              <th>Infrastructure / Treatment</th>
+              <th>Target Purity Range</th>
+              <th>Intake Depth</th>
+              <th>Capacity</th>
+              <th>WHO Purity Index</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {fields.map((f) => (
-              <tr key={f.id}>
-                <td>
-                  <strong style={{ color: 'var(--color-text)', display: 'block' }}>{f.name}</strong>
-                  <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Planted: {f.planting_date || 'N/A'}</span>
-                </td>
-                <td style={{ color: 'var(--color-text-muted)' }}>{f.farm_name || '[Main Farm Facility]'}</td>
-                <td>
-                  <span className="ts-badge ts-badge-neutral">{f.crop_type}</span>
-                </td>
-                <td>{f.soil_type}</td>
-                <td>
-                  <span style={{ fontWeight: 600 }}>
-                    {f.target_min_moisture}% – {f.target_max_moisture}%
-                  </span>
-                </td>
-                <td>{f.root_depth_cm} cm</td>
-                <td>{f.area_ha} ha</td>
-                <td>
-                  <span
-                    className={`ts-badge ${
-                      (f.current_vwc || 28.5) < f.target_min_moisture
-                        ? 'ts-badge-warning'
-                        : (f.current_vwc || 28.5) > f.target_max_moisture
-                        ? 'ts-badge-info'
-                        : 'ts-badge-success'
-                    }`}
-                  >
-                    {f.current_vwc ? `${f.current_vwc}% VWC` : '28.5% VWC'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(f.id, f.name)}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-error)' }}
-                    title="Delete field"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {fields.map((f) => {
+              const purity = f.current_vwc && f.current_vwc > 50 ? f.current_vwc : 99.2;
+              const isSafe = purity >= 95;
+              return (
+                <tr key={f.id}>
+                  <td>
+                    <strong style={{ color: 'var(--color-text)', display: 'block' }}>{f.name}</strong>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Commissioned: {f.planting_date || 'N/A'}</span>
+                  </td>
+                  <td style={{ color: 'var(--color-text-muted)' }}>{f.farm_name || 'Central Water District'}</td>
+                  <td>
+                    <span className="ts-badge ts-badge-neutral">{f.crop_type}</span>
+                  </td>
+                  <td>{f.soil_type}</td>
+                  <td>
+                    <span style={{ fontWeight: 600 }}>
+                      {f.target_min_moisture}% – {f.target_max_moisture}%
+                    </span>
+                  </td>
+                  <td>{f.root_depth_cm} cm</td>
+                  <td>{f.area_ha} kL/day</td>
+                  <td>
+                    <span
+                      className={`ts-badge ${isSafe ? 'ts-badge-success' : 'ts-badge-warning'}`}
+                    >
+                      {purity.toFixed(1)}% Purity
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(f.id, f.name)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-error)' }}
+                      title="Delete water point"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
 
-      {/* Field Creation Modal */}
+      {/* Water Point Registration Modal */}
       {showModal && (
         <div className="ts-modal-backdrop" onClick={() => setShowModal(false)}>
           <div className="ts-modal" onClick={(e) => e.stopPropagation()}>
             <div className="ts-modal-header">
-              <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Add Field Plot</h3>
+              <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Register Water Point / Facility</h3>
               <button onClick={() => setShowModal(false)} style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>
                 &times;
               </button>
@@ -173,7 +171,7 @@ export const FieldsPage: React.FC = () => {
             <form onSubmit={handleCreate}>
               <div className="ts-modal-body">
                 <div className="ts-form-group">
-                  <label className="ts-label">Parent Farm Property *</label>
+                  <label className="ts-label">Monitored District / Facility *</label>
                   <select
                     value={formData.farmId}
                     onChange={(e) => setFormData({ ...formData, farmId: e.target.value })}
@@ -186,11 +184,11 @@ export const FieldsPage: React.FC = () => {
                 </div>
 
                 <div className="ts-form-group">
-                  <label className="ts-label">Field Name *</label>
+                  <label className="ts-label">Water Point Name *</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Center Pivot Charlie"
+                    placeholder="e.g. Central Municipal Borehole #3"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="ts-input"
@@ -199,18 +197,18 @@ export const FieldsPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div className="ts-form-group">
-                    <label className="ts-label">Crop Type *</label>
+                    <label className="ts-label">Source Classification *</label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Grain Corn"
+                      placeholder="e.g. Deep Groundwater Aquifer"
                       value={formData.cropType}
                       onChange={(e) => setFormData({ ...formData, cropType: e.target.value })}
                       className="ts-input"
                     />
                   </div>
                   <div className="ts-form-group">
-                    <label className="ts-label">Planting Date</label>
+                    <label className="ts-label">Commission Date</label>
                     <input
                       type="date"
                       value={formData.plantingDate}
@@ -222,24 +220,24 @@ export const FieldsPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div className="ts-form-group">
-                    <label className="ts-label">Soil Texture Type</label>
+                    <label className="ts-label">Water Source Infrastructure</label>
                     <select
                       value={formData.soilType}
                       onChange={(e) => setFormData({ ...formData, soilType: e.target.value })}
                       className="ts-select"
                     >
-                      <option>Silt Loam</option>
-                      <option>Sandy Loam</option>
-                      <option>Loam</option>
-                      <option>Clay Loam</option>
-                      <option>Gravelly Loam</option>
+                      <option>Deep Borehole Groundwater</option>
+                      <option>Protected Natural Spring</option>
+                      <option>Community Distribution Tapstand</option>
+                      <option>Surface Reservoir / River Intake</option>
+                      <option>Rainwater Harvesting Tank</option>
                     </select>
                   </div>
                   <div className="ts-form-group">
-                    <label className="ts-label">Active Root Depth (cm)</label>
+                    <label className="ts-label">Intake Sampling Depth (cm)</label>
                     <input
                       type="number"
-                      placeholder="40"
+                      placeholder="45"
                       value={formData.rootDepthCm}
                       onChange={(e) => setFormData({ ...formData, rootDepthCm: e.target.value })}
                       className="ts-input"
@@ -249,7 +247,7 @@ export const FieldsPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div className="ts-form-group">
-                    <label className="ts-label">Target Min VWC % (Refill)</label>
+                    <label className="ts-label">Target Min Purity Index %</label>
                     <input
                       type="number"
                       step="0.5"
@@ -259,7 +257,7 @@ export const FieldsPage: React.FC = () => {
                     />
                   </div>
                   <div className="ts-form-group">
-                    <label className="ts-label">Target Max VWC % (Capacity)</label>
+                    <label className="ts-label">Target Max Purity Index %</label>
                     <input
                       type="number"
                       step="0.5"
@@ -271,11 +269,11 @@ export const FieldsPage: React.FC = () => {
                 </div>
 
                 <div className="ts-form-group">
-                  <label className="ts-label">Field Area (Hectares)</label>
+                  <label className="ts-label">Daily Capacity (kL/day)</label>
                   <input
                     type="number"
                     step="0.1"
-                    placeholder="30.0"
+                    placeholder="25.0"
                     value={formData.areaHa}
                     onChange={(e) => setFormData({ ...formData, areaHa: e.target.value })}
                     className="ts-input"

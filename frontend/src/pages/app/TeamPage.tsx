@@ -10,7 +10,7 @@ export const TeamPage: React.FC = () => {
   const [members, setMembers] = useState([
     {
       id: 'usr-1',
-      name: 'Dr. [Lead Agronomist]',
+      name: 'Dr. Sarah Kibet',
       email: 'admin@example.com',
       role: 'PLATFORM_ADMIN',
       status: 'Active',
@@ -18,23 +18,23 @@ export const TeamPage: React.FC = () => {
     },
     {
       id: 'usr-2',
-      name: '[Farm Manager]',
-      email: 'farmer@example.com',
+      name: 'Abebe Bekele',
+      email: 'wash.lead@example.com',
       role: 'FARM_MANAGER',
       status: 'Active',
       joined: '2026-01-08',
     },
     {
       id: 'usr-3',
-      name: '[Consulting Agronomist]',
-      email: 'agronomist@example.com',
+      name: 'Dr. Alemayehu Tadesse',
+      email: 'water.specialist@example.com',
       role: 'AGRONOMIST',
       status: 'Active',
       joined: '2026-03-22',
     },
     {
       id: 'usr-4',
-      name: '[Field Technician]',
+      name: 'Fatima Al-Mansoor',
       email: 'technician@example.com',
       role: 'FIELD_OPERATOR',
       status: 'Active',
@@ -92,16 +92,16 @@ export const TeamPage: React.FC = () => {
             <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Full root access, team management, sensor calibration overrides.</p>
           </div>
           <div style={{ padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: '6px' }}>
-            <strong style={{ color: 'var(--color-primary)' }}>FARM_MANAGER</strong>
-            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Farm/field CRUD, irrigation logging, threshold configuration.</p>
+            <strong style={{ color: 'var(--color-primary)' }}>WASH_PROGRAM_LEAD</strong>
+            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Water point management, treatment protocols, safety threshold configuration.</p>
           </div>
           <div style={{ padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: '6px' }}>
-            <strong style={{ color: 'var(--color-info)' }}>AGRONOMIST</strong>
-            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Telemetry analytics, multi-depth chart inspection, CSV exports.</p>
+            <strong style={{ color: 'var(--color-info)' }}>WATER_QUALITY_ENGINEER</strong>
+            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Optical telemetry analytics, incubation curves, laboratory ISO verification exports.</p>
           </div>
           <div style={{ padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: '6px' }}>
-            <strong style={{ color: 'var(--color-text-muted)' }}>FIELD_OPERATOR</strong>
-            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>BLE mobile sync, field note additions, alert acknowledgments.</p>
+            <strong style={{ color: 'var(--color-text-muted)' }}>FIELD_TEST_OPERATOR</strong>
+            <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Rapid test kit sync, mobile field assays, contamination alert acknowledgments.</p>
           </div>
         </div>
       </div>

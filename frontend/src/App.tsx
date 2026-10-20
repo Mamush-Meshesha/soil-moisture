@@ -19,6 +19,7 @@ import { StorePage } from './pages/public/StorePage';
 import { CheckoutPage } from './pages/public/CheckoutPage';
 import { SolutionsPage } from './pages/public/SolutionsPage';
 import { AboutPage } from './pages/public/AboutPage';
+import { OurWorkPage } from './pages/public/OurWorkPage';
 import { ResourcesPage } from './pages/public/ResourcesPage';
 import { ContactPage } from './pages/public/ContactPage';
 import { LoginPage } from './pages/public/LoginPage';
@@ -31,14 +32,16 @@ import { OverviewPage } from './pages/app/OverviewPage';
 import { FarmsPage } from './pages/app/FarmsPage';
 import { FieldsPage } from './pages/app/FieldsPage';
 import { DevicesPage } from './pages/app/DevicesPage';
-import { SoilMonitoringPage } from './pages/app/SoilMonitoringPage';
+import { WaterTestingPage } from './pages/app/WaterTestingPage';
 import { AnalyticsPage } from './pages/app/AnalyticsPage';
-import { IrrigationPage } from './pages/app/IrrigationPage';
 import { AlertsPage } from './pages/app/AlertsPage';
 import { ReportsPage } from './pages/app/ReportsPage';
 import { MaintenancePage } from './pages/app/MaintenancePage';
 import { TeamPage } from './pages/app/TeamPage';
 import { SettingsPage } from './pages/app/SettingsPage';
+import { ProjectsManagePage } from './pages/app/ProjectsManagePage';
+import { StoreManagePage } from './pages/app/StoreManagePage';
+import { UploadsManagePage } from './pages/app/UploadsManagePage';
 
 // Protected Route Guard
 const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
@@ -75,6 +78,8 @@ export const App: React.FC = () => {
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/solutions" element={<SolutionsPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/our-work" element={<OurWorkPage />} />
+                <Route path="/work" element={<OurWorkPage />} />
                 <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/demo" element={<ContactPage />} />
@@ -96,11 +101,14 @@ export const App: React.FC = () => {
                   <Route path="farms" element={<FarmsPage />} />
                   <Route path="fields" element={<FieldsPage />} />
                   <Route path="devices" element={<DevicesPage />} />
-                  <Route path="soil-monitoring" element={<SoilMonitoringPage />} />
+                  <Route path="water-testing" element={<WaterTestingPage />} />
+                  <Route path="soil-monitoring" element={<Navigate to="/app/water-testing" replace />} />
                   <Route path="analytics" element={<AnalyticsPage />} />
-                  <Route path="irrigation" element={<IrrigationPage />} />
                   <Route path="alerts" element={<AlertsPage />} />
                   <Route path="reports" element={<ReportsPage />} />
+                  <Route path="projects" element={<ProjectsManagePage />} />
+                  <Route path="store-management" element={<StoreManagePage />} />
+                  <Route path="uploads" element={<UploadsManagePage />} />
                   <Route path="maintenance" element={<MaintenancePage />} />
                   <Route path="team" element={<TeamPage />} />
                   <Route path="settings" element={<SettingsPage />} />

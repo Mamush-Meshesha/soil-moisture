@@ -74,29 +74,29 @@ export const AnalyticsPage: React.FC = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div className="ts-metric-card">
           <div className="ts-metric-title">
-            <span>Drying Slope (Transpiration)</span>
+            <span>Chlorine Residual Decay Rate</span>
             <TrendingDown size={18} color="var(--color-warning)" />
           </div>
           <div className="ts-metric-val">
-            -0.85
-            <span className="ts-metric-unit">% VWC / day</span>
+            -0.12
+            <span className="ts-metric-unit">mg/L / hr</span>
           </div>
           <div className="ts-metric-sub">
-            <span>Healthy daytime water uptake</span>
+            <span>Safe disinfectant barrier maintained</span>
           </div>
         </div>
 
         <div className="ts-metric-card">
           <div className="ts-metric-title">
-            <span>Infiltration Velocity</span>
+            <span>Incubation Velocity</span>
             <TrendingUp size={18} color="var(--color-primary)" />
           </div>
           <div className="ts-metric-val">
             18.2
-            <span className="ts-metric-unit">cm / hr</span>
+            <span className="ts-metric-unit">hrs</span>
           </div>
           <div className="ts-metric-sub">
-            <span>Reaches 40cm root horizon in ~2.2 hours</span>
+            <span>Rapid colony optical detection vs 24h ISO baseline</span>
           </div>
         </div>
 
@@ -120,10 +120,10 @@ export const AnalyticsPage: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
           <div>
             <h3 style={{ fontSize: '18px', fontWeight: 800 }}>
-              Diurnal Plant Transpiration Profile (24-Hour Cycle)
+              Diurnal Water Drawing & Quality Cycle (24-Hour Profile)
             </h3>
             <p style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
-              Plants open stomata and transpire during daylight (11:00 – 18:00 UTC), causing visible slope inflection in topsoil VWC.
+              Peak community water collection occurs during daylight hours (07:00 – 18:00 UTC), showing diurnal turbidity and residual dynamics.
             </p>
           </div>
           <span className="ts-badge ts-badge-neutral">Hourly Aggregation</span>
@@ -169,18 +169,18 @@ export const AnalyticsPage: React.FC = () => {
       {/* 7-Day Horizon Summary Table */}
       <div className="ts-card">
         <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>
-          7-Day Statistical Summary per Depth Horizon
+          7-Day Statistical Summary per Sampling Depth
         </h3>
         <div className="ts-table-container">
           <table className="ts-table">
             <thead>
               <tr>
-                <th>Horizon Depth</th>
-                <th>Average Moisture (% VWC)</th>
-                <th>Minimum VWC</th>
-                <th>Maximum VWC</th>
-                <th>Average Soil Temp</th>
-                <th>Average Bulk EC</th>
+                <th>Sampling Horizon</th>
+                <th>Average Quality Index</th>
+                <th>Minimum Index</th>
+                <th>Maximum Index</th>
+                <th>Incubation / Water Temp</th>
+                <th>Turbidity / Conductivity</th>
                 <th>Total Sample Points</th>
               </tr>
             </thead>
