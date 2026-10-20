@@ -24,6 +24,7 @@ import { api } from '../../services/api';
 import { Farm, Field, Device, Alert } from '../../types';
 import { MoistureGauge } from '../../components/MoistureGauge';
 import { BleSimulatorModal } from '../../components/BleSimulatorModal';
+import { GlobalPartnerGlobe } from '../../components/GlobalPartnerGlobe';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 export const OverviewPage: React.FC = () => {
@@ -413,6 +414,9 @@ export const OverviewPage: React.FC = () => {
           </Link>
         </div>
       )}
+
+      {/* Global Partner Deployments & Interactive Geospatial Surveillance Globe */}
+      <GlobalPartnerGlobe />
 
       {/* Main Two-Column Intelligence Deck */}
       <div

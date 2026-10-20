@@ -346,10 +346,6 @@ export async function seedDatabase() {
       const isPostIrrigation = step <= 24;
 
       for (const depth of depths) {
-        let baseVwc = 28.0;
-        let baseTemp = 20.0;
-        let baseEc = 1.15;
-
         let baseVwc = 99.4;
         if (dev.fieldId === 'fld-corn-alpha') {
           baseVwc = 99.6 - (depth % 3) * 0.2;
