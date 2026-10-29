@@ -44,52 +44,59 @@ export const ContactPage: React.FC = () => {
 
       <section
         style={{
-          backgroundColor: 'var(--color-surface)',
-          padding: '64px 24px 48px',
-          borderBottom: '1px solid var(--color-border)',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#081426',
+          backgroundImage: 'linear-gradient(135deg, rgba(8, 20, 38, 0.92) 0%, rgba(11, 37, 69, 0.94) 55%, rgba(6, 17, 33, 0.96) 100%), url("/images/waterscope-hero-nile.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          padding: '80px 24px 64px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          color: '#FFFFFF',
         }}
       >
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '6px 16px',
+              padding: '7px 18px',
               borderRadius: '9999px',
-              backgroundColor: 'var(--color-primary-subtle)',
-              border: '1px solid rgba(14, 165, 233, 0.25)',
-              color: 'var(--color-primary)',
+              backgroundColor: 'rgba(14, 165, 233, 0.16)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              color: '#38BDF8',
               fontSize: '13.5px',
               fontWeight: 700,
               marginBottom: '16px',
+              backdropFilter: 'blur(8px)',
             }}
           >
-            <Droplets size={16} /> {t('contact.badge', 'Connect With Our Team')}
+            <Droplets size={16} /> {t('contact.badge', 'WaterScope Africa')}
           </div>
 
           <h1
             style={{
               fontSize: '40px',
               fontWeight: 900,
-              color: 'var(--color-heading)',
+              color: '#FFFFFF',
               letterSpacing: '-0.025em',
               marginBottom: '14px',
             }}
           >
-            {t('public.contactTitle', 'Get in Touch with Water Quality Specialists')}
+            {t('public.contactTitle', 'Get in Touch')}
           </h1>
 
           <p
             style={{
-              fontSize: '17px',
-              color: 'var(--color-text-muted)',
+              fontSize: '18px',
+              color: '#CBD5E1',
               maxWidth: '680px',
               margin: '0 auto',
               lineHeight: 1.6,
             }}
           >
-            {t('contact.heroDesc', 'Connect with our water quality engineering team to discuss your field testing requirements, institutional partnerships, or NGO deployments.')}
+            {t('contact.heroDesc', 'Join us in transforming water quality surveillance through local innovation.')}
           </p>
         </div>
       </section>
@@ -279,33 +286,60 @@ export const ContactPage: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="ts-card" style={{ padding: '32px', borderRadius: 'var(--radius-xl)' }}>
               <h3 style={{ fontSize: '19px', fontWeight: 800, color: 'var(--color-heading)', marginBottom: '18px' }}>
-                Technical Contact Points
+                WaterScope Africa Contact Points
               </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', fontSize: '14.5px', color: 'var(--color-text-muted)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '14.5px', color: 'var(--color-text-muted)' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
                   <MapPin size={22} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <strong style={{ color: 'var(--color-heading)', display: 'block' }}>
-                      AquaScope Development Center
+                      Manufacturing &amp; Incubation Center
                     </strong>
-                    Cambridge, United Kingdom <br />
-                    Supporting field partners across East Africa, Latin America &amp; South Asia
+                    Bahir Dar University / BiTec &amp; Seifu BiT Maker Space <br />
+                    Bahir Dar, Ethiopia
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                  <Mail size={22} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                  <MapPin size={22} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong style={{ color: 'var(--color-heading)', display: 'block' }}>Inquiries &amp; Partnerships</strong>
-                    info@waterscope.org
+                    <strong style={{ color: 'var(--color-heading)', display: 'block' }}>
+                      Liaison Office &amp; Engineering Origin
+                    </strong>
+                    Addis Ababa, Ethiopia &bull; Cambridge, United Kingdom
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                  <Phone size={22} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                  <Mail size={22} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong style={{ color: 'var(--color-heading)', display: 'block' }}>Technical Support</strong>
-                    +44 (0) 1223 852 910
+                    <strong style={{ color: 'var(--color-heading)', display: 'block' }}>Direct Email Channels</strong>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '4px' }}>
+                      <a href="mailto:social@watereth.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+                        social@watereth.com (General &amp; Partnerships)
+                      </a>
+                      <a href="mailto:jotamiru112@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+                        jotamiru112@gmail.com (Technical Lead - Yohannes)
+                      </a>
+                      <a href="mailto:metmkujohn@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+                        metmkujohn@gmail.com (Business Lead - Metmku)
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                  <Phone size={22} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <strong style={{ color: 'var(--color-heading)', display: 'block' }}>Direct Phone Lines</strong>
+                    <div style={{ marginTop: '4px' }}>
+                      <a href="tel:+251943506510" style={{ color: 'var(--color-text)', textDecoration: 'none', display: 'block' }}>
+                        +251 943 506 510
+                      </a>
+                      <a href="tel:+251945552214" style={{ color: 'var(--color-text)', textDecoration: 'none', display: 'block' }}>
+                        +251 945 552 214
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -322,11 +356,11 @@ export const ContactPage: React.FC = () => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
                 <ShieldCheck size={22} color="var(--color-primary)" />
-                <h4 style={{ fontSize: '16px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+                <h4 style={{ fontSize: '16px', fontWeight: 800, color: 'var(--color-heading)' }}>
                   Data Transparency &amp; Ethics
                 </h4>
               </div>
-              <p style={{ fontSize: '13.5px', color: 'var(--color-primary-dark)', lineHeight: '1.6' }}>
+              <p style={{ fontSize: '13.5px', color: 'var(--color-text)', lineHeight: '1.6' }}>
                 We respect community privacy and public health governance. Water quality telemetry
                 data remains accessible to the testing entity and authorized health agencies.
               </p>

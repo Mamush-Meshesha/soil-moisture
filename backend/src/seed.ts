@@ -485,105 +485,110 @@ export async function seedDatabase() {
   const products = [
     {
       id: 'prod-01',
-      slug: 'portable-kit-complete',
-      name: 'AquaScope Portable Kit – Complete Field System',
+      slug: 'waterscope-portable-kit-complete',
+      name: 'WaterScope Bacterial Testing Kit – Complete Field System',
       category: 'Testing Kits',
-      price: 680.0,
-      description: 'Complete field-ready bacterial testing kit combining motorized vacuum filtration, dual 37°C/44°C incubator bays, optical microcolony camera, 48-hour rechargeable battery pack, and 25 consumable sliders in an airtight IP67 case.',
+      price: 4000.0,
+      description: 'Complete field-ready bacterial testing kit combining motorized vacuum filtration, dual 37°C/44°C incubator bays, optical microcolony camera, embedded IoT cloud sync, and 200 consumable test cartridges in an airtight IATA-compliant 5.8 kg case.',
       specs: {
-        method: 'ISO 9308-1 Membrane Filtration',
-        target: 'Total Coliforms & E. coli (CFU/100mL)',
-        speed: 'Presence in 8 hrs; full quantitative count in 21 hrs',
-        power: 'Li-ion battery buffer (48 hrs continuous runtime)',
-        casing: 'IP67 Ruggedized Weatherproof Field Case',
-        connectivity: 'Bluetooth 5.2 Low Energy & IoT sync',
-        weight: '3.4 kg total kit weight',
+        standard: 'ISO 9308-1 Membrane Filtration',
+        target: 'Total Coliforms & E. coli directly (CFU/100mL)',
+        speed: 'Relative risk level in 8 hrs; fully quantitative in 18 hrs',
+        capacity: '14 simultaneous sample capacity',
+        fieldSampling: '8 minutes sample prep (7 simple steps)',
+        consumables: '200 tests included with the system',
+        weight: '5.8 kg total kit weight (complies with IATA carriage rules)',
+        connectivity: 'Embedded IoT worldwide coverage, Android App & Web Dashboard',
+        training: 'Only 1 hour required (patented cartridge removes aseptic skill barriers)',
       },
-      image: '/images/portable-kit-system.jpg',
-      stockQty: 34,
+      image: '/images/waterscope-hero-nile.jpg',
+      stockQty: 25,
     },
     {
       id: 'prod-02',
-      slug: 'optical-scanner-incubator',
-      name: 'AquaScope Optical Colony Scanner & Incubator Unit',
-      category: 'Equipment',
-      price: 420.0,
-      description: 'Desktop & field digital colony counter equipped with an embedded optical microscope, machine-learning colony segmentation algorithm, and dual thermal incubation chambers.',
+      slug: 'patented-metal-cartridges-50',
+      name: 'Patented Metal Cartridges & Consumables (Box of 50)',
+      category: 'Consumables',
+      price: 200.0,
+      description: 'Patented easy-to-use metal cartridges containing 0.45µm membrane filter and selective culture media ($4.00 per test). Allows non-specialist water technicians to conduct microbiological testing without sterile laboratory knowledge.',
       specs: {
-        detection: 'Automated E. coli & Coliform Colony Enumeration',
-        optics: 'High-resolution digital optical camera module',
-        temperature: '37.0°C ± 0.3°C / 44.0°C ± 0.3°C regulated',
-        screen: 'High-contrast sunlight-readable digital display',
-        charging: 'USB-C Fast Charge (5V/3A) & 12V DC input',
+        technology: 'Patented aseptic metal cartridge technology',
+        costPerTest: '$4.00 per test (vs $11.00 for Aquagenx CBT)',
+        poreSize: '0.45 µm standardized nitrocellulose membrane',
+        storage: 'Ambient shelf storage (no cold-chain refrigeration needed)',
+        shelfLife: '12 months from manufacture date',
+        quantity: '50 individually blister-sealed cartridges per box',
       },
-      image: '/images/portable-kit-system.jpg',
-      stockQty: 48,
+      image: '/images/manufacturing-3dprint.png',
+      stockQty: 320,
     },
     {
       id: 'prod-03',
-      slug: 'motorized-vacuum-pump',
-      name: 'Motorized Vacuum Water Sampling Pump',
-      category: 'Equipment',
-      price: 160.0,
-      description: 'Quiet, lightweight battery-powered vacuum pump unit designed for drawing standardized 100mL water samples through stainless-steel filter cartridges in under 60 seconds.',
+      slug: 'patented-metal-cartridges-bulk-200',
+      name: 'Patented Metal Cartridges Bulk Pack (Box of 200)',
+      category: 'Consumables',
+      price: 750.0,
+      description: 'High-volume testing pack containing 200 sterile cartridges for community WASH surveillance, regional health bureaus, emergency disaster relief, and institutional water monitoring programs ($3.75 per test).',
       specs: {
-        flowRate: '100 mL sample drawn in < 60 seconds',
-        vacuumPressure: 'Standardized 0.6 bar negative vacuum',
-        recharge: 'USB Type-C with internal Li-ion cell',
-        material: 'Chemical-resistant PEEK and stainless steel',
-        weight: '380 grams',
+        quantity: '200 individually blister-sealed cartridges',
+        costPerTest: '$3.75 per test (bulk institutional discount)',
+        standard: 'ISO 9308-1 compliant filtration media',
+        storage: 'No refrigeration or cold-chain required',
+        shelfLife: '12 months ambient storage',
       },
-      image: '/images/portable-kit-system.jpg',
-      stockQty: 72,
+      image: '/images/manufacturing-cnc.png',
+      stockQty: 150,
     },
     {
       id: 'prod-04',
-      slug: 'sterile-sliders-pack-50',
-      name: 'Sterile Membrane Filtration Sliders (Box of 50)',
-      category: 'Consumables',
-      price: 95.0,
-      description: 'Individually sealed sterile cartridges containing 0.45µm nitrocellulose gridded membrane pads and selective culture broth for coliform and E. coli incubation. Requires no cold-chain storage.',
+      slug: 'digital-colony-scanner-incubator',
+      name: 'WaterScope Digital Colony Scanner & Optical Incubator Unit',
+      category: 'Equipment',
+      price: 2800.0,
+      description: 'Desktop & field digital colony counter equipped with an embedded optical microscope, machine-learning colony segmentation algorithm, and dual thermal incubation chambers (37°C and 44°C).',
       specs: {
-        poreSize: '0.45 µm standardized nitrocellulose membrane',
-        grid: '3.1 mm grid markings for optical alignment',
-        storage: 'Ambient shelf storage (no refrigeration needed)',
-        shelfLife: '12 months from manufacture date',
-        quantity: '50 individually blister-sealed sliders per box',
+        detection: 'Automated E. coli & Total Coliform Colony Enumeration',
+        optics: 'High-resolution digital optical camera module',
+        temperature: '37.0°C ± 0.3°C / 44.0°C ± 0.3°C regulated',
+        screen: 'High-contrast sunlight-readable digital display',
+        charging: 'USB-C Fast Charge (5V/3A) & 12V DC field input',
       },
-      image: '/images/microbiology-grid.jpg',
-      stockQty: 240,
+      image: '/images/colony-scanner-incubator.jpg',
+      stockQty: 40,
     },
     {
       id: 'prod-05',
+      slug: 'motorized-vacuum-pump',
+      name: 'Motorized Vacuum Water Sampling Pump',
+      category: 'Equipment',
+      price: 350.0,
+      description: 'Quiet, lightweight battery-powered vacuum pump unit designed for drawing standardized 100mL water samples through the patented metal cartridge in under 3 minutes without manual hand syringes.',
+      specs: {
+        flowRate: '100 mL sample drawn in < 3 minutes',
+        vacuumPressure: 'Standardized negative vacuum buffer',
+        recharge: 'USB Type-C with internal Li-ion cell',
+        material: 'Chemical-resistant PEEK and stainless steel',
+        weight: '420 grams',
+      },
+      image: '/images/vacuum-sampling-pump.jpg',
+      stockQty: 85,
+    },
+    {
+      id: 'prod-06',
       slug: 'cellular-telemetry-hub',
       name: 'Global Telemetry & Cellular GPS Hub',
       category: 'Accessories',
-      price: 210.0,
-      description: 'Autonomous cellular telemetry gateway with multi-band LTE-M/NB-IoT and high-precision GPS. Automatically uploads georeferenced water quality test records directly to cloud mapping platforms.',
+      price: 450.0,
+      description: 'Autonomous cellular telemetry gateway with multi-band LTE-M/NB-IoT and high-precision GPS. Automatically georeferences and uploads water quality test records directly to the WaterScope cloud mapping dashboard.',
       specs: {
         cellular: 'Global LTE-M / NB-IoT with 2G fallback in 165+ countries',
         gps: 'Multi-constellation GPS / GLONASS antenna',
         ingress: 'IP68 hermetically sealed enclosure',
         battery: 'Integrated 6400mAh LiFePO4 battery buffer',
+        integration: 'Direct API connection to WaterScope Web Dashboard',
       },
-      image: '/images/portable-kit-system.jpg',
-      stockQty: 26,
-    },
-    {
-      id: 'prod-06',
-      slug: 'field-sampling-calibration-kit',
-      name: 'Field Water Sampling & Optical Calibration Toolset',
-      category: 'Accessories',
-      price: 85.0,
-      description: 'Comprehensive field sampling kit including 5x 100mL sterile autoclavable polypropylene sample bottles, an optical calibration test slide, micro-pipettors, and sterile alcohol wipes in a durable pouch.',
-      specs: {
-        bottles: '5x 100mL autoclavable polypropylene vessels',
-        calibration: '1x precision optical dot target slide',
-        tools: '1x 1mL fixed volume micro-pipettor + tips',
-        case: 'Ballistic nylon protective carry case',
-      },
-      image: '/images/hero-water-testing.jpg',
-      stockQty: 90,
+      image: '/images/telemetry-gps-hub.jpg',
+      stockQty: 60,
     },
   ];
 
@@ -616,340 +621,271 @@ export async function seedDatabase() {
     });
   }
 
-  // 10. Seed Water Quality Field Projects (Our Work)
+  // 10. Seed Water Quality Field Projects (Our Work - Authentic from PPT Slides 8, 9, 10)
   const initialProjects = [
     {
       id: 'proj-01',
-      slug: 'aidex-geneva',
-      title: 'Water Quality Technology Showcase at AidEx Humanitarian Forum',
+      slug: 'acf-letter-of-intent',
+      title: 'Formal Letter of Intent: Action Against Hunger (ACF)',
       category: 'Humanitarian WASH',
       categoryKey: 'humanitarian',
-      date: 'October 2023',
-      location: 'Geneva, Switzerland',
-      image: '/images/hero-water-testing.jpg',
-      summary: 'Demonstrating the portable water testing kit to humanitarian agencies, emergency WASH responders, and international disaster relief coordinators.',
-      objective: 'To demonstrate rapid 8-hour coliform identification and autonomous field membrane filtration to frontline NGO logistics and water quality officers.',
-      method: 'Live demonstrations utilizing spiked and municipal water samples, showing sample filtration through metal cartridges, automated incubation, and mobile telemetry sync.',
+      date: '2025 – 2026',
+      location: 'Ethiopia & Regional Operations',
+      image: '/images/waterscope-training-field.jpg',
+      summary: 'Formal Letter of Intent received for up to 30 units under consideration from Action Against Hunger(ACF), demonstrating growing institutional confidence in a locally manufactured solution.',
+      objective: 'Procurement consideration of up to 30 portable WaterScope units for humanitarian emergency water quality monitoring.',
+      method: 'Demonstrating system usability and field testing readiness for rapid bacterial surveillance in low-resource humanitarian contexts.',
       keyFindings: [
-        'Over 40 humanitarian organizations engaged in discussions regarding field trials.',
-        'Validated the critical need for battery-powered testing that eliminates cold-chain requirements for media.',
-        'Established collaborative pilot discussions for refugee settlement water testing.'
+        'Formal Letter of Intent received for up to 30 units under consideration from Action Against Hunger(ACF).',
+        'Demonstrates growing institutional confidence in a locally manufactured solution.',
+        'Shifts water testing from external dependency to regional resilience.'
       ],
-      partner: 'Humanitarian WASH Stakeholders & AidEx Global Summit',
+      partner: 'Action Against Hunger (ACF)',
       order: 1,
       translations: {
         am: {
-          title: 'በ AidEx የሰብአዊ እርዳታ ፎረም ላይ የቀረበ የውሃ ጥራት ቴክኖሎጂ ማሳያ',
+          title: 'ይፋዊ የፍላጎት ደብዳቤ፡ Action Against Hunger (ACF)',
           category: 'ሰብአዊ WASH',
-          date: 'ጥቅምት 2023',
-          location: 'ጄኔቫ፣ ስዊዘርላንድ',
-          summary: 'ተንቀሳቃሽ የውሃ መመርመሪያ ኪቱን ለሰብአዊ እርዳታ ድርጅቶች፣ ለአደጋ ጊዜ WASH ምላሽ ሰጪዎች እና ለአለም አቀፍ አስተባባሪዎች ማሳየት።',
-          objective: 'ፈጣን የ 8 ሰዓት የኮሊፎርም መለያ እና ራሱን የቻለ የመስክ ሜምብሬን ማጣሪያን ለግንባር ቀደም የ NGO ሎጂስቲክስ እና የውሃ ጥራት ኃላፊዎች ማሳየት።',
-          method: 'የናሙና ማጣሪያ፣ አውቶሜትድ ኢንኩቤሽን እና የሞባይል ቴሌሜትሪ ማመሳሰልን የሚያሳዩ የቀጥታ ማሳያዎች።',
+          date: '2025 – 2026',
+          location: 'ኢትዮጵያ እና የቀጠናው ስራዎች',
+          summary: 'ከ Action Against Hunger (ACF) እስከ 30 ለሚደርሱ ክፍሎች ይፋዊ የፍላጎት ደብዳቤ ተቀብለናል፤ ይህም በአገር ውስጥ ለተመረተ መፍትሄ እያደገ የመጣውን የተቋማት እምነት ያሳያል።',
+          objective: 'ለአደጋ ጊዜ የሰብአዊ የውሃ ጥራት ክትትል እስከ 30 ለሚደርሱ ተንቀሳቃሽ የ WaterScope ኪቶች የግዢ ግምት።',
+          method: 'ዝቅተኛ ሀብት ባላቸው የሰብአዊ እርዳታ ሁኔታዎች ውስጥ ለፈጣን የባክቴሪያ ክትትል የስርዓቱን የመስክ ዝግጁነት ማሳየት።',
           keyFindings: [
-            'ከ 40 በላይ የሰብአዊ ድርጅቶች የመስክ ሙከራዎችን በተመለከተ ውይይት አድርገዋል።',
-            'የማቀዝቀዣ ሰንሰለት የማያስፈልገው፣ በባትሪ የሚሰራ ምርመራ ወሳኝ መሆኑን አረጋግጧል።',
-            'ለስደተኞች መጠለያ የውሃ ምርመራ የጋራ የፓይለት ውይይቶች ተመስርተዋል።'
+            'ከ Action Against Hunger (ACF) እስከ 30 ለሚደርሱ ክፍሎች ግምት ውስጥ የገባ ይፋዊ የፍላጎት ደብዳቤ ተቀብለናል።',
+            'በአገር ውስጥ ለተመረተ መፍትሄ እያደገ የመጣውን የተቋማት እምነት ያሳያል።',
+            'የውሃ ምርመራን ከውጭ ጥገኝነት ወደ ክልላዊ ጽናት ይለውጣል።'
           ],
-          partner: 'የሰብአዊ WASH ባለድርሻ አካላት እና የ AidEx ዓለም አቀፍ ጉባኤ'
+          partner: 'Action Against Hunger (ACF)'
         },
         om: {
-          title: 'Agarsiisa Teknooloojii Qulqullina Bishaanii Walgahii Namoomaa AidEx Irratti',
+          title: 'Xalayaa Fedhii Ifaa: Action Against Hunger (ACF)',
           category: 'WASH Namoomaa',
-          date: 'Onkoloolessa 2023',
-          location: 'Jiinevaa, Iswiizarlaandi',
-          summary: 'Kiitii qorannoo bishaanii socho\'aa dhaabbilee namoomaa fi qindeessitoota balaa addunyaatiif agarsiisuu.',
-          objective: 'Koliifoormii sa\'aatii 8 keessatti adda baasuu ogeessota loojistiksii NGOtiif agarsiisuu.',
-          method: 'Agarsiisa qabatamaa calaltuu kaartirii, kuusaa ho\'aa fi teelemeetirii agarsiisu.',
+          date: '2025 – 2026',
+          location: 'Itoophiyaa fi Naannolee Dhiyoo',
+          summary: 'Action Against Hunger (ACF) irraa hamma yuuniitii 30tiif Xalayaan Fedhii fudhatameera; kunis oomisha biyya keessaaf amanamummaan guddachaa dhufuu agarsiisa.',
+          objective: 'To\'annoo qulqullina bishaanii yeroo balaa namoomaatiif kiitii WaterScope socho\'aa hamma 30 bitachuuf tilmaama.',
+          method: 'Haalawwan qabeenyi xiqqaate keessatti qorannoo baakteeriyaa ariifataadhaaf qophii sirnichi dirree irratti qabu agarsiisuu.',
           keyFindings: [
-            'Dhaabbileen namoomaa 40 ol qorannoo dirree irratti mari\'ataniiru.',
-            'Barbaachisummaa qorannoo baatriidhaan hojjetuu fi qabbaneessaa hin barbaanne mirkaneesseera.',
-            'Baqattootaaf qorannoo bishaanii gaggeessuuf mariin jalqabameera.'
+            'Action Against Hunger (ACF) irraa hamma yuuniitii 30tiif Xalayaan Fedhii fudhatameera.',
+            'Oomisha biyya keessaaf amanamummaan guddachaa dhufuu agarsiisa.',
+            'Qorannoo bishaanii hirkattummaa alaarraa gara dandeettii naannootti jijjiira.'
           ],
-          partner: 'Qooda Fudhattoota WASH Namoomaa & Walgahii AidEx'
-        },
-        ti: {
-          title: 'ኣብ AidEx ናይ ሰብኣዊ ሓገዝ ፎረም ዝቐረበ ናይ ማይ ጽሬት ቴክኖሎጂ ምርኢት',
-          category: 'ሰብኣዊ WASH',
-          date: 'ጥቕምቲ 2023',
-          location: 'ጄኔቫ፣ ስዊዘርላንድ',
-          summary: 'ነቲ ተንቀሳቓሲ ናይ ማይ መመርመሪ ኪት ንሰብኣዊ ሓገዝ ውድባትን ንናይ ህጹጽ ግዜ ምላሽ ወሃብትን ምርኣይ።',
-          objective: 'ቅልጡፍ ናይ 8 ሰዓት ኮሊፎርም መለለዪን ናይ ሜዳ ምጽራይን ንሰብ ሞያ NGO ምርኣይ።',
-          method: 'ናሙና ምጽራይ፣ ኢንኩቤሽንን ናይ ሞባይል ቴሌሜትሪ ምትእስሳርን ዘርኢ ናይ ቀጥታ ምርኢት።',
-          keyFindings: [
-            'ልዕሊ 40 ሰብኣዊ ውድባት ኣብ ናይ ሜዳ ፈተነታት ተዘራሪቦም።',
-            'መዝሓሊ ዘየድልዮ ብባትሪ ዝሰርሕ መርመራ ኣገዳሲ ምዃኑ ኣረጋጊጹ።',
-            'ንናይ ስደተኛታት መዕቖቢ ናይ ማይ መርመራ ዝርርብ ተጀሚሩ።'
-          ],
-          partner: 'ሰብኣዊ WASH መሻርኽትን ዓለማዊ ጉባኤ AidExን'
+          partner: 'Action Against Hunger (ACF)'
         }
       }
     },
     {
       id: 'proj-02',
-      slug: 'tanzania-kenya-boreholes',
-      title: 'Rural Community Water Point Bacterial Surveillance',
-      category: 'Field Testing',
+      slug: 'ethiopia-kenya-pilots',
+      title: 'Prior Pilots in Ethiopia & Kenya: East African Field Testing',
+      category: 'Field Validation',
       categoryKey: 'field',
-      date: 'March – June 2023',
-      location: 'East Africa (Tanzania & Kenya)',
-      image: '/images/portable-kit-system.jpg',
-      summary: 'Field trials evaluating the portable testing kit across 65 rural water points, including boreholes, gravity-fed spring systems, and rainwater harvesting cisterns.',
-      objective: 'To assess the usability, accuracy, and operational robustness of the portable system compared against reference laboratory membrane filtration.',
-      method: 'Parallel testing of 100mL duplicate samples using the portable motorized pump and incubator versus standard laboratory membrane filtration under ISO 9308-1 protocols.',
+      date: '2023 – 2025',
+      location: 'Ethiopia & Kenya',
+      image: '/images/field-testing-kenya.jpeg',
+      summary: 'Successful field testing and validation in East African contexts, demonstrating field usability in low-resource environments.',
+      objective: 'Validating the open-source, field-adapted membrane filtration system in real East African field conditions.',
+      method: 'Field testing cartridge-based bacterial testing and automated colony detection across remote water points.',
       keyFindings: [
-        '98.4% concordance with ISO reference laboratory results for bacterial presence/absence.',
-        'Results delivered in 8 to 21 hours compared to 48–72 hours for central lab courier logistics.',
-        'Easily operated by local water technicians after less than 2 hours of hands-on orientation.'
+        'Successful field testing and validation in East African contexts.',
+        'Demonstrated field usability in low-resource environments without central laboratory access.',
+        'Benchmarked against ISO 9308 standards and externally validated.',
+        'Early indication in as little as 8 hours and full quantitative results in 21 hours.'
       ],
-      partner: 'Local Water Supply Authorities & Community Health Committees',
+      partner: 'WaterScope & East African Water Testing Partners',
       order: 2,
       translations: {
         am: {
-          title: 'የገጠር ማህበረሰብ የውሃ ነጥቦች የባክቴሪያ ቅኝት',
-          category: 'የመስክ ሙከራዎች',
-          date: 'መጋቢት – ሰኔ 2023',
-          location: 'ምስራቅ አፍሪካ (ታንዛኒያ እና ኬንያ)',
-          summary: 'በ 65 የገጠር ውሃ ነጥቦች ላይ ጥልቅ ጉድጓዶችን፣ ምንጮችን እና የዝናብ ውሃ ማጠራቀሚያዎችን የመረመረ የመስክ ሙከራ።',
-          objective: 'የተንቀሳቃሽ ሲስተሙን አጠቃቀም፣ ትክክለኛነት እና የመስክ ጥንካሬ ከማመሳከሪያ ላብራቶሪ ጋር ማወዳደር።',
-          method: 'በ ISO 9308-1 ፕሮቶኮል መሰረት 100mL ናሙናዎችን በተንቀሳቃሽ ኪቱ እና በማዕከላዊ ላብራቶሪ ጎን ለጎን መመርመር።',
+          title: 'ቀዳሚ ፓይለቶች በኢትዮጵያ እና ኬንያ፡ የመስክ ማረጋገጫ',
+          category: 'የመስክ ማረጋገጫ',
+          date: '2023 – 2025',
+          location: 'ኢትዮጵያ እና ኬንያ',
+          summary: 'በምስራቅ አፍሪካ ሁኔታዎች የተሳካ የመስክ ሙከራ እና ማረጋገጫ ተካሂዷል፤ ይህም ዝቅተኛ ሀብት ባላቸው አካባቢዎች የመስክ ተጠቃሚነቱን አሳይቷል።',
+          objective: 'በእውነተኛ የምስራቅ አፍሪካ የመስክ ሁኔታዎች ውስጥ ክፍት፣ ለመስክ የተስማማ የሜምብሬን ማጣሪያ ስርዓትን ማረጋገጥ።',
+          method: 'በሩቅ የውሃ ነጥቦች ላይ በካርትሪጅ ላይ የተመሰረተ የባክቴሪያ ምርመራ እና አውቶሜትድ የቅኝ ግዛት ቆጠራ የመስክ ሙከራ።',
           keyFindings: [
-            'ከ ISO ማመሳከሪያ ላብራቶሪ ውጤቶች ጋር 98.4% ተዛማጅነት።',
-            'ከ 48–72 ሰዓታት የማጓጓዣ መዘግየት በተቃራኒ ውጤቶች ከ 8 እስከ 21 ሰዓታት ውስጥ ደርሰዋል።',
-            'የአካባቢው የውሃ ቴክኒሻኖች ከ 2 ሰዓት ባነሰ ስልጠና በቀላሉ ተጠቅመውታል።'
+            'በምስራቅ አፍሪካ ሁኔታዎች የተሳካ የመስክ ሙከራ እና ማረጋገጫ ተካሂዷል።',
+            'የላብራቶሪ መሠረተ ልማት በሌለባቸው ዝቅተኛ ሀብት አካባቢዎች የመስክ ተጠቃሚነቱ ተረጋግጧል።',
+            'ከ ISO 9308 ደረጃዎች ጋር የተነጻጸረ እና በውጭ አካል የተረጋገጠ።',
+            'ቀደም ያለ ምልክት በ 8 ሰዓት እና ሙሉ አሃዛዊ ውጤት በ 21 ሰዓት።'
           ],
-          partner: 'የአካባቢ የውሃ አቅርቦት ባለስልጣናት እና የማህበረሰብ ጤና ኮሚቴዎች'
+          partner: 'WaterScope እና የምስራቅ አፍሪካ የውሃ ምርመራ አጋሮች'
         },
         om: {
-          title: 'Hordoffii Baakteeriyaa Boolla Bishaan Hawaasa Baadiyyaa',
-          category: 'Qorannoo Dirree',
-          date: 'Bitooteessa – Waxabajjii 2023',
-          location: 'Baha Afrikaa (Taanzaaniyaa fi Keeniyaa)',
-          summary: 'Boollaawwan bishaanii 65 irratti qorannoo dirree gaggeeffame.',
-          objective: 'Sirrummaa fi jabinna sirna socho\'aa laabraatoorii wajjin madaaluu.',
-          method: 'Ulaagaa ISO 9308-1 hordofuun samuda 100mL gama laciinuun qorachuu.',
+          title: 'Paayileetiiwwan Itoophiyaa fi Keeniyaa: Mirkaneessa Dirree',
+          category: 'Mirkaneessa Dirree',
+          date: '2023 – 2025',
+          location: 'Itoophiyaa fi Keeniyaa',
+          summary: 'Haalawwan Afrikaa Bahaa keessatti qorannoon dirree milkaa\'ina qabu gaggeeffamee fi mirkanaa\'eera; kunis bu\'a qabeessummaa isaa agarsiiseera.',
+          objective: 'Haala dirree Afrikaa Bahaa qabatamaa keessatti sirna calaltuu meembireenii banaa ta\'e mirkaneessuu.',
+          method: 'Bakkeewwan bishaanii fagootti qorannoo baakteeriyaa kaartiriidhaan fi lakkoofsa kolonii ofumaan qorachuu.',
           keyFindings: [
-            'Bu\'aa laabraatoorii wajjin 98.4% walsimeera.',
-            'Turtii sa\'aatii 48–72 dura ture gara sa\'aatii 8–21tti gabaabseera.',
-            'Ogeessotni leenjii sa\'aatii 2 gadiin hojjechuu danda\'aniiru.'
+            'Haalawwan Afrikaa Bahaa keessatti qorannoon dirree milkaa\'ina qabu gaggeeffameera.',
+            'Bakka laabiraatooriin hin jirreetti bu\'a qabeessummaan isaa mirkanaa\'eera.',
+            'Sadarkaa ISO 9308 wajjin kan walbira qabamee fi qaama alaan kan mirkanaa\'e.',
+            'Mallattoo jalqabaa sa\'aatii 8 keessatti fi bu\'aa guutuu sa\'aatii 21 keessatti.'
           ],
-          partner: 'Abbaa Taayitaa Bishaanii fi Koree Fayyaa Hawaasaa'
-        },
-        ti: {
-          title: 'ናይ ገጠር ማሕበረሰብ ናይ ማይ ነጥብታት ናይ ባክቴርያ ክትትል',
-          category: 'ናይ ሜዳ ፈተነታት',
-          date: 'መጋቢት – ሰነ 2023',
-          location: 'ምብራቕ ኣፍሪቃ (ታንዛንያን ኬንያን)',
-          summary: 'ኣብ 65 ናይ ገጠር ማይ ነጥብታት ዒላታትን ዓይኒ ማያትን ዝገምገመ ናይ ሜዳ ፈተነ።',
-          objective: 'ናይቲ ተንቀሳቓሲ ስርዓት ኣጠቓቕማን ትኽክለኛነትን ምስ ላብራቶሪ ምውድዳር።',
-          method: 'ብመሰረት ISO 9308-1 ናሙናታት ብኽልቲኡ መገዲ ጎኒ ንጎኒ ምምርማር።',
-          keyFindings: [
-            'ምስ ናይ ISO ላብራቶሪ 98.4% ስምምዕ ረኺቡ።',
-            'ውጽኢታት ኣብ ውሽጢ 8 ክሳብ 21 ሰዓታት ተረኺቦም።',
-            'ሰራሕተኛታት ማይ ብውሑድ ስልጠና ብቐሊሉ ኣተግቢሮምዎ።'
-          ],
-          partner: 'ናይ ከባቢ መምርሒ ማይን ኮሚቴ ጥዕና ማሕበረሰብን'
+          partner: 'WaterScope fi Michoota Qorannoo Bishaan Afrikaa Bahaa'
         }
       }
     },
     {
       id: 'proj-03',
-      slug: 'iso-lab-validation',
-      title: 'ISO 17025 Accredited Laboratory Sensitivity Benchmarking',
-      category: 'Research & Validation',
-      categoryKey: 'research',
-      date: 'January 2023',
-      location: 'Cambridge, United Kingdom',
-      image: '/images/microbiology-grid.jpg',
-      summary: 'Rigorous independent analytical validation testing sensitivity, colony counting precision, and thermal stability in a certified microbiology research facility.',
-      objective: 'To quantify the lower limit of detection (LOD) and automated computer vision colony counting accuracy across serial dilutions of Escherichia coli (ATCC 25922).',
-      method: 'Blind multi-operator trials testing bacterial concentrations from 1 to 200 CFU per 100mL, comparing automated machine-learning optical colony counts against manual microbiological enumeration.',
+      slug: 'moh-training-programs',
+      title: 'Ministry of Health Engagement: Technician Training Programs',
+      category: 'Technician Training',
+      categoryKey: 'community',
+      date: '2024 – 2026',
+      location: 'Hawassa & Regional Centers, Ethiopia',
+      image: '/images/training-hawassa-moh.png',
+      summary: 'Active training programs for water testing technicians, building government capacity and demonstrating system usability.',
+      objective: 'Building local diagnostic and technical capacity across government water testing personnel.',
+      method: 'Hands-on technician training on cartridge filtration, thermal incubation, and automated digital reporting via mobile app and dashboard.',
       keyFindings: [
-        'Lower detection limit of 1 viable bacterial colony per 100mL sample volume.',
-        'High correlation (R² > 0.97) between automated optical camera counts and expert microbiologist manual verification.',
-        'Maintained strict ±0.3°C thermal accuracy in the incubation compartment across ambient temperature swings of 15°C to 40°C.'
+        'Active training programs for water testing technicians.',
+        'Building government capacity and demonstrating system usability.',
+        'Ensuring diagnostic capacity is built locally, sustained locally, and scaled locally.'
       ],
-      partner: 'Independent Microbiological Testing Laboratories',
+      partner: 'Ethiopian Ministry of Health',
       order: 3,
       translations: {
         am: {
-          title: 'የ ISO 17025 እውቅና ያለው የላብራቶሪ ትክክለኛነት ማረጋገጫ',
-          category: 'ምርምር እና ማረጋገጫ',
-          date: 'ጥር 2023',
-          location: 'ካምብሪጅ፣ ዩናይትድ ኪንግደም',
-          summary: 'በማይክሮባዮሎጂ ምርምር ማዕከል ውስጥ ስሜታዊነትን፣ የቅኝ ግዛት ቆጠራን እና የሙቀት መረጋጋትን የፈተነ ገለልተኛ ማረጋገጫ።',
-          objective: 'የዝቅተኛውን የመለየት ወሰን (LOD) እና የኮምፒውተር ቪዥን ቆጠራ ትክክለኛነትን በኢ. ኮላይ ናሙናዎች ላይ ማረጋገጥ።',
-          method: 'ከ 1 እስከ 200 CFU ባለው የባክቴሪያ መጠን ላይ የማሽን ለርኒንግ ቆጠራን ከባለሙያ ማይክሮባዮሎጂስት ቆጠራ ጋር ማነጻጸር።',
+          title: 'ከጤና ጥበቃ ሚኒስቴር ጋር ያለው ግንኙነት፡ የቴክኒሻን ስልጠና ፕሮግራሞች',
+          category: 'የቴክኒሻን ስልጠና',
+          date: '2024 – 2026',
+          location: 'ሀዋሳ እና የክልል ማዕከላት፣ ኢትዮጵያ',
+          summary: 'ለውሃ መመርመሪያ ቴክኒሻኖች ንቁ የስልጠና ፕሮግራሞች፣ የመንግስትን አቅም መገንባት እና የስርዓቱን ተጠቃሚነት ማሳየት።',
+          objective: 'በመንግስት የውሃ መመርመሪያ ባለሙያዎች ዘንድ የአካባቢ ምርመራ እና ቴክኒካዊ አቅምን መገንባት።',
+          method: 'በካርትሪጅ ማጣራት፣ በሙቀት ኢንኩቤሽን እና በሞባይል መተግበሪያ ዲጂታል ሪፖርት አቀራረብ ላይ ተግባራዊ የቴክኒሻን ስልጠና።',
           keyFindings: [
-            'ዝቅተኛው የመለየት ወሰን በ 100mL ናሙና ውስጥ 1 ህያው የባክቴሪያ ቅኝ ግዛት (1 CFU)።',
-            'በአውቶሜትድ ካሜራ እና በማይክሮባዮሎጂስት ቆጠራ መካከል ከፍተኛ ተዛማጅነት (R² > 0.97)።',
-            'ከ 15°C እስከ 40°C ባለው የአካባቢ ሙቀት ውስጥ የ ±0.3°C ትክክለኛነትን ጠብቋል።'
+            'ለውሃ መመርመሪያ ቴክኒሻኖች ንቁ የስልጠና ፕሮግራሞች ተካሂደዋል።',
+            'የመንግስትን አቅም መገንባት እና የስርዓቱን ተጠቃሚነት ማሳየት ተችሏል።',
+            'የመመርመር አቅም በአገር ውስጥ እንዲገነባ፣ በዚያው እንዲቀጥል እና በአገር ውስጥ እንዲስፋፋ ያረጋግጣል።'
           ],
-          partner: 'ገለልተኛ የማይክሮባዮሎጂ መመርመሪያ ላብራቶሪዎች'
+          partner: 'የኢትዮጵያ ጤና ጥበቃ ሚኒስቴር'
         },
         om: {
-          title: 'Mirkaneessa Laabraatoorii ISO 17025 Beekkamtii Qabu',
-          category: 'Qorannoo & Mirkaneessa',
-          date: 'Amajjii 2023',
-          location: 'Keembiriij, Yuunaayitid Kingidam',
-          summary: 'Dhaabbata qorannoo maaykiroobaayoloojii keessatti qorannoo tasgabbii ho\'aa fi qulqullina kolonii gaggeeffame.',
-          objective: 'Sadarkaa gadi aanaa LOD fi sirrummaa maashin lerning qorachuu.',
-          method: 'Baay\'ina baakteeriyaa 1 hanga 200 CFU irratti lakkoofsa kompiitaraa fi ogeessaa madaaluu.',
+          title: 'Ministeera Fayyaa Wajjin Walta\'iinsa: Sagantaa Leenjii Ogeessotaa',
+          category: 'Leenjii Ogeessotaa',
+          date: '2024 – 2026',
+          location: 'Hawaasaa fi Wiirtuulee Naannoo, Itoophiyaa',
+          summary: 'Ogeessota qorannoo bishaaniitiif sagantaalee leenjii socho\'aa, dandeettii mootummaa ijaaruu fi sirnicha agarsiisuu.',
+          objective: 'Ogeessota qorannoo bishaanii mootummaa biratti dandeettii qorannoo fi teeknikaa biyya keessaa ijaaruu.',
+          method: 'Calaltuu kaartirii, inkiwubeetara ho\'aa fi appii moobaayilaatiin gabaasa dijitaalaa irratti leenjii qabatamaa.',
           keyFindings: [
-            'Sadarkaa gadi aanaa 100mL keessatti kolonii baakteeriyaa 1 (1 CFU).',
-            'Walitti dhufeenya olaanaa (R² > 0.97) kaameeraa fi ogeessa gidduu.',
-            'Ho\'a 15°C hanga 40°C keessatti sirrummaa ±0.3°C eegeera.'
+            'Ogeessota qorannoo bishaaniitiif sagantaaleen leenjii socho\'aa gaggeeffamaniiru.',
+            'Dandeettii mootummaa ijaaruu fi sirnicha agarsiisuun danda\'ameera.',
+            'Dandeettiin qorannoo biyya keessatti akka ijaaramu, akka itti fufu fi akka babal\'atu mirkaneessa.'
           ],
-          partner: 'Laabraatooriiwwan Qorannoo Maaykiroobaayoloojii Bilisoo'
-        },
-        ti: {
-          title: 'ናይ ISO 17025 ተፈላጥነት ዘለዎ ላብራቶሪ ምርጋጽ',
-          category: 'ምርምርን ምርጋጽን',
-          date: 'ጥሪ 2023',
-          location: 'ካምብሪጅ፣ ዩናይትድ ኪንግደም',
-          summary: 'ኣብ ናይ ማይክሮባዮሎጂ ማእከል ናይ ምፍላጥ ዓቕምን ናይ ሙቐት ርግኣትን ዝገምገመ ምርጋጽ።',
-          objective: 'ዝተሓተ ናይ ምፍላጥ ዓቕምን (LOD) ናይ ኮምፒውተር ቪዥን ቆጸራን ምፍታሽ።',
-          method: 'ካብ 1 ክሳብ 200 CFU ኣብ ዘለዎ መጠን ናይ ማሽን ለርኒንግ ቆጸራ ምስ ናይ ሰብ ሞያ ቆጸራ ምውድዳር።',
-          keyFindings: [
-            'ዝተሓተ ናይ ምፍላጥ ደረት ኣብ 100mL ውሽጢ 1 ናይ ባክቴርያ ኮሎኒ (1 CFU)።',
-            'ኣብ መንጎ ኣውቶሜትድ ካሜራን ሰብ ሞያን ልዑል ምትእስሳር (R² > 0.97)።',
-            'ኣብ ዝተፈላለየ ሙቐት ናይ ±0.3°C ትኽክለኛነት ሓልዩ።'
-          ],
-          partner: 'ናጻ ናይ ማይክሮባዮሎጂ መመርመሪ ላብራቶሪታት'
+          partner: 'Ministeera Fayyaa Itoophiyaa'
         }
       }
     },
     {
       id: 'proj-04',
-      slug: 'community-wash-ethiopia',
-      title: 'WASH Committee Capacity Building & Rapid Water Mapping',
-      category: 'Community Workshops',
-      categoryKey: 'community',
-      date: 'November 2023',
-      location: 'Oromia & Amhara Regions, Ethiopia',
-      image: '/images/hero-water-testing.jpg',
-      summary: 'Hands-on training workshops for community water caretakers and environmental health officers to map local drinking water safety and identify contamination pathways.',
-      objective: 'To decentralize water quality monitoring by empowering local community sanitation operators with accessible testing tools and digital mapping.',
-      method: 'Structured 2-day workshops covering sterile sample handling, vacuum pump filtration, incubator operation, and interpretation of colorimetric safety keys.',
+      slug: 'local-manufacturing-progress',
+      title: 'Early Progress: Manufacturing and Training',
+      category: 'Field Validation',
+      categoryKey: 'field',
+      date: '2024 – 2026',
+      location: 'Bahir Dar University (BiTec & Seifu BiT Maker Space)',
+      image: '/images/manufacturing-3dprint.png',
+      summary: 'We have begun local manufacturing using 3D printing and machining technologies. We conduct training programs for water technicians. And we are building partnerships across sectors.',
+      objective: 'Building a localized diagnostic ecosystem and lowering testing equipment costs by up to 80%.',
+      method: 'Utilizing 3D printing and CNC machining technologies at university maker spaces and incubation centers.',
       keyFindings: [
-        'Trained 32 community WASH operators across 14 rural kebeles.',
-        'Mapped water safety across 28 unprotected springs and protected boreholes directly onto open data dashboards.',
-        'Identified upstream agricultural runoff contamination, enabling immediate sanitary seal repairs.'
+        'Local manufacturing significantly lowers costs by up to 80%, making water testing accessible.',
+        'Began local manufacturing using 3D printing and machining technologies.',
+        'Creating local manufacturing jobs empowers individuals and stimulates economic growth.',
+        'Reduces dependency on fragile imported supply chains.'
       ],
-      partner: 'Regional Water Resources Bureaus & Environmental Health Officers',
+      partner: 'Bahir Dar University, Centre for Global Equality, BiT Maker Space',
       order: 4,
       translations: {
         am: {
-          title: 'የ WASH ኮሚቴዎች አቅም ግንባታ እና ፈጣን የውሃ ካርታ ዝግጅት',
-          category: 'የማህበረሰብ አውደ-ጥናቶች',
-          date: 'ህዳር 2023',
-          location: 'የኦሮሚያ እና አማራ ክልሎች፣ ኢትዮጵያ',
-          summary: 'የመጠጥ ውሃ ደህንነትን ለመከታተል እና የብክለት መንገዶችን ለመለየት ለማህበረሰብ ውሃ ተንከባካቢዎች እና የጤና ባለሙያዎች የተሰጠ ተግባራዊ ስልጠና።',
-          objective: 'የአካባቢው የንፅህና አጠባበቅ ባለሙያዎችን በተደራሽ መመርመሪያ መሳሪያዎች እና በዲጂታል ካርታ በማብቃት የውሃ ጥራት ክትትልን ያልተማከለ ማድረግ።',
-          method: 'የናሙና አያያዝን፣ የቫክዩም ፓምፕ ማጣሪያን፣ የኢንኩቤተር አሰራርን እና የውጤት አተረጓጎምን ያካተተ የ 2 ቀናት ተግባራዊ አውደ ጥናት።',
+          title: 'ቀደምት እድገት፡ ማኑፋክቸሪንግ እና ስልጠና',
+          category: 'የመስክ ማረጋገጫ',
+          date: '2024 – 2026',
+          location: 'ባህር ዳር ዩኒቨርሲቲ (BiTec እና Seifu BiT Maker Space)',
+          summary: 'የ 3D ህትመት እና የማሽን ቴክኖሎጂዎችን በመጠቀም የአገር ውስጥ ማምረት ጀምረናል። ለውሃ ቴክኒሻኖች የስልጠና ፕሮግራሞችን እናካሂዳለን። እንዲሁም በተለያዩ ዘርፎች ሽርክናዎችን እየገነባን ነው።',
+          objective: 'የአካባቢያዊ የመመርመሪያ ስነ-ምህዳር መገንባት እና የመመርመሪያ መሳሪያዎች ወጪን እስከ 80% መቀነስ።',
+          method: 'በዩኒቨርሲቲው ሰይፉ ሜከር ስፔስ እና ኢንኩቤሽን ማዕከል የ 3D ህትመት እና ትክክለኛ የማሽን ቴክኖሎጂዎችን መጠቀም።',
           keyFindings: [
-            'በ 14 የገጠር ቀበሌዎች ውስጥ ለሚገኙ 32 የህብረተሰብ WASH ኦፕሬተሮች ስልጠና ተሰጥቷል።',
-            'የ 28 ያልተጠበቁ ምንጮች እና የተጠበቁ ጉድጓዶች የውሃ ደህንነት በቀጥታ ወደ ክፍት ዳታ ዳሽቦርዶች ተመዝግቧል።',
-            'ከእርሻ የሚመጣ የውሃ ብክለት ተለይቶ ፈጣን የጉድጓድ ጥገና ተካሂዷል።'
+            'የአገር ውስጥ ማምረት ወጪን እስከ 80% በከፍተኛ ሁኔታ ይቀንሳል።',
+            'የ 3D ህትመት እና የማሽን ቴክኖሎጂዎችን በመጠቀም የአገር ውስጥ ማምረት ተጀምሯል።',
+            'የአገር ውስጥ የማኑፋክቸሪንግ ስራዎችን መፍጠር ግለሰቦችን ያበቃል እንዲሁም የኢኮኖሚ እድገትን ያነቃቃል።',
+            'በቀላሉ በሚስተጓጎሉ የውጭ አቅርቦት ሰንሰለቶች ላይ ጥገኝነትን ይቀንሳል።'
           ],
-          partner: 'የክልል የውሃ ሀብት ቢሮዎች እና የአካባቢ ጤና ጥበቃ ባለሙያዎች'
+          partner: 'ባህር ዳር ዩኒቨርሲቲ፣ Centre for Global Equality፣ BiT Maker Space'
         },
         om: {
-          title: 'Ijaarsa Dandeettii Koree WASH fi Kaartaa Bishaanii Saffisaa',
-          category: 'Walgahii Hawaasaa',
-          date: 'Sadaasa 2023',
-          location: 'Naannoo Oromiyaa fi Amaaraa, Itoophiyaa',
-          summary: 'Nageenya bishaan dhugaatii hordofuu fi karaalee faalamaa adda baasuuf leenjii ogeessotaaf kenname.',
-          objective: 'Meeshaalee salphaa fi kaartaa dijitaalaatiin tajaajila qulqullina bishaanii bittimsuu.',
-          method: 'Leenjii guyyoota 2 qabiinsa samudaa, calaltuu vaakiyeemii fi inkubashinii irratti.',
+          title: 'Guddina Jalqabaa: Oomisha fi Leenjii',
+          category: 'Mirkaneessa Dirree',
+          date: '2024 – 2026',
+          location: 'Yuunivarsiitii Baahir Daar (BiTec fi Seifu BiT Maker Space)',
+          summary: 'Teeknooloojii Maxxansa 3D fi maashinoota fayyadamuun oomisha biyya keessaa jalqabneerra. Ogeessota bishaaniif sagantaalee leenjii ni gaggeessina. Akkasumas dameewwan hedduu keessatti michummaa ijaaraa jirra.',
+          objective: 'Ikkoosistamii qorannoo naannoo ijaaruu fi gatii meeshaalee qorannoo hamma 80% hir\'isuu.',
+          method: 'Wiirtuu kalaqaa Seifu Maker Space fi BiTec keessatti Maxxansa 3D fi maashinoota sirrii fayyadamuu.',
           keyFindings: [
-            'Gandoolee 14 keessatti ogeessota WASH 32 leenjiseera.',
-            'Burqaalee fi boolla bishaanii 28 gara daashboordiitti galcheera.',
-            'Faalama qonnaa irraa dhufe adda baasuun suphaan battalaa akka raawwatamu taasiseera.'
+            'Biyya keessatti oomishuun gatii hamma 80% hir\'isa.',
+            'Teeknooloojii Maxxansa 3D fi maashinaatiin oomishni biyya keessaa jalqabameera.',
+            'Hojiiwwan oomishaa biyya keessatti uumuun namoota humneessa akkasumas guddina diinagdee dammaqsa.',
+            'Sarara dhiyeessii alaa miidhamuu danda\'u irratti hirkattummaa hir\'isa.'
           ],
-          partner: 'Biiroo Qabeenya Bishaanii Naannoo & Ogeessota Fayyaa'
-        },
-        ti: {
-          title: 'ምዕባይ ዓቕሚ ኮሚቴታት WASHን ቅልጡፍ ናይ ማይ ካርታን',
-          category: 'ናይ ማሕበረሰብ ዓውደ-መጽናዕትታት',
-          date: 'ሕዳር 2023',
-          location: 'ክልላት ኦሮምያን ኣምሓራን፣ ኢትዮጵያ',
-          summary: 'ናይ መስተ ማይ ድሕንነት ንምክትታልን መንገዲ ብከላ ንምልላይን ንሓለውቲ ማይ ዝተወሃበ ተግባራዊ ስልጠና።',
-          objective: 'ንሰብ ሞያ ጽሬት ብተበጻሕቲ መሳርሒታትን ዲጂታል ካርታን ብምብቃዕ ናይ ማይ ጽሬት ክትትል ዘይተማእከለ ምግባር።',
-          method: 'ናሙና ኣተሓሕዛ፣ ቫክዩም ምጽራይ፣ ኢንኩቤሽንን ውጽኢት ምትርጓምን ዝሓዘ ናይ 2 መዓልታት ስልጠና።',
-          keyFindings: [
-            'ኣብ 14 ገጠራት ቀበሌታት ንዝርከቡ 32 ናይ WASH ሰራሕተኛታት ኣሰልጢኑ።',
-            'ናይ 28 ዘይተሓለዉ ዓይኒ ማያትን ዒላታትን ናይ ማይ ድሕንነት ናብ ዳሽቦርድ መዝጊቡ።',
-            'ካብ ሕርሻ ዝመጽእ ብከላ ተለልዩ ቀልጢፉ ናይ ዒላ ጽገና ተኻይዱ።'
-          ],
-          partner: 'ናይ ክልል ቢሮታት ጸጋታት ማይን ሰብ ሞያ ጥዕናን'
+          partner: 'Yuunivarsiitii Baahir Daar, Centre for Global Equality, BiT Maker Space'
         }
       }
     },
     {
       id: 'proj-05',
-      slug: 'emergency-disaster-response',
-      title: 'Rapid Water Testing Protocol for Flooded Infrastructure',
-      category: 'Humanitarian WASH',
-      categoryKey: 'humanitarian',
-      date: 'April 2024',
-      location: 'South Asia & Latin America Pilots',
-      image: '/images/portable-kit-system.jpg',
-      summary: 'Developing rapid response protocols for water quality assessment following extreme weather events and flooding of municipal distribution pipes.',
-      objective: 'To establish a rapid 8-hour screening workflow for emergency responders when central water treatment infrastructure is compromised.',
-      method: 'Field deployment kits pre-packed in airtight waterproof cases, operated entirely from internal rechargeable power packs.',
+      slug: 'caacc-collaboration',
+      title: 'Canada-Africa Academic Collaboration: Transforming Water Quality',
+      category: 'Academic Collaboration',
+      categoryKey: 'research',
+      date: 'February 26-27, 2026',
+      location: 'Canada-Africa Academic Collaborations Conference (CAACC)',
+      image: '/images/waterscope-hero-nile.jpg',
+      summary: 'Presented by Yohannes Tamiru: Invitation for academic collaboration in research, scale, and deployment. Enabling work in environmental microbiology, antimicrobial resistance, and AI pathogen detection.',
+      objective: 'Inviting Canada–Africa academic collaboration — joint grants, co-supervision of students, pilot programs, and regional deployment strategies.',
+      method: 'Collaborative platform enabling work in environmental microbiology, antimicrobial resistance surveillance, AI-driven pathogen detection, and implementation science.',
       keyFindings: [
-        'Eliminated delays waiting for laboratory transport during roadway washouts.',
-        'Enabled public health teams to clear safe water distribution points within hours.',
-        'Provided geolocated test records to coordinate chlorine dosing and emergency treatment.'
+        'Partner on pilot programs, regional rollouts, and integration with existing water quality monitoring systems.',
+        'Collaboration with organizations in African nations actively engaged in water testing initiatives.',
+        'Water surveillance should be equitable, collaborative, and locally empowered.'
       ],
-      partner: 'Emergency Relief & WASH Taskforces',
+      partner: 'Canada-Africa Academic Collaborations Conference (CAACC), Bahir Dar University',
       order: 5,
       translations: {
         am: {
-          title: 'ለተጎዱ የመሰረተ ልማት እና ጎርፍ የተዘጋጀ ፈጣን የውሃ ምርመራ ፕሮቶኮል',
-          category: 'ሰብአዊ WASH',
-          date: 'ሚያዚያ 2024',
-          location: 'የደቡብ እስያ እና ላቲን አሜሪካ ፓይለቶች',
-          summary: 'ከከባድ የአየር ሁኔታ እና የማዘጋጃ ቤት ቱቦዎች ጎርፍ በኋላ የውሃ ጥራትን ለመገምገም ፈጣን የአደጋ ጊዜ ፕሮቶኮሎችን ማዘጋጀት።',
-          objective: 'የማዕከላዊ የውሃ ማከሚያ ሲስተሞች ሲበላሹ ለአደጋ ምላሽ ሰጪዎች ፈጣን የ 8 ሰዓት የማጣሪያ ቅደም ተከተል ማዘጋጀት።',
-          method: 'ውሃ በማያስገባ ሻንጣ የታሸጉ እና ሙሉ በሙሉ በውስጣዊ ባትሪ የሚሰሩ የመስክ መመርመሪያ ኪቶች።',
+          title: 'የካናዳ-አፍሪካ አካዳሚክ ትብብር፡ የውሃ ጥራትን መለወጥ',
+          category: 'የአካዳሚክ ትብብር',
+          date: 'የካቲት 26-27፣ 2026',
+          location: 'የካናዳ-አፍሪካ የትምህርት ትብብር ጉባኤ (CAACC)',
+          summary: 'በዮሐንስ ታምሩ የቀረበ፡ በምርምር፣ በማስፋፋት እና በተግባራዊ ስራዎች ላይ ለአካዳሚክ ትብብር የቀረበ ግብዣ። በአካባቢ ማይክሮባዮሎጂ፣ በ AMR እና በ AI በሽታ አምጪ ተህዋስያን መለየት ላይ የሚሰሩ ስራዎችን ያስችላል።',
+          objective: 'የካናዳ-አፍሪካ አካዳሚክ ትብብርን መጋበዝ — የጋራ እርዳታዎች፣ የተማሪዎች የጋራ ቁጥጥር፣ የፓይለት ፕሮግራሞች እና የክልላዊ ማስፋፊያ ስልቶች።',
+          method: 'በአካባቢ ማይክሮባዮሎጂ፣ በፀረ-ተህዋሲያን መቋቋም (AMR) ክትትል፣ በ AI በሽታ አምጪ ተህዋስያን መለየት እና በተግባራዊ ሳይንስ ላይ ስራዎችን የሚያስችል የትብብር መድረክ።',
           keyFindings: [
-            'መንገዶች በጎርፍ በተዘጉበት ወቅት ናሙናዎችን ወደ ላብራቶሪ ለመላክ የነበረውን መዘግየት አስቀርቷል።',
-            'የህዝብ ጤና ቡድኖች ደህንነቱ የተጠበቀ የውሃ ማከፋፈያ ነጥቦችን በጥቂት ሰዓታት ውስጥ እንዲያረጋግጡ አስችሏል።',
-            'የክሎሪን ህክምናን ለማስተባበር በካርታ የተደገፉ የምርመራ መዝገቦችን አቅርቧል።'
+            'በፓይለት ፕሮግራሞች፣ በክልላዊ ስርጭት እና ከነባር የውሃ ጥራት ክትትል ስርዓቶች ጋር በማቀናጀት ላይ አብሮ መስራት።',
+            'በውሃ ምርመራ ስራዎች ላይ በንቃት ከተሰማሩ የአፍሪካ አገራት ድርጅቶች ጋር መተባበር።',
+            'የውሃ ክትትል ፍትሃዊ፣ የትብብር እና በአገር ውስጥ የዳበረ መሆን አለበት።'
           ],
-          partner: 'የአደጋ ጊዜ እርዳታ እና የ WASH ግብረ-ኃይሎች'
+          partner: 'የካናዳ-አፍሪካ የትምህርት ትብብር ጉባኤ (CAACC)፣ ባህር ዳር ዩኒቨርሲቲ'
         },
         om: {
-          title: 'Sirna Qorannoo Bishaan Saffisaa Balaa Lolaatiif Qophaa\'e',
-          category: 'WASH Namoomaa',
-          date: 'Ebla 2024',
-          location: 'Paayiletii Kibba Eeshiyaa fi Laatiin Ameerikaa',
-          summary: 'Balaa lolaa booda qulqullina bishaanii madaaluuf adeemsa deebii saffisaa qopheessuu.',
-          objective: 'Yeroo sararri bishaanii miidhamu qorannoo sa\'aatii 8 keessatti raawwatamu hundeessuu.',
-          method: 'Kiitota bishaan hin galchine fi guutummaatti baatriidhaan hojjetan.',
+          title: 'Walta\'iinsa Barnootaa Kaanaadaa-Afrikaa: Qulqullina Bishaanii Jijjiiruu',
+          category: 'Walta\'iinsa Barnootaa',
+          date: 'Guraandhala 26-27, 2026',
+          location: 'Konfaransii Walta\'iinsa Barnootaa Kaanaadaa-Afrikaa (CAACC)',
+          summary: 'Yohaannis Taamiruutiin kan dhiyaate: Qorannoo, babal\'isuu fi hojiirra oolchuu irratti afeerraa walta\'iinsa barnootaa. Maayikiroobaayoloojii naannoo, AMR fi beekumsa baakteeriyaa AI keessatti.',
+          objective: 'Walta\'iinsa barnootaa Kaanaadaa–Afrikaa afeeruu — deeggarsa waloo, hordoffii barattootaa waloo, sagantaalee paayileetii fi tarsiimoo babal\'isuu naannoo.',
+          method: 'Maayikiroobaayoloojii naannoo, to\'annoo dandamanna qorichaa (AMR), beekumsa baakteeriyaa AI fi saayinsii hojiirra oolmaa keessatti waltajjii walta\'iinsaa.',
           keyFindings: [
-            'Daandiin yeroo cufamu gara laabraatooriitti erguuf turtii ture hambiseera.',
-            'Gareen fayyaa bakkeewwan bishaan dhugaatii saffisaan akka mirkaneessan gargaareera.',
-            'Yaala kilooriinii qindeessuuf ragaa kaartaa qabu dhiyeesseera.'
+            'Sagantaalee paayileetii, tamsaasa naannoo fi sirna to\'annoo jiran wajjin qindeessuu irratti michoomuu.',
+            'Dhaabbilee biyyoota Afrikaa keessatti qorannoo bishaanii irratti socho\'an wajjin walta\'uu.',
+            'To\'annoon bishaanii haqa qabeessa, gamtaa fi naannootti humneeffame ta\'uu qaba.'
           ],
-          partner: 'Gareewwan Gargaarsa Yeroo Balaa fi WASH'
-        },
-        ti: {
-          title: 'ንሓደጋ ውሕጅ ዝተዳለወ ቅልጡፍ ናይ ማይ መርመራ ፕሮቶኮል',
-          category: 'ሰብኣዊ WASH',
-          date: 'ሚያዝያ 2024',
-          location: 'ናይ ደቡብ እስያን ላቲን ኣመሪካን ፈተነታት',
-          summary: 'ድሕሪ ከቢድ ናይ ኣየር ኩነታትን ውሕጅን ናይ ማይ ጽሬት ንምግምጋም ፈጣን ናይ ህጹጽ ግዜ ፕሮቶኮላት ምምዕባል。',
-          objective: 'ማእከላይ ናይ ማይ መጽረዪ ምስ ዝበላሾ ናይ 8 ሰዓት ናይ ምጽራይ ኣሰራርሓ ምቛም።',
-          method: 'ማይ ዘየእቱ ሳንዱቕ ዝተዓሸጉን ብባትሪ ዝሰርሑን ናይ ሜዳ ኪታት።',
-          keyFindings: [
-            'መንገድታት ብውሕጅ ኣብ ዝተዓጸዉሉ ግዜ ናብ ላብራቶሪ ናይ ምልኣኽ ምድንጓይ ኣትርፉ።',
-            'ጉጅለታት ጥዕና ጽሩይ ናይ ማይ መከፋፈሊ ቦታታት ብቑሩብ ሰዓታት ከረጋግጹ ኣኽኢሉ。',
-            'ናይ ክሎሪን ሕክምና ንምውዳድ ብካርታ ዝተደገፉ መዛግብቲ ኣቕሪቡ።'
-          ],
-          partner: 'ናይ ህጹጽ ሓገዝን ናይ WASH ግብረ-ሓይልታትን'
+          partner: 'Konfaransii Walta\'iinsa Barnootaa Kaanaadaa-Afrikaa (CAACC), Yuunivarsiitii Baahir Daar'
         }
       }
     }

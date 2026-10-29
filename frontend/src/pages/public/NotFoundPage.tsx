@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, ArrowLeft } from 'lucide-react';
+import { Droplets, ArrowLeft } from 'lucide-react';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -24,9 +24,9 @@ export const NotFoundPage: React.FC = () => {
             marginBottom: '20px',
           }}
         >
-          <Sprout size={36} />
+          <Droplets size={36} />
         </div>
-        <h1 style={{ fontSize: '36px', fontWeight: 800, color: 'var(--color-primary-dark)', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '36px', fontWeight: 800, color: 'var(--color-heading)', marginBottom: '12px' }}>
           404 – {t('public.notFoundTitle')}
         </h1>
         <p style={{ fontSize: '16px', color: 'var(--color-text-muted)', maxWidth: '480px', marginBottom: '28px', lineHeight: '1.6' }}>

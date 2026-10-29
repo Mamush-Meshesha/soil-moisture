@@ -1,8 +1,13 @@
 import { Language } from '../i18n/types';
 
-export interface TechPillar {
+export interface TechFeature {
   title: string;
   tag: string;
+  desc: string;
+}
+
+export interface TechChallenge {
+  title: string;
   desc: string;
 }
 
@@ -27,10 +32,12 @@ export interface TechnologyPageContent {
   barrierBadge: string;
   barrierQuote: string;
   barrierWho: string;
+  challenges: TechChallenge[];
 
   pillarsTag: string;
   pillarsTitle: string;
-  pillars: TechPillar[];
+  pillarsDesc: string;
+  pillars: TechFeature[];
 
   sopBadge: string;
   sopTitle: string;
@@ -50,564 +57,562 @@ export interface TechnologyPageContent {
   docBtn2: string;
 }
 
-export const technologyContent: Record<Language, TechnologyPageContent> = {
+const data: Record<string, TechnologyPageContent> = {
   en: {
-    headerBadge: "Advanced Membrane Filtration & Optics",
-    headerTitle: "Our Water Testing Technology",
-    headerDesc: "We have modernized the ISO 9308-1 membrane filtration standard into an integrated, portable water testing system that eliminates complex laboratory sterilization, reduces incubation time, and counts bacterial colonies automatically.",
+    // Slide 4: The WaterScope System
+    headerBadge: "The WaterScope System",
+    headerTitle: "Smart, Simple, Digital Water Testing for All",
+    headerDesc: "An open-source innovative water testing system, enabling inclusive access to smart, easy-to-use, and reliable testing for bacterial presence in drinking water. Originally developed by Cambridge University Engineers.",
 
-    barrierBadge: "The Technological Barrier",
-    barrierQuote: "Existing field bacterial testing kits are slow (requiring over 24 to 48 hours), cumbersome, require flame sterilization in the field, and depend on subjective manual counting by human eye. This makes routine drinking-water monitoring nearly impossible for remote health centers, rural water utilities, and community caretakers.",
-    barrierWho: "According to the World Health Organization (WHO), zero viable bacterial colonies of E. coli should be detectable in any 100mL sample of drinking water. Our technology provides the sensitivity of an accredited laboratory directly in a field-deployable portable kit.",
+    // Slide 3: Key Challenges in Water Quality Monitoring
+    barrierBadge: "Structural Barriers",
+    barrierQuote: "The current monitoring ecosystem faces structural barriers. Most systems are expensive and imported. They rely on fragile supply chains. Many require technical expertise that is difficult to sustain in rural areas. They are often not digitally connected — meaning data remains isolated. And scaling them across thousands of rural water points becomes nearly impossible. This is not a technology failure. It is a systems design problem.",
+    barrierWho: "Key Challenges in Water Quality Monitoring (Slide 3): High costs limit adoption; reliance on foreign products hinders local solutions; fragile supply chains fail due to logistics.",
+    challenges: [
+      {
+        title: "Expensive",
+        desc: "High costs limit widespread adoption of testing kits."
+      },
+      {
+        title: "Imported",
+        desc: "Reliance on foreign products hinders local solutions."
+      },
+      {
+        title: "Technically Complex",
+        desc: "Many systems require specialized training to operate."
+      },
+      {
+        title: "Fragile Supply Chains",
+        desc: "Vulnerable systems can fail due to logistical issues."
+      },
+      {
+        title: "Not Digitally Connected",
+        desc: "Limited data sharing complicates monitoring efforts."
+      },
+      {
+        title: "Difficult to Scale",
+        desc: "Rural areas face unique challenges in implementation."
+      }
+    ],
 
-    pillarsTag: "System Advantages",
-    pillarsTitle: "Built for Real-World Accuracy",
+    // Slide 5: Key Features of WaterScope System (All 9 Features)
+    pillarsTag: "Key Features of WaterScope System",
+    pillarsTitle: "Designed Around Practical Field Needs",
+    pillarsDesc: "The system is designed around practical field needs: Rapid — with early indication in as little as 8 hours and full quantitative results in 21 hours. Portable and robust — built for low-resource environments. Reliable — benchmarked against ISO 9308 standards and externally validated. Digital and smart — using embedded microscopy and machine learning to automate colony counting. And data-driven — enabling real-time monitoring and centralized reporting through a mobile app and dashboard. Most importantly, it reduces financial barriers for communities.",
     pillars: [
       {
         title: "Rapid",
         tag: "8 to 21 Hours",
-        desc: "Detects presence of coliform bacteria in as little as 8 hours, delivering fully quantitative CFU counts in 21 hours—significantly faster than standard field kits."
+        desc: "Provides immediate results for water quality testing (early indication in as little as 8 hours and full quantitative results in 21 hours)."
       },
       {
-        title: "Transportable",
-        tag: "All-in-One Kit",
-        desc: "The entire testing system is housed within an IP67 rugged case, allowing on-site filtering, sterile handling, and incubation without requiring a laboratory bench."
+        title: "Portable",
+        tag: "Low-Resource",
+        desc: "Designed for easy transport to remote locations. Designed for low-resource environments."
       },
       {
         title: "Simple",
-        tag: "Minimal Training",
-        desc: "Designed with and for field operators. Straightforward sample filtration and color-coded safety keys enable technicians and community health workers to test accurately."
+        tag: "Ease of Operation",
+        desc: "User-friendly design ensures ease of operation."
       },
       {
         title: "Reliable",
-        tag: "ISO 9308-1",
-        desc: "Benchmarked directly against standard ISO 9308-1 and ISO 9308-2 membrane filtration protocols and accredited through external ISO 17025 laboratories."
+        tag: "ISO 9308",
+        desc: "Provides consistent and accurate water quality results. Benchmarked against ISO 9308 standards and externally validated."
       },
       {
         title: "Robust",
-        tag: "Field Hardened",
-        desc: "Tested to operate reliably in high ambient temperatures (up to 40°C), dusty environments, and off-grid locations using high-capacity rechargeable battery cells."
+        tag: "Field-Adapted",
+        desc: "Designed to withstand challenging field conditions."
       },
       {
-        title: "Data Driven",
-        tag: "Real-Time Sync",
-        desc: "Test results and raw colony images sync via Bluetooth to the mobile app and upload to a centralized GIS dashboard for water quality mapping and policy action."
+        title: "Digital",
+        tag: "Embedded Optics",
+        desc: "Integrates advanced technology for data-driven insights. Uses embedded microscopy and machine learning to automate colony counting."
+      },
+      {
+        title: "Smart",
+        tag: "Real-Time Data",
+        desc: "Provides real-time data for informed decision-making."
+      },
+      {
+        title: "Affordable",
+        tag: "Up to 80% Savings",
+        desc: "Designed to be cost-effective for local communities, reducing financial barriers."
+      },
+      {
+        title: "Data-Driven",
+        tag: "App & Dashboard",
+        desc: "Utilizes advanced analytics to improve water quality, enabling real-time monitoring and centralized reporting by using its mobile app and dashboard."
       }
     ],
 
-    sopBadge: "Standard Operating Procedure",
-    sopTitle: "How It Works: Step-by-Step",
-    sopDesc: "The complete testing sequence from sample drawing to automated optical report.",
+    // Workflow
+    sopBadge: "Cartridge-Based Testing Workflow",
+    sopTitle: "Simplified 8-Minute Sample Processing",
+    sopDesc: "A cartridge-based membrane filtration method combining automated colony detection using machine learning.",
     stages: [
       {
         num: "1",
-        title: "Membrane Slider Insertion",
-        desc: "The sterile 0.45µm nitrocellulose membrane and nutrient pad are situated within the ergonomic slider. The slider is clamped into the stainless-steel cartridge to prepare for sample filtration.",
-        highlight: "Contamination-free handling without open tweezers or flame sterilization."
+        title: "Sample Drawing",
+        desc: "A standard 100mL drinking water sample is drawn using the battery-powered motorized vacuum pump in under 3 minutes.",
+        highlight: "Motorized vacuum filtration eliminates hand syringe pumping fatigue."
       },
       {
         num: "2",
-        title: "Motorized Vacuum Filtration",
-        desc: "A standard 100mL drinking-water sample is collected and filtered through the cartridge funnel using a quiet, motorized vacuum pump powered by the internal battery pack.",
-        highlight: "Uniform filtration pressure ensures consistent bacterial cell retention."
+        title: "Patented Cartridge Filtration",
+        desc: "Water filters through the patented metal cartridge, retaining target bacteria on a 0.45µm nitrocellulose membrane filter pad.",
+        highlight: "Eliminates risky field flame sterilization and aseptic technique requirements."
       },
       {
         num: "3",
-        title: "Liquid Media & Incubation",
-        desc: "Selective liquid nutrient media is introduced onto the absorbent pad to cultivate coliforms and E. coli. The cartridge is slotted into the integrated incubation chamber maintained at precisely 37°C or 44°C.",
-        highlight: "Precision thermal incubation without bulky water-baths or external incubators."
+        title: "Media Inoculation & Incubation",
+        desc: "Nutrient broth media is introduced to the absorbent pad slider and inserted into the internal dual 37°C/44°C incubator.",
+        highlight: "Zero cold-chain refrigeration needed; maintains ±0.3°C thermal stability."
       },
       {
         num: "4",
         title: "Automated Microscopic Imaging",
-        desc: "A built-in digital optical microscope captures high-resolution imagery as bacterial colonies develop. Image recognition software detects early colony proliferation long before colonies can be seen by eye.",
-        highlight: "High-resolution imaging module powered by embedded computer vision."
+        desc: "The embedded digital microscope module captures high-resolution imagery as bacterial microcolonies begin proliferating.",
+        highlight: "Early indication in as little as 8 hours, long before colonies can be seen by naked eye."
       },
       {
         num: "5",
         title: "Machine Learning Colony Counting",
-        desc: "Our machine-learning algorithm identifies and enumerates bacterial colonies, distinguishing target coliforms from non-target organisms and outputting an objective CFU/100mL measurement.",
-        highlight: "Eliminates human counting bias and technician eye strain."
+        desc: "Automated computer vision algorithm segments and enumerates bacterial colonies directly on the membrane filter grid.",
+        highlight: "Eliminates subjective human counting bias and technician eye strain."
       },
       {
         num: "6",
-        title: "Telemetry & Cloud Mapping",
-        desc: "Test data, GPS location, and microscopic sample photos sync automatically via Bluetooth to the mobile application and upload to the central dashboard for regional water monitoring.",
-        highlight: "Traceable, audit-ready drinking water quality records."
+        title: "Mobile App & Dashboard Sync",
+        desc: "Test results sync via Bluetooth to the mobile app and upload to the central dashboard for real-time monitoring.",
+        highlight: "Provides geolocated, audit-ready water quality records."
       }
     ],
 
+    // Slide 5, 7, 9: Technical Specifications
     specsBadge: "Verified Engineering Specifications",
-    specsTitle: "Technical System Parameters",
+    specsTitle: "System Parameters & Technical Benchmarks",
     colParam: "Parameter",
-    colSpec: "Specification",
-    colStandard: "Standard / Verification",
+    colSpec: "WaterScope System Specification",
+    colStandard: "Reference / Validation",
     specsRows: [
       {
-        param: "Analytical Principle",
-        spec: "Membrane Filtration & Digital Optical Enumeration",
-        standard: "ISO 9308-1:2014 / Amd 1:2016"
+        param: "Testing Method",
+        spec: "Open-source cartridge-based membrane filtration with automated colony detection",
+        standard: "Originally developed by Cambridge University Engineers"
       },
       {
-        param: "Target Organisms",
-        spec: "Total Coliform Bacteria & Escherichia coli (E. coli)",
-        standard: "WHO Safe Drinking Water Guideline"
+        param: "Diagnostic Speed",
+        spec: "Early indication in 8 hours; full quantitative results in 21 hours",
+        standard: "Provides immediate results compared to 24–48h delays"
       },
       {
-        param: "Detection Limit (LOD)",
-        spec: "1 Colony Forming Unit (CFU) per 100 mL sample",
-        standard: "ISO 17025 Verified Sensitivity"
+        param: "Testing Standards",
+        spec: "Provides consistent and accurate results for E. coli & Coliforms",
+        standard: "Benchmarked against ISO 9308 standards and externally validated"
       },
       {
-        param: "Testing Speed",
-        spec: "Presence in 8 hrs; full quantitative CFU in 21 hrs",
-        standard: "Up to 60% faster than conventional incubators"
+        param: "Local Manufacturing",
+        spec: "Manufactured using 3D printing and machining technologies at Bahir Dar University",
+        standard: "Lowers costs by up to 80% compared to imported kits"
       },
       {
-        param: "Thermal Stability",
-        spec: "37.0°C ± 0.3°C or 44.0°C ± 0.3°C",
-        standard: "Operational in 10°C to 40°C ambient"
+        param: "Mobility & Portability",
+        spec: "5.8 kg all-in-one testing station in rugged field case",
+        standard: "Designed for easy transport to remote, low-resource locations"
       },
       {
-        param: "Filter Membrane",
-        spec: "0.45 µm pore size, 47 mm gridded sterile nitrocellulose",
-        standard: "Single-use sealed sterile slider"
+        param: "Colony Counting",
+        spec: "Automated colony detection using embedded microscopy and machine learning",
+        standard: "Eliminates human counting bias and eye strain"
       },
       {
-        param: "Enclosure & Ingress",
-        spec: "IP67 waterproof and dustproof pelican-style casing",
-        standard: "Drop-tested for field transport"
+        param: "Data Reporting",
+        spec: "Real-time monitoring and centralized reporting via mobile app and dashboard",
+        standard: "Data-driven insights for communities and health bureaus"
       },
       {
-        param: "Telemetry & Connectivity",
-        spec: "Bluetooth Low Energy 5.2 + Global LTE-M / NB-IoT",
-        standard: "Automatic GIS and cloud dashboard upload"
+        param: "Institutional Confidence",
+        spec: "Prior pilots in Ethiopia and Kenya; Letter of Intent for up to 30 units (ACF)",
+        standard: "Demonstrated field usability in East African contexts"
       }
     ],
 
-    docTitle: "Download Technical Documentation & SOPs",
-    docDesc: "Access the complete AquaScope Field Operator Manual, Standard Operating Procedures (SOP), and microbiological validation data.",
-    docBtn1: "Browse Technical Resources & Guidelines",
-    docBtn2: "View Testing Hardware & Consumables"
+    docTitle: "Download Technical Presentation & Field Guides",
+    docDesc: "Access the complete presentation materials, Standard Operating Procedures (SOP), and system specifications.",
+    docBtn1: "Browse Technical Documentation",
+    docBtn2: "Get in Touch with Engineers"
   },
 
   am: {
-    headerBadge: "የላቀ የሜምብሬን ማጣሪያ እና ኦፕቲክስ",
-    headerTitle: "የውሃ መመርመሪያ ቴክኖሎጂያችን",
-    headerDesc: "የ ISO 9308-1 የሜምብሬን ማጣሪያ ደረጃን ወደ ዘመናዊ፣ ሁሉን-በአንድ የያዘ ተንቀሳቃሽ የውሃ መመርመሪያ ሥርዓት ቀይረነዋል፤ ይህም ውስብስብ የላብራቶሪ ማምከንን ያስቀራል፣ የምርመራ ጊዜን ያሳጥራል እንዲሁም የባክቴሪያ ቅኝ ግዛቶችን በራስ-ሰር ይቆጥራል።",
+    headerBadge: "የ WaterScope ስርዓት",
+    headerTitle: "ዘመናዊ፣ ቀላል፣ ዲጂታል የውሃ ምርመራ ለሁሉም",
+    headerDesc: "በመጠጥ ውሃ ውስጥ የባክቴሪያ መኖርን ለማረጋገጥ ዘመናዊ፣ ቀላል እና አስተማማኝ ምርመራን ተደራሽ የሚያደርግ ክፍት የፈጠራ ስርዓት። መጀመሪያ በካምብሪጅ ዩኒቨርሲቲ መሐንዲሶች የተገነባ።",
 
-    barrierBadge: "የቴክኖሎጂው እንቅፋት",
-    barrierQuote: "ነባር የመስክ ባክቴሪያ መመርመሪያ ኪቶች እጅግ አዝጋሚ (ከ 24 እስከ 48 ሰዓታት የሚወስዱ)፣ ከባዶች፣ በመስክ ላይ በእሳት ማምከን የሚሹ እና በሰው ዓይን ቆጠራ ላይ የተመሰረቱ ናቸው። ይህም ለገጠር የጤና ጣቢያዎች፣ የውሃ ተቋማት እና ለማህበረሰብ ተቆጣጣሪዎች መደበኛ ክትትል ማድረግን ፈታኝ አድርጎታል።",
-    barrierWho: "በዓለም ጤና ድርጅት (WHO) መመሪያ መሰረት በማንኛውም 100mL የመጠጥ ውሃ ናሙና ውስጥ ዜሮ (0) የኢ. ኮላይ ባክቴሪያ መገኘት አለበት። ቴክኖሎጂያችን የእውቅና ያለው ላብራቶሪን ትክክለኛነት በቀጥታ ወደ ሜዳ ያመጣል።",
-
-    pillarsTag: "የሲስተሙ ጥቅሞች",
-    pillarsTitle: "ለእውነተኛ የመስክ ትክክለኛነት የተሰራ",
-    pillars: [
+    barrierBadge: "መዋቅራዊ እንቅፋቶች",
+    barrierQuote: "የአሁኑ የክትትል ስነ-ምህዳር መዋቅራዊ እንቅፋቶች ያጋጥሙታል። አብዛኛዎቹ ስርዓቶች ውድ እና ከውጭ የሚገቡ ናቸው። በቀላሉ በሚስተጓጎሉ የአቅርቦት ሰንሰለቶች ላይ ጥገኛ ናቸው። ብዙዎቹ በገጠር አካባቢዎች ለማስቀጠል አስቸጋሪ የሆነ ልዩ ቴክኒካዊ ስልጠና ይፈልጋሉ። ብዙ ጊዜ በዲጂታል መንገድ የተገናኙ አይደሉም — ይህም መረጃ ተለይቶ እንዲቀር ያደርገዋል። በሺዎች በሚቆጠሩ የገጠር የውሃ ነጥቦች ላይ ማስፋፋት ፈጽሞ የማይቻል ይሆናል። ይህ የቴክኖሎጂ ውድቀት አይደለም። የስርዓት ንድፍ ችግር ነው።",
+    barrierWho: "በውሃ ጥራት ክትትል ውስጥ ያሉ ቁልፍ ፈተናዎች፡ ውድ፣ ከውጭ የሚገባ፣ በቴክኒክ ውስብስብ፣ ደካማ የአቅርቦት ሰንሰለት፣ በዲጂታል ያልተገናኘ፣ ለማስፋፋት አስቸጋሪ።",
+    challenges: [
       {
-        title: "ፈጣን",
-        tag: "ከ 8 እስከ 21 ሰዓታት",
-        desc: "የኮሊፎርም ባክቴሪያ መኖሩን በ 8 ሰዓት ውስጥ ያውቃል፤ ሙሉ አሃዛዊ የ CFU ቆጠራን በ 21 ሰዓት ውስጥ ያቀርባል — ከመደበኛ የመስክ ኪቶች እጅግ ፈጣን።"
+        title: "ውድ (Expensive)",
+        desc: "ከፍተኛ ወጪ የመመርመሪያ ኪቶች በስፋት ጥቅም ላይ እንዳይውሉ ይገድባል።"
       },
       {
-        title: "ተንቀሳቃሽ",
-        tag: "ሁሉን-በአንድ ኪት",
-        desc: "ሙሉው የመመርመሪያ ሲስተም በጠንካራ IP67 ሻንጣ ውስጥ የተካተተ ሲሆን፣ የላብራቶሪ ጠረጴዛ ሳያስፈልግ በቦታው ላይ ማጣራት፣ ማዘጋጀት እና ኢንኩቤሽን ያከናውናል።"
+        title: "ከውጭ የሚገባ (Imported)",
+        desc: "በውጭ ምርቶች ላይ ጥገኛ መሆን የአገር ውስጥ መፍትሄዎችን ያደናቅፋል።"
       },
       {
-        title: "ቀላል",
-        tag: "አነስተኛ ስልጠና",
-        desc: "ለመስክ ባለሙያዎች ታስቦ የተሰራ። ቀላል የናሙና ማጣሪያ እና በቀለም የተለዩ የደህንነት ቁልፎች ቴክኒሻኖች እና የጤና ባለሙያዎች በትክክል እንዲመረምሩ ያስችላሉ።"
+        title: "በቴክኒክ ውስብስብ (Technically Complex)",
+        desc: "ብዙ ስርዓቶች ለመስራት ልዩ ስልጠና ይፈልጋሉ።"
       },
       {
-        title: "አስተማማኝ",
-        tag: "ISO 9308-1",
-        desc: "በቀጥታ ከመደበኛ የ ISO 9308-1 እና ISO 9308-2 የሜምብሬን ማጣሪያ ፕሮቶኮሎች ጋር የተነጻጸረ እና በ ISO 17025 ላብራቶሪዎች የተረጋገጠ።"
+        title: "ደካማ የአቅርቦት ሰንሰለት (Fragile Supply Chains)",
+        desc: "ተጋላጭ ስርዓቶች በሎጂስቲክስ ችግሮች ምክንያት ሊበላሹ ይችላሉ።"
       },
       {
-        title: "ጠንካራ",
-        tag: "ለመስክ የጠነከረ",
-        desc: "በከፍተኛ የአካባቢ ሙቀት (እስከ 40°C)፣ በአቧራማ ሁኔታዎች እና ከኤሌክትሪክ መስመር ውጭ በሆኑ ቦታዎች በከፍተኛ ባትሪ አስተማማኝ ሆኖ እንዲሰራ ተፈትኗል።"
+        title: "በዲጂታል ያልተገናኘ (Not Digitally Connected)",
+        desc: "ውስን የመረጃ ልውውጥ የክትትል ጥረቶችን ያወሳስባል።"
       },
       {
-        title: "መረጃ ተኮር",
-        tag: "የእውነተኛ ጊዜ ማመሳሰል",
-        desc: "የምርመራ ውጤቶች እና ጥሬ የማይክሮስኮፕ ምስሎች በብሉቱዝ ወደ ሞባይል መተግበሪያ ይመሳሰላሉ፤ ለውሃ ጥራት ካርታ እና ውሳኔ አሰጣጥ ወደ ክላውድ ይላካሉ።"
+        title: "ለማስፋፋት አስቸጋሪ (Difficult to Scale)",
+        desc: "የገጠር አካባቢዎች በተግባራዊ አፈፃፀም ላይ ልዩ ፈተናዎች ያጋጥሟቸዋል።"
       }
     ],
 
-    sopBadge: "መደበኛ የአሰራር ቅደም ተከተል (SOP)",
-    sopTitle: "እንዴት ይሰራል፡ ደረጃ በደረጃ",
-    sopDesc: "ከውሃ ናሙና ማንሳት ጀምሮ እስከ አውቶሜትድ ኦፕቲካል ሪፖርት ድረስ ያለው ሙሉ የምርመራ ቅደም ተከተል።",
+    pillarsTag: "የ WaterScope ስርዓት ቁልፍ ገጽታዎች",
+    pillarsTitle: "በተግባራዊ የመስክ ፍላጎቶች ዙሪያ የተነደፈ",
+    pillarsDesc: "ስርዓቱ በተግባራዊ የመስክ ፍላጎቶች ዙሪያ የተነደፈ ነው፡ ፈጣን — ቀደም ያለ ምልክት በ 8 ሰዓት ውስጥ እና ሙሉ አሃዛዊ ውጤት በ 21 ሰዓት ውስጥ። ተንቀሳቃሽ እና ጠንካራ — ዝቅተኛ ሀብት ላላቸው አካባቢዎች የተሰራ። አስተማማኝ — ከ ISO 9308 ደረጃዎች ጋር የተነጻጸረ እና በውጭ አካል የተረጋገጠ። ዲጂታል እና ዘመናዊ — የተቀናጀ ማይክሮስኮፒ እና ማሽን ለርኒንግ በመጠቀም የቅኝ ግዛት ቆጠራን አውቶሜት ያደረገ። እና በመረጃ ላይ የተመሰረተ — በሞባይል መተግበሪያ እና ዳሽቦርድ አማካኝነት የእውነተኛ ጊዜ ክትትል እና ማዕከላዊ ሪፖርትን የሚያስችል።",
+    pillars: [
+      {
+        title: "ፈጣን (Rapid)",
+        tag: "ከ 8 እስከ 21 ሰዓታት",
+        desc: "ለውሃ ጥራት ምርመራ ፈጣን ውጤቶችን ይሰጣል (ቀደም ያለ ምልክት በ 8 ሰዓታት እና ሙሉ አሃዛዊ ውጤት በ 21 ሰዓታት)።"
+      },
+      {
+        title: "ተንቀሳቃሽ (Portable)",
+        tag: "ዝቅተኛ ሀብት",
+        desc: "ወደ ሩቅ ቦታዎች በቀላሉ ለማጓጓዝ የተነደፈ። ዝቅተኛ ሀብት ላላቸው አካባቢዎች የተሰራ።"
+      },
+      {
+        title: "ቀላል (Simple)",
+        tag: "ቀላል አሰራር",
+        desc: "ለተጠቃሚ ምቹ የሆነ ንድፍ የአሰራር ቀላልነትን ያረጋግጣል።"
+      },
+      {
+        title: "አስተማማኝ (Reliable)",
+        tag: "ISO 9308",
+        desc: "ወጥ እና ትክክለኛ የውሃ ጥራት ውጤቶችን ይሰጣል። ከ ISO 9308 ደረጃዎች ጋር የተነጻጸረ እና በውጭ አካል የተረጋገጠ።"
+      },
+      {
+        title: "ጠንካራ (Robust)",
+        tag: "ለመስክ የተስማማ",
+        desc: "ፈታኝ የመስክ ሁኔታዎችን ለመቋቋም የተነደፈ።"
+      },
+      {
+        title: "ዲጂታል (Digital)",
+        tag: "የተቀናጀ ኦፕቲክስ",
+        desc: "በመረጃ ላይ ለተመሰረተ ግንዛቤ የላቀ ቴክኖሎጂን ያጣምራል። የተቀናጀ ማይክሮስኮፒ እና ማሽን ለርኒንግ በመጠቀም የቅኝ ግዛት ቆጠራን አውቶሜት ያደርጋል።"
+      },
+      {
+        title: "ዘመናዊ (Smart)",
+        tag: "የእውነተኛ ጊዜ መረጃ",
+        desc: "በመረጃ ላይ ለተመሰረተ ውሳኔ አሰጣጥ የእውነተኛ ጊዜ መረጃ ይሰጣል።"
+      },
+      {
+        title: "ተመጣጣኝ (Affordable)",
+        tag: "እስከ 80% ቅነሳ",
+        desc: "የገንዘብ እንቅፋቶችን በመቀነስ ለአካባቢው ማህበረሰቦች ወጪ ቆጣቢ እንዲሆን የተነደፈ።"
+      },
+      {
+        title: "በመረጃ ላይ የተመሰረተ (Data-Driven)",
+        tag: "መተግበሪያ እና ዳሽቦርድ",
+        desc: "የውሃ ጥራትን ለማሻሻል የላቀ ትንታኔን ይጠቀማል፣ የሞባይል መተግበሪያውን እና ዳሽቦርዱን በመጠቀም የእውነተኛ ጊዜ ክትትል እና ማዕከላዊ ሪፖርትን ያስችላል።"
+      }
+    ],
+
+    sopBadge: "በካርትሪጅ ላይ የተመሰረተ የምርመራ ሂደት",
+    sopTitle: "በ 8 ደቂቃ ውስጥ የሚከናወን የቀለለ የናሙና ዝግጅት",
+    sopDesc: "የማሽን ለርኒንግ አውቶሜትድ የቅኝ ግዛት ቆጠራን ከካርትሪጅ ዘዴ ጋር ያጣመረ የሜምብሬን ማጣሪያ ዘዴ።",
     stages: [
       {
         num: "1",
-        title: "የሜምብሬን ስላይደር ማስገባት",
-        desc: "የጸዳው 0.45µm ናይትሮሴሉሎዝ ሜምብሬን እና የተመጣጠነ ፓድ በስላይደሩ ውስጥ ይቀመጣሉ። ስላይደሩ ለማጣራት እንዲዘጋጅ በማይዝግ ብረት ካርትሪጅ ውስጥ ይታሰራል።",
-        highlight: "ያለ ክፍት ሹካ ወይም የእሳት ማምከን ከብክለት የጸዳ አያያዝ።"
+        title: "የናሙና አወሳሰድ",
+        desc: "በባትሪ ከሚሰራው የቫክዩም ፓምፕ ጋር የተገናኘውን ፓምፕ በመጠቀም መደበኛ 100 ሚሊ ሊትር የመጠጥ ውሃ ናሙና ከ 3 ደቂቃ ባነሰ ጊዜ ውስጥ ይወሰዳል።",
+        highlight: "በሞተር የሚሰራ የቫክዩም ማጣሪያ የእጅ ፓምፕ ድካምን ያስቀራል።"
       },
       {
         num: "2",
-        title: "በሞተር የሚሰራ የቫክዩም ማጣሪያ",
-        desc: "መደበኛ 100mL የመጠጥ ውሃ ናሙና ተሰብስቦ በውስጣዊ ባትሪ በሚሰራ ጸጥተኛ የቫክዩም ፓምፕ አማካኝነት በማጣሪያው ውስጥ ያልፋል።",
-        highlight: "ወጥ የሆነ የማጣሪያ ግፊት ባክቴሪያዎች በሙሉ በሜምብሬኑ ላይ እንዲቀሩ ያረጋግጣል።"
+        title: "በካርትሪጅ ማጣራት",
+        desc: "ውሃው በማይዝግ ብረት ካርትሪጅ ውስጥ በማለፍ ባክቴሪያዎችን በ 0.45µm ሜምብሬን ፊልተር ላይ ያስቀራል።",
+        highlight: "አደገኛ የሆነውን የመስክ እሳት ማምከን እና ልዩ የላብራቶሪ ችሎታን ያስቀራል።"
       },
       {
         num: "3",
-        title: "ፈሳሽ ሚዲያ እና ኢንኩቤሽን",
-        desc: "የኮሊፎርም እና ኢ. ኮላይ እድገትን የሚያፋጥን ፈሳሽ ሚዲያ ወደ ፓዱ ይጨመራል። ካርትሪጁ በትክክል 37°C ወይም 44°C በተጠበቀው የውስጥ ኢንኩቤሽን ውስጥ ይገባል።",
-        highlight: "ከባድ የውሃ ገንዳዎች ወይም ውጫዊ ኢንኩቤተሮች ሳያስፈልጉ ትክክለኛ የሙቀት ቁጥጥር።"
+        title: "ሚዲያ መጨመር እና ኢንኩቤሽን",
+        desc: "ፈሳሽ የእድገት ሚዲያ ይጨመራል፤ ከዚያም በ 37°C/44°C የሙቀት ኢንኩቤተር ውስጥ ይቀመጣል።",
+        highlight: "ማቀዝቀዣ አያስፈልገውም፤ ትክክለኛውን ±0.3°C የሙቀት መጠን ይጠብቃል።"
       },
       {
         num: "4",
         title: "አውቶሜትድ ማይክሮስኮፒክ ምስል",
-        desc: "የተገነባው ዲጂታል ኦፕቲካል ማይክሮስኮፕ የባክቴሪያ ቅኝ ግዛቶች ሲያድጉ ከፍተኛ ጥራት ያለው ምስል ያነሳል። የኮምፒውተር ቪዥን ሶፍትዌር ቅኝ ግዛቶች በዐይን ከመታየታቸው በፊት ያውቃል።",
-        highlight: "በተቀናጀ ኮምፒውተር ቪዥን የሚሰራ ከፍተኛ ጥራት ያለው የምስል ሞጁል።"
+        desc: "የተቀናጀው ዲጂታል ማይክሮስኮፕ ባክቴሪያዎች መብዛት ሲጀምሩ ከፍተኛ ጥራት ያለው ምስል ያነሳል።",
+        highlight: "ቅኝ ግዛቶች በሰው ዐይን ከመታየታቸው በፊት በ 8 ሰዓት ውስጥ መኖራቸውን ይለያል።"
       },
       {
         num: "5",
-        title: "የማሽን ለርኒንግ ቅኝ ግዛት ቆጠራ",
-        desc: "የማሽን ለርኒንግ ስልተ-ቀመራችን ኢ. ኮላይ እና ኮሊፎርምን ለይቶ ይቆጥራል፤ ተጨባጭ የ CFU/100mL ልኬት ያወጣል።",
+        title: "የማሽን ለርኒንግ የቅኝ ግዛት ቆጠራ",
+        desc: "የኮምፒውተር ቪዥን ስልተ-ቀመር በሜምብሬኑ ላይ ያሉትን የባክቴሪያ ቅኝ ግዛቶች በራስ-ሰር ለይቶ ይቆጥራል።",
         highlight: "የሰው ቆጠራ ስህተትን እና የአይን ድካምን ያስቀራል።"
       },
       {
         num: "6",
-        title: "የመረጃ ልውውጥ እና የክላውድ ካርታ",
-        desc: "የምርመራ መረጃ፣ የ GPS መገኛ እና የማይክሮስኮፕ ናሙና ፎቶዎች በብሉቱዝ ወደ ሞባይል መተግበሪያ ይመሳሰላሉ፤ ለማዕከላዊ ክትትል ወደ ዳሽቦርድ ይላካሉ።",
-        highlight: "ኦዲት ሊደረግ የሚችል አስተማማኝ የመጠጥ ውሃ ጥራት መዝገብ።"
+        title: "የሞባይል መተግበሪያ እና ዳሽቦርድ ማመሳሰል",
+        desc: "ውጤቶቹ በብሉቱዝ ወደ ሞባይል መተግበሪያ ይመሳሰላሉ፤ ለእውነተኛ ጊዜ ክትትል ወደ ማዕከላዊ ዳሽቦርድ ይላካሉ።",
+        highlight: "በጂኦግራፊያዊ ካርታ የተደገፈ አስተማማኝ የውሃ ጥራት ሪፖርት ያዘጋጃል።"
       }
     ],
 
     specsBadge: "የተረጋገጡ የምህንድስና ዝርዝሮች",
-    specsTitle: "የሲስተሙ ቴክኒካዊ መለኪያዎች",
+    specsTitle: "የስርዓት መለኪያዎች እና ቴክኒካዊ ንጽጽሮች",
     colParam: "መለኪያ",
-    colSpec: "ዝርዝር መግለጫ",
-    colStandard: "ደረጃ / ማረጋገጫ",
+    colSpec: "የ WaterScope ዝርዝር መግለጫ",
+    colStandard: "ማመሳከሪያ / ማረጋገጫ",
     specsRows: [
       {
-        param: "የትንተና መርህ",
-        spec: "የሜምብሬን ማጣራት እና ዲጂታል ኦፕቲካል ቆጠራ",
-        standard: "ISO 9308-1:2014 / Amd 1:2016"
-      },
-      {
-        param: "ዒላማ ባክቴሪያዎች",
-        spec: "አጠቃላይ ኮሊፎርም ባክቴሪያ እና ኢ. ኮላይ (E. coli)",
-        standard: "የዓለም ጤና ድርጅት (WHO) የመጠጥ ውሃ መመሪያ"
-      },
-      {
-        param: "የመለየት አቅም ወሰን (LOD)",
-        spec: "በ 100 mL ናሙና ውስጥ 1 የቅኝ ግዛት አሃድ (1 CFU)",
-        standard: "በ ISO 17025 የተረጋገጠ ትክክለኛነት"
+        param: "የምርመራ ዘዴ",
+        spec: "በካርትሪጅ ላይ የተመሰረተ ክፍት የሜምብሬን ማጣሪያ ከአውቶሜትድ የቅኝ ግዛት ቆጠራ ጋር",
+        standard: "መጀመሪያ በካምብሪጅ ዩኒቨርሲቲ መሐንዲሶች የተገነባ"
       },
       {
         param: "የምርመራ ፍጥነት",
-        spec: "ህላወን በ 8 ሰዓት፤ ሙሉ የ CFU ቆጠራ በ 21 ሰዓት",
-        standard: "ከተለመዱት ኢንኩቤተሮች እስከ 60% ፈጣን"
+        spec: "ቀደም ያለ ምልክት በ 8 ሰዓት፤ ሙሉ አሃዛዊ ውጤት በ 21 ሰዓት",
+        standard: "ከ 24–48 ሰዓታት መዘግየት ጋር ሲነጻጸር ፈጣን ውጤት ይሰጣል"
       },
       {
-        param: "የሙቀት መረጋጋት",
-        spec: "37.0°C ± 0.3°C ወይም 44.0°C ± 0.3°C",
-        standard: "ከ 10°C እስከ 40°C የአካባቢ ሙቀት ውስጥ ይሰራል"
+        param: "የምርመራ ደረጃዎች",
+        spec: "ለኢ. ኮላይ እና ኮሊፎርም ባክቴሪያ ወጥ እና ትክክለኛ ውጤት ይሰጣል",
+        standard: "ከ ISO 9308 ደረጃዎች ጋር የተነጻጸረ እና በውጭ አካል የተረጋገጠ"
       },
       {
-        param: "የማጣሪያ ሜምብሬን",
-        spec: "0.45 µm ቀዳዳ መጠን፣ 47 mm የጸዳ ናይትሮሴሉሎዝ",
-        standard: "ለአንድ ጊዜ አገልግሎት የታሸገ የጸዳ ስላይደር"
+        param: "የአገር ውስጥ ማምረት",
+        spec: "የ 3D ህትመት እና የማሽን ቴክኖሎጂዎችን በመጠቀም በባህር ዳር ዩኒቨርሲቲ ይመረታል",
+        standard: "ከውጭ ከሚገቡ ኪቶች ጋር ሲነጻጸር ወጪን እስከ 80% ይቀንሳል"
       },
       {
-        param: "የሻንጣ መከላከያ ደረጃ",
-        spec: "IP67 ውሃ እና አቧራ የማያስገባ ጠንካራ ሻንጣ",
-        standard: "ለመስክ ትራንስፖርት የመውደቅ ሙከራ ያለፈ"
+        param: "ተንቀሳቃሽነት",
+        spec: "5.8 ኪ.ግ ሙሉ የመስክ ጣቢያ በጠንካራ ሻንጣ ውስጥ",
+        standard: "ወደ ሩቅ እና ዝቅተኛ ሀብት ላላቸው አካባቢዎች በቀላሉ ለማጓጓዝ የተነደፈ"
       },
       {
-        param: "ግንኙነት እና ዳታ",
-        spec: "ብሉቱዝ 5.2 + አለምአቀፍ LTE-M / NB-IoT",
-        standard: "ወደ GIS እና ክላውድ ዳሽቦርድ በራስ-ሰር የሚላክ"
+        param: "የቅኝ ግዛት ቆጠራ",
+        spec: "የተቀናጀ ማይክሮስኮፒ እና ማሽን ለርኒንግ በመጠቀም አውቶሜትድ ቆጠራ",
+        standard: "የሰው ቆጠራ ስህተትን እና የአይን ድካምን ያስቀራል"
+      },
+      {
+        param: "የመረጃ ሪፖርት",
+        spec: "በሞባይል መተግበሪያ እና ዳሽቦርድ አማካኝነት የእውነተኛ ጊዜ ክትትል እና ማዕከላዊ ሪፖርት",
+        standard: "ለማህበረሰቦች እና ለጤና ቢሮዎች በመረጃ ላይ የተመሰረተ ግንዛቤ"
+      },
+      {
+        param: "የተቋማት እምነት",
+        spec: "በኢትዮጵያ እና ኬንያ የተደረጉ ቀዳሚ ፓይለቶች፤ እስከ 30 ኪቶች የፍላጎት ደብዳቤ (ACF)",
+        standard: "በምስራቅ አፍሪካ የመስክ ሁኔታዎች ውስጥ ተጠቃሚነቱ የተረጋገጠ"
       }
     ],
 
-    docTitle: "ቴክኒካዊ ሰነዶችን እና SOPs ያውርዱ",
-    docDesc: "የሙሉውን AquaScope የመስክ ኦፕሬተር መመሪያ፣ መደበኛ የአሰራር ቅደም ተከተሎች (SOP) እና የማይክሮባዮሎጂ ማረጋገጫ መረጃዎችን ያግኙ።",
-    docBtn1: "ቴክኒካዊ መመሪያዎችን ይመልከቱ",
-    docBtn2: "የመመርመሪያ ቁሳቁሶችን በመደብር ይመልከቱ"
+    docTitle: "ቴክኒካዊ ሰነዶችን እና የመስክ መመሪያዎችን ያውርዱ",
+    docDesc: "ሙሉውን የቴክኒክ ገለጻዎች፣ መደበኛ የአሰራር ቅደም ተከተሎችን (SOP) እና ዝርዝሮችን ያግኙ።",
+    docBtn1: "ቴክኒካዊ ሰነዶችን ይመልከቱ",
+    docBtn2: "መሐንዲሶችን ያነጋግሩ"
   },
 
   om: {
-    headerBadge: "Calaltuu Meembraanii fi Optiiksii Ol'aanaa",
-    headerTitle: "Teknooloojii Qorannoo Bishaan Keenyaa",
-    headerDesc: "Ulaagaa calaltuu meembraanii ISO 9308-1 gara sirna qorannoo socho'aa fi ammayyaatti jijjiirreerra; kunis qulqulleessuu laabraatoorii walxaxaa hambisa, yeroo inkubashinii gabaabsa akkasumas kolonii baakteeriyaa ofumaan lakkaa'a.",
+    headerBadge: "Sirna WaterScope",
+    headerTitle: "Qorannoo Bishaan Ammayyaa, Salphaa fi Dijitaalaa Hundaaf",
+    headerDesc: "Sirna qorannoo bishaanii kalaqaa banaa ta'e, qorannoo baakteeriyaa bishaan dhugaatii keessatti salphaa, ammayyaa fi amansiisaa ta'e hundaaf dhaqqabamaa taasisa. Jalqaba Injinariin Yuunivarsiitii Keembiriijitiin kan hojjetame.",
 
-    barrierBadge: "Gufuu Teknooloojii",
-    barrierQuote: "Kiitotni qorannoo baakteeriyaa dirree jiran suuta kan hojjetan (sa'aatii 24 hanga 48 kan fudhatan), ulfaatoo, ibiddaan qulqulleessuu kan barbaadanii fi lakkoofsa ijaa irratti kan hirkatanidha. Kunis buufataalee fayyaa baadiyyaa fi tajaajila bishaaniitiif qorannoo idilee gochuu ulfaataa taasisa.",
-    barrierWho: "Akka qajeelfama Dhaabbata Fayyaa Addunyaatti (WHO), samuda bishaan dhugaatii 100mL kamiyyuu keessatti baakteeriyaan E. coli zeeroo (0) ta'uu qaba. Teknooloojiin keenya qulqullina laabraatoorii beekamaa kallattiin gara dirreetti fida.",
-
-    pillarsTag: "Faayidaalee Sirnichaa",
-    pillarsTitle: "Sirrummaa Qabatamaa Dirreetiif kan Hojjetame",
-    pillars: [
+    barrierBadge: "Gufuuwwan Caasaa",
+    barrierQuote: "Sirni to'annoo ammaa gufuuwwan caasaa qaba. Sirnoonni baay'een gatii guddaa fi biyya alaarraa kan fidamaniidha. Sarara dhiyeessii salphatti miidhamu irratti hundaa'u. Baay'een isaanii leenjii addaa naannoo baadiyyaatti itti fufsiisuun ulfaataa ta'e barbaadu. Yeroo baay'ee dijitaalaan kan walqunnaman miti — kana jechuun daataan kophaatti hafa. Bakka bishaanii baadiyyaa kumaatama irratti babal'isuun rakkisaa ta'a. Kun kufaatii teeknooloojii miti. Rakkoo saxaxa sirnaati.",
+    barrierWho: "Qormaata Ijoo To'annoo Qulqullina Bishaanii Keessatti: Gatii guddaa, biyya alaarraa kan dhufu, teeknikaan xaxamaa, sarara dhiyeessii dadhabaa, dijitaalaan kan hin walqunnanne, babal'isuuf rakkisaa.",
+    challenges: [
       {
-        title: "Saffisaa",
-        tag: "Sa'aatii 8 hanga 21",
-        desc: "Koliifoormiin jiraachuu isaa sa'aatii 8 keessatti adda baasa; lakkoofsa CFU guutuu sa'aatii 21 keessatti kenna — kiitota dirree idilee caalaa saffisaadha."
+        title: "Gatii Guddaa (Expensive)",
+        desc: "Gatiin guddaan kiitiiwwan qorannoo bal'inaan akka hin fayyadamne daangessa."
       },
       {
-        title: "Socho'aa",
-        tag: "Kiitii Hunda-Tokko",
-        desc: "Sirni qorannoo guutuun saanduqa IP67 jabaataa keessatti qophaa'e; teessoo laabraatoorii malee achumatti calaluu fi inkubashinii gaggeessa."
+        title: "Biyya Alaarraa Kan Dhufu (Imported)",
+        desc: "Oomishaalee biyya alaa irratti hirkachuun furmaata biyya keessaa gufachiisa."
       },
       {
-        title: "Salphaa",
-        tag: "Leenjii Xiqqaa",
-        desc: "Ogeessota dirreetiif kan qophaa'e. Calaltuu salphaa fi furtuu bifa qabuun ogeessotni fayyaa hawaasaa sirriitti akka qoratan dandeessisa."
+        title: "Teeknikaan Xaxamaa (Technically Complex)",
+        desc: "Sirnoonni baay'een hojjechuuf leenjii addaa barbaadu."
       },
       {
-        title: "Amanamaa",
-        tag: "ISO 9308-1",
-        desc: "Ulaagaalee calaltuu meembraanii ISO 9308-1 fi ISO 9308-2 wajjin kallattiin kan madaalamee fi laabraatoorii ISO 17025tiin kan mirkanaa'e."
+        title: "Sarara Dhiyeessii Dadhabaa (Fragile Supply Chains)",
+        desc: "Sirnoonni miidhamoo ta'an rakkoo loojistiiksiitiin kufuu danda'u."
       },
       {
-        title: "Jabaataa",
-        tag: "Dirreef kan Qophaa'e",
-        desc: "Ho'a olaanaa (hanga 40°C), naannoo awwaaraa fi elektirika malee baatrii olaanaadhaan amanamummaadhaan akka hojjetu qorameera."
+        title: "Dijitaalaan Kan Hin Walqunnanne (Not Digitally Connected)",
+        desc: "Daataa qooddachuu daangeffamuun carraaqqii to'annoo xaxamaa taasisa."
       },
       {
-        title: "Ragaa Irratti kan Hundaa'e",
-        tag: "Yeroo Qabatamaatti Walitti Fiduu",
-        desc: "Bu'aan qorannoo fi suuraan maaykirooskooppii Bluutuuziin gara mobaayilaatti darba; kaartaa qulqullina bishaaniitiif gara daashboordiitti ergama."
+        title: "Babal'isuuf Rakkisaa (Difficult to Scale)",
+        desc: "Naannoleen baadiyyaa hojiirra oolchuu irratti qormaata addaa qabu."
       }
     ],
 
-    sopBadge: "Adeemsa Hojii Idilee (SOP)",
-    sopTitle: "Akkamitti Hojjeta: Sadarkaa Sadarkaadhaan",
-    sopDesc: "Samuda bishaanii fudhachuu irraa hanga gabaasa optikaalaa ofumaan hojjetuutti adeemsa qorannoo guutuu.",
+    pillarsTag: "Amaloota Ijoo Sirna WaterScope",
+    pillarsTitle: "Fedhii Dirree Qabatamaa Irratti Hundaa'ee Kan Saxaxame",
+    pillarsDesc: "Sirnichi fedhii dirree qabatamaa irratti hundaa'ee kan saxaxameedha: Ariifataa — mallattoo sa'aatii 8 fi lakkoofsa guutuu sa'aatii 21 keessatti. Socho'aa fi cimaa — naannolee qabeenyi itti xiqqaateef kan hojjetame. Amansiisaa — sadarkaa ISO 9308 wajjin kan walbira qabamee fi qaama alaan kan mirkanaa'e. Dijitaala fi ammayyaa — maayikirooskooppii fi maashin larniingii fayyadamee kolonii lakkaa'a. Daataa irratti kan hundaa'e — appii moobaayilaa fi daashboordiin gabaasa giddu galeessaa kenna.",
+    pillars: [
+      {
+        title: "Ariifataa (Rapid)",
+        tag: "Sa'aatii 8 hanga 21",
+        desc: "Qorannoo qulqullina bishaaniitiif bu'aa yeroodhaa kenna (mallattoo sa'aatii 8 keessatti fi bu'aa guutuu sa'aatii 21 keessatti)."
+      },
+      {
+        title: "Socho'aa (Portable)",
+        tag: "Qabeenya Xiqqaateef",
+        desc: "Bakkeewwan fagootti salphaatti fe'amuuf kan saxaxame. Naannolee qabeenya xiqqaataniif kan hojjetame."
+      },
+      {
+        title: "Salphaa (Simple)",
+        tag: "Hojiif Salphaa",
+        desc: "Saxaxni fayyadamaaf mijatu hojjechuuf salphaa ta'uu isaa mirkaneessa."
+      },
+      {
+        title: "Amansiisaa (Reliable)",
+        tag: "ISO 9308",
+        desc: "Bu'aa qulqullina bishaanii dhaabbataa fi sirrii ta'e kenna. Sadarkaa ISO 9308 wajjin kan walbira qabamee fi qaama alaan kan mirkanaa'e."
+      },
+      {
+        title: "Cimaa (Robust)",
+        tag: "Dirreef Mirkanaa'e",
+        desc: "Haalawwan dirree qormaata qaban damdamachuuf kan saxaxame."
+      },
+      {
+        title: "Dijitaala (Digital)",
+        tag: "Optiiksii Qabata",
+        desc: "Hubannoo ragaa irratti hundaa'eef teeknooloojii olaanaa walitti makuun maayikirooskooppii fi maashin larniingiin kolonii lakkaa'a."
+      },
+      {
+        title: "Ammayyaa (Smart)",
+        tag: "Daataa Yeroodhaa",
+        desc: "Murtoo ragaa irratti hundaa'eef daataa yeroodhaa kenna."
+      },
+      {
+        title: "Gatii Madaalawaa (Affordable)",
+        tag: "Hamma 80% Hir'isa",
+        desc: "Hawaasa naannoof gatii qusatamaa ta'ee fi gufuu maallaqaa akka hir'isuuf kan saxaxame."
+      },
+      {
+        title: "Daataa Irratti Kan Hundaa'e (Data-Driven)",
+        tag: "Appii fi Daashboordii",
+        desc: "Qulqullina bishaanii fooyyessuuf xiinxala olaanaa fayyadama, appii moobaayilaa fi daashboordii fayyadamuun to'annoo yerootiifi gabaasa giddu galeessaa dandeessisa."
+      }
+    ],
+
+    sopBadge: "Adeemsa Qorannoo Kaartiriidhaan",
+    sopTitle: "Qophii Naamuunaa Daqiiqaa 8 Salphaa",
+    sopDesc: "Mala calaltuu meembireenii maashin larningiidhaan lakkoofsa kolonii ofumaan hojjetu wajjin.",
     stages: [
       {
         num: "1",
-        title: "Silaayidara Meembraanii Galchuu",
-        desc: "Meembraaniin 0.45µm fi paadiin silaayidara keessa jiru. Silaayidarichi samuda calaluuf kaartirii sibiilaa keessatti hidhama.",
-        highlight: "Qabduu banaa ykn ibidda malee faalama irraa bilisaan qabuu."
+        title: "Naamuunaa Fudhuu",
+        desc: "Naamuunaa bishaan dhugaatii 100mL paampii vaakiyumii mootoraan hojjetuun daqiiqaa 3 gadi keessatti fudhatama.",
+        highlight: "Calaltuu vaakiyumii mootoraan hojjetu dadhabbii harka dhabamsiisa."
       },
       {
         num: "2",
-        title: "Calaltuu Vaakiyeemii Masiiniin Hojjetu",
-        desc: "Samudni bishaan dhugaatii 100mL fudhatamee pompii vaakiyeemii callisaa baatriidhaan hojjetuun calalama.",
-        highlight: "Dhiibbaa calaltuu wal-qixa ta'een baakteeriyaan hundi meembraanii irratti hafa."
+        title: "Kaartiriin Calaluu",
+        desc: "Bishaan kaartirii sibiilaa keessa darbuun baakteeriyaa meembireenii 0.45µm irratti qaba.",
+        highlight: "Gubaatii ibiddaa dirree fi qulqullina addaa hin barbaadu."
       },
       {
         num: "3",
-        title: "Dhangala'aa Miidiyaa fi Inkubashinii",
-        desc: "Dhangala'aan guddina koliifoormii fi E. coli paadii irratti dhangalaafama. Kaartiriin gara kuusaa ho'aa 37°C ykn 44°Ctti gala.",
-        highlight: "Bishaan ho'aa ykn inkubatara guddaa malee ho'a sirrii to'achuu."
+        title: "Miidiyaa fi Inkiwubeeshinii",
+        desc: "Miidiyaan nyaataa itti dabalamuun inkiwubeetara 37°C/44°C keessa kaa'ama.",
+        highlight: "Qabbaneessaa hin barbaadu; ho'a sirrii ±0.3°C eega."
       },
       {
         num: "4",
-        title: "Suuraa Maaykirooskooppii Ofumaan Kaasu",
-        desc: "Maaykirooskooppiin optikaalaa dijitaalaa yeroo baakteeriyaan guddatu suuraa qulqullina qabu kaasa. Sooftiweeriin ijaan mul'achuu dura adda baasa.",
-        highlight: "Mawjuulii suuraa olaanaa kompiitara viiziyiniin hojjetu."
+        title: "Fakkii Maayikirooskoopii Ofumaa",
+        desc: "Maayikirooskoopiin dijitaalaa baakteeriyaan baay'achuu yeroo jalqabu fakkii qulqullina ol'aanaa kaasa.",
+        highlight: "Koloniin ijaan mul'achuu dura sa'aatii 8 keessatti adda baasa."
       },
       {
         num: "5",
-        title: "Lakkoofsa Kolonii Maashin Lerningii",
-        desc: "Malli maashin lerning keenya E. coli fi koliifoormii adda baasee lakkaa'a; safartuu CFU/100mL qabatamaa kenna.",
-        highlight: "Dogoggora lakkoofsa namaa fi dadhabbii ijaa hambisa."
+        title: "Lakkoofsa Kolonii Maashin Larnigii",
+        desc: "Algorizimiin kompiitara viizyinii koloniilee baakteeriyaa ofumaan lakkaa'a.",
+        highlight: "Dogoggora lakkoofsa namaa fi dadhabbii ijaa dhabamsiisa."
       },
       {
         num: "6",
-        title: "Ragaa Dabarsuu fi Kaartaa Dijitaalaa",
-        desc: "Ragaan qorannoo, bakki GPS fi suuraan maaykirooskooppii Bluutuuziin gara mobaayilaatti ergamee gara daashboordii giddu-galeessaatti ol-kaa'ama.",
-        highlight: "Galmee qulqullina bishaan dhugaatii qoratamuu danda'u."
+        title: "Appii fi Daashboordii Walitti Qabsiisuu",
+        desc: "Bu'aan qorannoo appii moobaayilaa fi daashboordiitti yeroodhaan ergama.",
+        highlight: "Gabaasa qulqullina bishaanii amansiisaa kenna."
       }
     ],
 
-    specsBadge: "Ulaagaalee Injinariingii Mirkanaa'an",
-    specsTitle: "Safartuulee Sirna Teeknikaa",
+    specsBadge: "Ibsa Injinariingii Mirkanaa'e",
+    specsTitle: "Safartuulee Sirnaa fi Madaalliiwwan Teeknikaa",
     colParam: "Safartuu",
-    colSpec: "Ibsa Bal'aa",
-    colStandard: "Ulaagaa / Mirkaneessa",
+    colSpec: "Ibsa Sirna WaterScope",
+    colStandard: "Mirkaneessa / Sadarkaa",
     specsRows: [
       {
-        param: "Seera Xiinxalaa",
-        spec: "Calaltuu Meembraanii fi Lakkoofsa Optikaalaa Dijitaalaa",
-        standard: "ISO 9308-1:2014 / Amd 1:2016"
-      },
-      {
-        param: "Baakteeriyaa Xiyyeeffannoo",
-        spec: "Koliifoormii Waliigalaa fi Escherichia coli (E. coli)",
-        standard: "Qajeelfama Bishaan Dhugaatii WHO"
-      },
-      {
-        param: "Dandeettii Adda Baasuu (LOD)",
-        spec: "Samuda 100 mL keessatti Yuunitii Kolonii 1 (1 CFU)",
-        standard: "Qulqullina ISO 17025tiin Mirkanaa'e"
+        param: "Mala Qorannoo",
+        spec: "Calaltuu meembireenii banaa kaartirii irratti hundaa'e lakkoofsa kolonii ofumaa wajjin",
+        standard: "Jalqaba Injinariin Yuunivarsiitii Keembiriijitiin hojjetame"
       },
       {
         param: "Saffisa Qorannoo",
-        spec: "Jiraachuu sa'aatii 8tti; lakkoofsa CFU sa'aatii 21tti",
-        standard: "Inkubatara aadaa caalaa 60% saffisaa"
+        spec: "Mallattoo jalqabaa sa'aatii 8; bu'aa guutuu sa'aatii 21 keessatti",
+        standard: "Turtii sa'aatii 24–48 wajjin walbira qabamee ariifataadha"
       },
       {
-        param: "Tasgabbii Ho'aa",
-        spec: "37.0°C ± 0.3°C ykn 44.0°C ± 0.3°C",
-        standard: "Ho'a naannoo 10°C hanga 40°C keessatti hojjeta"
+        param: "Sadarkaa Qorannoo",
+        spec: "E. coli fi Koliifoormiif bu'aa dhaabbataa fi sirrii ta'e kenna",
+        standard: "Sadarkaa ISO 9308 wajjin kan walbira qabamee fi qaama alaan kan mirkanaa'e"
       },
       {
-        param: "Meembraanii Calaltuu",
-        spec: "Qaawwa 0.45 µm, 47 mm naayitirooseeluloosii qulqulluu",
-        standard: "Silaayidara qulqulluu al-tokko qofa fayyadu"
+        param: "Oomisha Biyya Keessaa",
+        spec: "Teeknooloojii Maxxansa 3D fi maashinaatiin Yuunivarsiitii Baahir Daaritti oomishama",
+        standard: "Gatii kiitiiwwan biyya alaa hamma 80% hir'isa"
       },
       {
-        param: "Gosa Saanduqaa",
-        spec: "IP67 bishaan fi awwaara kan hin galchine",
-        standard: "Geejjiba dirreetiif kufaatii kan dandamatu"
+        param: "Socho'ummaa",
+        spec: "Buufata dirree guutuu 5.8 kg saanduqa cimaa keessatti",
+        standard: "Bakkeewwan fagootti salphaatti fe'amuuf kan saxaxame"
       },
       {
-        param: "Walqunnamtii Ragaa",
-        spec: "Bluetooth Low Energy 5.2 + Global LTE-M / NB-IoT",
-        standard: "Ofumaan gara GIS fi daashboordiitti ol-ergama"
+        param: "Lakkoofsa Kolonii",
+        spec: "Maayikirooskooppii fi maashin larniingiitiin lakkoofsa ofumaan hojjetamu",
+        standard: "Dogoggora lakkoofsa namaa dhabamsiisa"
+      },
+      {
+        param: "Gabaasa Daataa",
+        spec: "Appii moobaayilaa fi daashboordiin to'annoo yerootiifi gabaasa giddu galeessaa",
+        standard: "Hawaasaa fi biiroolee fayyaatiif hubannoo ragaa irratti hundaa'e"
+      },
+      {
+        param: "Amanamummaa Dhaabbilee",
+        spec: "Paayileetii Itoophiyaa fi Keeniyaa; Xalayaa Fedhii yuuniitii 30 (ACF)",
+        standard: "Haalawwan Afrikaa Bahaa keessatti bu'a qabeessummaan isaa mirkanaa'e"
       }
     ],
 
-    docTitle: "Galmeewwan Teeknikaa fi SOPs Buufadhaa",
-    docDesc: "Qajeelfama Hojii Dirree AquaScope guutuu, Adeemsa Hojii Idilee (SOP) fi ragaalee qorannoo maaykiroobaayoloojii argadhaa.",
-    docBtn1: "Qajeelfamoota Teeknikaa Ilaalaa",
-    docBtn2: "Meeshaalee Qorannoo Suuqii Keessatti Ilaalaa"
-  },
-
-  ti: {
-    headerBadge: "ዝማዕበለ ናይ ሜምብሬን ምጽራይን ኦፕቲክስን",
-    headerTitle: "ናይ ማይ መመርመሪ ቴክኖሎጂና",
-    headerDesc: "ነቲ ናይ ISO 9308-1 ናይ ሜምብሬን ምጽራይ ደረጃ ናብ ዘመናዊ፣ ኩሉ-ኣብ-ሓደ ዝሓዘ ተንቀሳቓሲ ናይ ማይ መመርመሪ ስርዓት ቀይርናዮ ኣለና፤ እዚ ድማ ውስብስብ ናይ ላብራቶሪ ምጽራይ የትርፍ፣ ግዜ መርመራ የሕጽር ከምኡ'ውን ናይ ባክቴርያ ኮሎኒታት ብባዕሉ ይቖጽር።",
-
-    barrierBadge: "ናይ ቴክኖሎጂ ዕንቅፋት",
-    barrierQuote: "እቶም ዘለዉ ናይ ሜዳ ባክቴርያ መመርመሪ ኪታት ኣዝዮም ደንጎይቲ (ካብ 24 ክሳብ 48 ሰዓታት ዝወስዱ)፣ ከበድቲ፣ ብሓዊ ምጽራይ ዝደልዩን ኣብ ናይ ሰብ ዓይኒ ቆጸራ ዝምርኮሱን እዮም። እዚ ድማ ንናይ ገጠር ጥዕና ኬላታት፣ ንትካላት ማይን ንተቖጻጸርቲ ማሕበረሰብን ስሩዕ ክትትል ንምግባር ከቢድ ገይርዎ ኣሎ።",
-    barrierWho: "ብመሰረት መምርሒ ውድብ ጥዕና ዓለም (WHO)፣ ኣብ ዝኾነ 100mL ናይ መስተ ማይ ናሙና ዜሮ (0) ናይ ኢ. ኮላይ ባክቴርያ ክርከብ ኣለዎ። ቴክኖሎጂና ነቲ ናይ ፍሉጥ ላብራቶሪ ትኽክለኛነት ብቐጥታ ናብ ሜዳ የብጽሖ።",
-
-    pillarsTag: "ናይቲ ስርዓት ብልጫታት",
-    pillarsTitle: "ንተግባራዊ ናይ ሜዳ ትኽክለኛነት ዝተሰርሐ",
-    pillars: [
-      {
-        title: "ቅልጡፍ",
-        tag: "ካብ 8 ክሳብ 21 ሰዓታት",
-        desc: "ህላወ ኮሊፎርም ባክቴርያ ኣብ ውሽጢ 8 ሰዓት የረጋግጽ፤ ምሉእ ቑጽራዊ ናይ CFU ቆጸራ ኣብ 21 ሰዓት ይህብ — ካብ ስሩዕ ናይ ሜዳ ኪታት ኣዝዩ ቅልጡፍ።"
-      },
-      {
-        title: "ተንቀሳቓሲ",
-        tag: "ኩሉ-ኣብ-ሓደ ኪት",
-        desc: "ምሉእ ናይ መርመራ ስርዓት ኣብ ድልዱል IP67 ሳንዱቕ ውሽጢ ዝተዳለወ ኮይኑ፣ ናይ ላብራቶሪ ሰሌዳ ከየድለየ ኣብቲ ቦታ ምጽራይን ኢንኩቤሽንን የካይድ።"
-      },
-      {
-        title: "ቀሊል",
-        tag: "ውሑድ ስልጠና",
-        desc: "ንናይ ሜዳ ሰብ ሞያ ተባሂሉ ዝተዳለወ። ቀሊል ናይ ምጽራይ ኣሰራርሓን ብሕብሪ ዝተፈልዩ መፍትሓትን ሰብ ሞያ ብትኽክል ክምርምሩ የኽእሎም።"
-      },
-      {
-        title: "ዘተኣማምን",
-        tag: "ISO 9308-1",
-        desc: "ብቐጥታ ምስ ስሩዕ ናይ ISO 9308-1ን ISO 9308-2ን ሜላታት ዝተነጻጸረን ብ ISO 17025 ላብራቶሪታት ዝተረጋገጸን።"
-      },
-      {
-        title: "ድልዱል",
-        tag: "ንሜዳ ዝጠነኸረ",
-        desc: "ኣብ ልዑል ሙቐት (ክሳብ 40°C)፣ ኣብ ሓመዳም ኩነታትን ኤሌክትሪክ ኣብ ዘይብሎም ቦታታትን ብልዑል ባትሪ ብዘተኣማምን መንገዲ ክሰርሕ ተፈቲኑ።"
-      },
-      {
-        title: "መረዳእታ ዝመርሖ",
-        tag: "ቕጽበታዊ ምትእስሳር",
-        desc: "ውጽኢት መርመራን ጥረ ናይ ማይክሮስኮፕ ስእልታትን ብብሉቱዝ ናብ ሞባይል ይመሳሰሉ፤ ንካርታን ንውሳነን ናብ ክላውድ ይለኣኹ።"
-      }
-    ],
-
-    sopBadge: "ስሩዕ ናይ ኣሰራርሓ ቅደም ተኸተል (SOP)",
-    sopTitle: "ከመይ ይሰርሕ፡ ደረጃ ብደረጃ",
-    sopDesc: "ካብ ናሙና ማይ ምውሳድ ክሳብ ኣውቶሜትድ ኦፕቲካል ሪፖርት ዘሎ ምሉእ ናይ መርመራ ቅደም ተኸተል።",
-    stages: [
-      {
-        num: "1",
-        title: "ናይ ሜምብሬን ስላይደር ምእታው",
-        desc: "እቲ ዝጸረየ 0.45µm ናይትሮሴሉሎዝ ሜምብሬንን መግብን ኣብቲ ስላይደር ይቕመጡ። እቲ ስላይደር ንምጽራይ ድሉው ንምግባር ኣብቲ ናይ ብረት ካርትሪጅ ይእሰር።",
-        highlight: "ክፉት መትሓዚ ወይ ሓዊ ከየድለየ ካብ ብከላ ዝጸረየ ኣተሓሕዛ።"
-      },
-      {
-        num: "2",
-        title: "ብሞተር ዝሰርሕ ናይ ቫክዩም ምጽራይ",
-        desc: "ስሩዕ 100mL ናይ መስተ ማይ ናሙና ተወሲዱ ብውሽጣዊ ባትሪ ብዝሰርሕ ጸጥተኛ ቫክዩም ፓምፕ ኣቢሉ ይጸሪ።",
-        highlight: "ማዕረ ዝኾነ ናይ ምጽራይ ጸቕጢ ባክቴርያታት ኣብቲ ሜምብሬን ክተርፉ የረጋግጽ።"
-      },
-      {
-        num: "3",
-        title: "ፈሳሲ መግብን ኢንኩቤሽንን",
-        desc: "ናይ ኮሊፎርምን ኢ. ኮላይን ዕቤት ዘቀላጥፍ ፈሳሲ መግቢ ናብቲ ፓድ ይውሰኽ። እቲ ካርትሪጅ ናብቲ 37°C ወይ 44°C ዝተሓለወ ኢንኩቤተር ይኣቱ።",
-        highlight: "ከበድቲ ናይ ማይ ባስካታት ከየድለዩ ትኽክለኛ ናይ ሙቐት ምቁጽጻር።"
-      },
-      {
-        num: "4",
-        title: "ኣውቶሜትድ ማይክሮስኮፒክ ምስሊ",
-        desc: "ዝተገጠመ ዲጂታል ኦፕቲካል ማይክሮስኮፕ ባክቴርያታት ክበዝሑ ከለዉ ጽሬት ዘለዎ ምስሊ ይወስድ። ኮምፒውተር ቪዥን ቅድሚ ብዓይኒ ምርኣዮም የለልዮም።",
-        highlight: "ብኮምፒውተር ቪዥን ዝሰርሕ ልዑል ጽሬት ዘለዎ ናይ ምስሊ ሞጁል።"
-      },
-      {
-        num: "5",
-        title: "ናይ ማሽን ለርኒንግ ኮሎኒ ቆጸራ",
-        desc: "ናይ ማሽን ለርኒንግ ስልተ-ቀመርና ንኢ. ኮላይን ኮሊፎርምን ፈልዩ ይቖጽር፤ ትኽክለኛ ናይ CFU/100mL ልክዒት ይህብ።",
-        highlight: "ናይ ሰብ ቆጸራ ጌጋን ናይ ዓይኒ ድኻምን የትርፍ።"
-      },
-      {
-        num: "6",
-        title: "ናይ መረዳእታ ምትእስሳርን ዲጂታል ካርታን",
-        desc: "መረዳእታ መርመራ፣ ናይ GPS ቦታን ናይ ማይክሮስኮፕ ስእልን ብብሉቱዝ ናብ ሞባይል ኣፕሊኬሽን ይመሳሰሉ፤ ንማእከላይ ክትትል ናብ ዳሽቦርድ ይለኣኹ።",
-        highlight: "ኦዲት ክግበረሉ ዝኽእል ዘተኣማምን ናይ መስተ ማይ ጽሬት መዝገብ።"
-      }
-    ],
-
-    specsBadge: "ዝተረጋገጹ ናይ ምህንድስና ዝርዝራት",
-    specsTitle: "ናይቲ ስርዓት ቴክኒካዊ መለክዒታት",
-    colParam: "መለክዒ",
-    colSpec: "ዝርዝር መብርሂ",
-    colStandard: "ደረጃ / ምርግጋጽ",
-    specsRows: [
-      {
-        param: "ናይ ትንተና መትከል",
-        spec: "ናይ ሜምብሬን ምጽራይን ዲጂታል ኦፕቲካል ቆጸራን",
-        standard: "ISO 9308-1:2014 / Amd 1:2016"
-      },
-      {
-        param: "ዒላማ ባክቴርያታት",
-        spec: "ሓፈሻዊ ኮሊፎርም ባክቴርያን ኢ. ኮላይን (E. coli)",
-        standard: "ናይ ውድብ ጥዕና ዓለም (WHO) ናይ መስተ ማይ መምርሒ"
-      },
-      {
-        param: "ናይ ምፍላጥ ዓቕሚ ደረት (LOD)",
-        spec: "ኣብ 100 mL ናሙና ውሽጢ 1 ናይ ኮሎኒ ኣሃድ (1 CFU)",
-        standard: "ብ ISO 17025 ዝተረጋገጸ ትኽክለኛነት"
-      },
-      {
-        param: "ናይ መርመራ ፍጥነት",
-        spec: "ህላወ ኣብ 8 ሰዓት፤ ምሉእ ቆጸራ CFU ኣብ 21 ሰዓት",
-        standard: "ካብ ንቡራት ኢንኩቤተራት ክሳብ 60% ቅልጡፍ"
-      },
-      {
-        param: "ናይ ሙቐት ርግኣት",
-        spec: "37.0°C ± 0.3°C ወይ 44.0°C ± 0.3°C",
-        standard: "ካብ 10°C ክሳብ 40°C ናይ ከባቢ ሙቐት ይሰርሕ"
-      },
-      {
-        param: "ናይ ምጽራይ ሜምብሬን",
-        spec: "0.45 µm ቀዳድ፣ 47 mm ዝጸረየ ናይትሮሴሉሎዝ",
-        standard: "ንሓደ ግዜ ጥራይ ዘገልግል ዝተዓሸገ ስላይደር"
-      },
-      {
-        param: "ናይ ሳንዱቕ መከላኸሊ",
-        spec: "IP67 ማይን ሓመድን ዘየእቱ ድልዱል ሳንዱቕ",
-        standard: "ንናይ ሜዳ ጉዕዞ ካብ ላዕሊ ብምውዳቕ ዝተፈተነ"
-      },
-      {
-        param: "ርክብን መረዳእታን",
-        spec: "ብሉቱዝ 5.2 + ዓለማዊ LTE-M / NB-IoT",
-        standard: "ናብ GISን ክላውድ ዳሽቦርድን ብባዕሉ ዝለኣኽ"
-      }
-    ],
-
-    docTitle: "ቴክኒካዊ ሰነዳትን SOPs ኣውርዱ",
-    docDesc: "ምሉእ ናይ AquaScope ናይ ሜዳ ኦፕሬተር መምርሒ፣ ስሩዕ ናይ ኣሰራርሓ ቅደም ተኸተል (SOP) ከምኡ'ውን ናይ ማይክሮባዮሎጂ መረጋገጺታት ርኸቡ።",
-    docBtn1: "ቴክኒካዊ መምርሒታት ተዓዘቡ",
-    docBtn2: "ናይ መመርመሪ ኣቑሑት ኣብ ድኳን ተዓዘቡ"
+    docTitle: "Sanadoota Teeknikaa fi Qajeelfama Dirree Buufadhaa",
+    docDesc: "Ibsa teeknikaa guutuu, Adeemsa Hojii Sadarkaa Eeggate (SOP) fi bal'ina sirnichaa argadhaa.",
+    docBtn1: "Sanadoota Teeknikaa Ilaalaa",
+    docBtn2: "Injinaroota Keenya Qunnamaa"
   }
+};
+
+export const technologyContent: Record<Language, TechnologyPageContent> = {
+  en: data.en,
+  am: data.am,
+  om: data.om,
+  ti: data.am,
 };

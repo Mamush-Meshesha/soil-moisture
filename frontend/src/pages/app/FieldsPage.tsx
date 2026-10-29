@@ -84,7 +84,7 @@ export const FieldsPage: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-heading)' }}>
             {t('fields.title')}
           </h1>
           <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>

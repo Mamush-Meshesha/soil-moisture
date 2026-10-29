@@ -197,7 +197,7 @@ export const WaterDepthChart: React.FC<WaterDepthChartProps> = ({
               <polyline
                 key={depth}
                 fill="none"
-                stroke={DEPTH_COLORS[depth]?.stroke || '#176B45'}
+                stroke={DEPTH_COLORS[depth]?.stroke || '#006699'}
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

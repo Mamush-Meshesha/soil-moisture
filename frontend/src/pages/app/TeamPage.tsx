@@ -68,7 +68,7 @@ export const TeamPage: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-heading)' }}>
             {t('team.title')}
           </h1>
           <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>
@@ -88,7 +88,7 @@ export const TeamPage: React.FC = () => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', fontSize: '13px' }}>
           <div style={{ padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: '6px' }}>
-            <strong style={{ color: 'var(--color-primary-dark)' }}>PLATFORM_ADMIN</strong>
+            <strong style={{ color: 'var(--color-heading)' }}>PLATFORM_ADMIN</strong>
             <p style={{ color: 'var(--color-text-muted)', marginTop: '4px' }}>Full root access, team management, sensor calibration overrides.</p>
           </div>
           <div style={{ padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: '6px' }}>

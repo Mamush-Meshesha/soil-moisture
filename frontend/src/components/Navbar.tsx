@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
           maxWidth: '1280px',
           margin: '0 auto',
           padding: '0 20px',
-          height: isScrolled ? '66px' : '74px',
+          height: isScrolled ? '70px' : '82px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -72,68 +72,23 @@ export const Navbar: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
             flexShrink: 0,
             textDecoration: 'none',
           }}
+          title="WaterScope Africa"
         >
-          <div
+          <img
+            src={theme === 'dark' ? '/images/waterscope-africa-logo-white.png' : '/images/waterscope-africa-logo.png'}
+            alt="WaterScope Africa"
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #006699 0%, #0EA5E9 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#FFFFFF',
-              flexShrink: 0,
-              boxShadow: '0 4px 14px rgba(2, 132, 199, 0.32)',
-              transition: 'transform 200ms ease',
+              height: isScrolled ? '46px' : '56px',
+              width: 'auto',
+              maxHeight: '62px',
+              objectFit: 'contain',
+              display: 'block',
+              transition: 'height 250ms ease',
             }}
-          >
-            <Droplets size={22} />
-          </div>
-          <div style={{ whiteSpace: 'nowrap', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span
-                style={{
-                  fontSize: '20px',
-                  fontWeight: 800,
-                  color: 'var(--color-heading)',
-                  letterSpacing: '-0.025em',
-                  lineHeight: 1.15,
-                }}
-              >
-                AquaScope
-              </span>
-              <span
-                style={{
-                  fontSize: '9px',
-                  fontWeight: 700,
-                  backgroundColor: 'var(--color-primary-subtle)',
-                  color: 'var(--color-primary)',
-                  padding: '1px 6px',
-                  borderRadius: '10px',
-                  border: '1px solid var(--color-border)',
-                }}
-              >
-                LAB & FIELD
-              </span>
-            </div>
-            <span
-              style={{
-                fontSize: '9.5px',
-                color: 'var(--color-text-muted)',
-                fontWeight: 600,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                lineHeight: 1.2,
-              }}
-            >
-              {t('nav.subtitle', 'Water Testing & Safety')}
-            </span>
-          </div>
+          />
         </Link>
 
         {/* Desktop Navigation Links */}

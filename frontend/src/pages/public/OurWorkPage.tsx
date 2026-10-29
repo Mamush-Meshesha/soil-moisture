@@ -101,25 +101,32 @@ export const OurWorkPage: React.FC = () => {
       {/* Hero Section */}
       <section
         style={{
-          backgroundColor: 'var(--color-surface)',
-          padding: '72px 24px 56px',
-          borderBottom: '1px solid var(--color-border)',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#081426',
+          backgroundImage: 'linear-gradient(135deg, rgba(8, 20, 38, 0.92) 0%, rgba(11, 37, 69, 0.94) 55%, rgba(6, 17, 33, 0.96) 100%), url("/images/field-testing-kenya.jpeg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          padding: '88px 24px 64px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          color: '#FFFFFF',
         }}
       >
-        <div style={{ maxWidth: '1080px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '6px 16px',
+              padding: '7px 18px',
               borderRadius: '9999px',
-              backgroundColor: 'var(--color-primary-subtle)',
-              color: 'var(--color-primary)',
+              backgroundColor: 'rgba(14, 165, 233, 0.16)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              color: '#38BDF8',
               fontSize: '13.5px',
               fontWeight: 700,
               marginBottom: '20px',
-              border: '1px solid var(--color-border)',
+              backdropFilter: 'blur(8px)',
             }}
           >
             <Globe size={16} /> {content.badge}
@@ -127,9 +134,9 @@ export const OurWorkPage: React.FC = () => {
 
           <h1
             style={{
-              fontSize: '44px',
-              fontWeight: 800,
-              color: 'var(--color-heading)',
+              fontSize: 'clamp(36px, 5vw, 48px)',
+              fontWeight: 900,
+              color: '#FFFFFF',
               letterSpacing: '-0.025em',
               marginBottom: '18px',
               lineHeight: 1.2,
@@ -141,7 +148,7 @@ export const OurWorkPage: React.FC = () => {
           <p
             style={{
               fontSize: '19px',
-              color: 'var(--color-text-muted)',
+              color: '#CBD5E1',
               lineHeight: 1.65,
               maxWidth: '820px',
               margin: '0 auto 36px',
@@ -159,32 +166,34 @@ export const OurWorkPage: React.FC = () => {
               maxWidth: '920px',
               margin: '0 auto',
               padding: '24px',
-              backgroundColor: 'var(--color-bg)',
+              backgroundColor: 'rgba(15, 23, 42, 0.85)',
+              backdropFilter: 'blur(12px)',
               borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--color-border)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 12px 32px rgba(0, 0, 0, 0.4)',
             }}
           >
             <div>
-              <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary)' }}>
+              <div style={{ fontSize: '28px', fontWeight: 800, color: '#38BDF8' }}>
                 {content.metric1Val}
               </div>
-              <div style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
+              <div style={{ fontSize: '13px', color: '#CBD5E1', marginTop: '4px' }}>
                 {content.metric1Label}
               </div>
             </div>
             <div>
-              <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+              <div style={{ fontSize: '28px', fontWeight: 800, color: '#4ADE80' }}>
                 {content.metric2Val}
               </div>
-              <div style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
+              <div style={{ fontSize: '13px', color: '#CBD5E1', marginTop: '4px' }}>
                 {content.metric2Label}
               </div>
             </div>
             <div>
-              <div style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-secondary)' }}>
+              <div style={{ fontSize: '28px', fontWeight: 800, color: '#FBBF24' }}>
                 {content.metric3Val}
               </div>
-              <div style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
+              <div style={{ fontSize: '13px', color: '#CBD5E1', marginTop: '4px' }}>
                 {content.metric3Label}
               </div>
             </div>

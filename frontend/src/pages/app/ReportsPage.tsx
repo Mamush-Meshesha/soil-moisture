@@ -40,7 +40,7 @@ export const ReportsPage: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+          <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-heading)' }}>
             {t('reports.title')}
           </h1>
           <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>
@@ -98,14 +98,14 @@ export const ReportsPage: React.FC = () => {
       </div>
 
       {/* Executive Printable Summary Sheet */}
-      <div className="ts-card" style={{ padding: '36px', backgroundColor: '#FFFFFF' }}>
+      <div className="ts-card" style={{ padding: '36px', backgroundColor: 'var(--color-surface)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '2px solid var(--color-border)', paddingBottom: '20px', marginBottom: '24px' }}>
           <div>
             <span className="ts-badge ts-badge-success" style={{ marginBottom: '8px' }}>
-              Official Agronomic Report
+              Official Water Quality &amp; Safety Audit
             </span>
-            <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
-              [Platform Name] Agronomic Performance &amp; Water Audit
+            <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-heading)' }}>
+              AquaScope Water Quality &amp; Microbiological Safety Audit
             </h2>
             <div style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
               Generated: {summaryData ? new Date(summaryData.generatedAt).toUTCString() : new Date().toUTCString()}
@@ -113,8 +113,8 @@ export const ReportsPage: React.FC = () => {
           </div>
 
           <div style={{ textAlign: 'right', fontSize: '12px', color: 'var(--color-text-muted)' }}>
-            <div><strong>Organization:</strong> [Your Farm / Agricultural Organization]</div>
-            <div><strong>Status:</strong> Validated Multi-Depth Telemetry</div>
+            <div><strong>Organization:</strong> AquaScope Public Health &amp; WASH Initiative</div>
+            <div><strong>Status:</strong> Validated Multi-Point Telemetry</div>
           </div>
         </div>
 

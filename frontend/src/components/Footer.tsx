@@ -39,29 +39,37 @@ export const Footer: React.FC = () => {
       >
         {/* Brand & Purpose */}
         <div style={{ maxWidth: '340px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <div
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '18px' }}>
+            <img
+              src="/images/waterscope-africa-logo-white.png"
+              alt="WaterScope Africa"
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#0B2545',
-                boxShadow: '0 4px 12px rgba(14, 165, 233, 0.35)',
+                height: '52px',
+                width: 'auto',
+                maxWidth: '220px',
+                objectFit: 'contain',
+                display: 'block',
               }}
-            >
-              <Droplets size={22} />
-            </div>
-            <span style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '-0.02em', color: '#FFFFFF' }}>
-              AquaScope
-            </span>
+            />
           </div>
-          <p style={{ fontSize: '14.5px', color: '#94A9C0', lineHeight: '1.65', marginBottom: '22px' }}>
-            {t('footer.tagline', 'Smart, accessible drinking-water quality testing. Empowering laboratories, health workers, and communities worldwide to detect bacterial contamination rapidly and reliably.')}
+          <p style={{ fontSize: '14px', color: '#94A9C0', lineHeight: '1.65', marginBottom: '16px' }}>
+            Transforming water quality surveillance through local innovation. Rapid, simple, digital bacterial testing kits for drinking water, lowering costs by up to 80% through Ethiopian manufacturing.
           </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: '#CBD5E1', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <MapPin size={15} color="#38BDF8" />
+              <span>Bahir Dar University / BiTec &amp; Addis Ababa, Ethiopia</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Phone size={15} color="#38BDF8" />
+              <span>+251-943-506510 / +251-945-552214</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Mail size={15} color="#38BDF8" />
+              <a href="mailto:social@watereth.com" style={{ color: '#38BDF8', textDecoration: 'none' }}>social@watereth.com</a>
+            </div>
+          </div>
 
           <div
             style={{
@@ -241,7 +249,7 @@ export const Footer: React.FC = () => {
         }}
       >
         <div>
-          &copy; {new Date().getFullYear()} AquaScope Ltd. {t('footer.rights', 'All rights reserved.')}
+          &copy; {new Date().getFullYear()} WaterScope Africa. {t('footer.rights', 'All rights reserved.')}
         </div>
         <div style={{ display: 'flex', gap: '20px' }}>
           <Link to="/privacy" style={{ color: '#829AB1', textDecoration: 'none' }}>

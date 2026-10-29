@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Sprout } from 'lucide-react';
+import { Droplets } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { Navbar } from '../../components/Navbar';
@@ -53,9 +53,9 @@ export const RegisterPage: React.FC = () => {
                 margin: '0 auto 12px',
               }}
             >
-              <Sprout size={28} />
+              <Droplets size={28} />
             </div>
-            <h1 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+            <h1 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-heading)' }}>
               {t('auth.createAccountTitle')}
             </h1>
             <p style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>

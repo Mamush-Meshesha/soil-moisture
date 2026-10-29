@@ -85,7 +85,7 @@ export const CheckoutPage: React.FC = () => {
           <span className="ts-badge ts-badge-success" style={{ marginBottom: '12px' }}>
             Sandbox Payment Simulated
           </span>
-          <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-primary-dark)', marginBottom: '8px' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-heading)', marginBottom: '8px' }}>
             {t('store.orderConfirmed')}
           </h1>
           <p style={{ fontSize: '15px', color: 'var(--color-text-muted)', marginBottom: '24px' }}>
@@ -138,7 +138,7 @@ export const CheckoutPage: React.FC = () => {
 
       <section style={{ backgroundColor: 'var(--color-surface)', padding: '36px 24px', borderBottom: '1px solid var(--color-border)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '30px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+          <h1 style={{ fontSize: '30px', fontWeight: 800, color: 'var(--color-heading)' }}>
             {t('checkout.title')}
           </h1>
           <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>
@@ -225,7 +225,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '20px', fontWeight: 800, marginTop: '12px' }}>
                     <span>{t('store.total')}</span>
-                    <span style={{ color: 'var(--color-primary-dark)' }}>{formatBirr(subtotal, language)}</span>
+                    <span style={{ color: 'var(--color-heading)' }}>{formatBirr(subtotal, language)}</span>
                   </div>
                 </div>
               </div>

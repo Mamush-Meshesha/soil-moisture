@@ -26,7 +26,7 @@ export const SettingsPage: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '800px' }}>
       <div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
+        <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-heading)' }}>
           {t('settings.title')}
         </h1>
         <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>

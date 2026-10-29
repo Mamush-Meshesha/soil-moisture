@@ -123,31 +123,19 @@ export const AppLayout: React.FC = () => {
             borderBottom: '1px solid var(--color-border)',
           }}
         >
-          <Link to="/app" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div
-              style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '8px',
-                backgroundColor: 'var(--color-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                flexShrink: 0,
-              }}
-            >
-              <Droplets size={22} />
-            </div>
-            {!collapsed && (
-              <div>
-                <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-primary-dark)' }}>
-                  AquaScope
-                </span>
-                <span style={{ display: 'block', fontSize: '10px', color: 'var(--color-primary)', fontWeight: 800, letterSpacing: '0.06em' }}>
-                  WATER SAFETY PORTAL
-                </span>
-              </div>
+          <Link to="/app" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            {collapsed ? (
+              <img
+                src={theme === 'dark' ? '/images/waterscope-africa-logo-white.png' : '/images/waterscope-africa-logo.png'}
+                alt="WaterScope Africa"
+                style={{ height: '32px', width: 'auto', objectFit: 'contain' }}
+              />
+            ) : (
+              <img
+                src={theme === 'dark' ? '/images/waterscope-africa-logo-white.png' : '/images/waterscope-africa-logo.png'}
+                alt="WaterScope Africa"
+                style={{ height: '38px', width: 'auto', maxWidth: '175px', objectFit: 'contain' }}
+              />
             )}
           </Link>
 

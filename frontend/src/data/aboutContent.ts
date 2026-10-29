@@ -1,153 +1,226 @@
 import { Language } from '../i18n/types';
 
 export interface AboutPageContent {
+  // waterscope.org Cambridge Heritage & Global Advisory
+  cambridgeBadge: string;
+  cambridgeTitle: string;
+  cambridgeDesc: string;
+  cambridgeFunding: string;
+  cambridgeFundingDesc: string;
+  founder1Name: string;
+  founder1Role: string;
+  founder1Bio: string;
+  founder2Name: string;
+  founder2Role: string;
+  founder2Bio: string;
+  founder3Name: string;
+  founder3Role: string;
+  founder3Bio: string;
+
+  // Slide 6: Our Committed Team & Building Local Capacity
   headerBadge: string;
   headerTitle: string;
   headerDesc: string;
 
+  // Slide 2: The Public Health Challenge
   missionBadge: string;
   missionTitle: string;
   missionP1: string;
   missionP2: string;
 
+  // Slide 7: What Makes Us Different (4 Nodes)
   pillar1Title: string;
   pillar1Desc: string;
   pillar2Title: string;
   pillar2Desc: string;
   pillar3Title: string;
   pillar3Desc: string;
+  pillar4Title: string;
+  pillar4Desc: string;
 
-  val1Title: string;
-  val1Desc: string;
-  val2Title: string;
-  val2Desc: string;
-  val3Title: string;
-  val3Desc: string;
+  // Slide 9: Early Progress
+  progressTitle: string;
+  progressDesc: string;
 
+  // Slide 10: The Collaboration Invitation
+  collabTitle: string;
+  collabDesc: string;
+  collab1Title: string;
+  collab1Desc: string;
+  collab2Title: string;
+  collab2Desc: string;
+
+  // Slide 12: Call to Action & Closing
   ctaTitle: string;
   ctaDesc: string;
   ctaBtn1: string;
   ctaBtn2: string;
 }
 
-export const aboutContent: Record<Language, AboutPageContent> = {
+const data: Record<string, AboutPageContent> = {
   en: {
-    headerBadge: "Our Purpose & Approach",
-    headerTitle: "Smart, Simple Water Testing — For All.",
-    headerDesc: "AquaScope was created to break down the technical, financial, and logistical barriers to reliable drinking-water testing, ensuring communities everywhere can verify their water safety on-site.",
+    // waterscope.org Cambridge Heritage
+    cambridgeBadge: "University of Cambridge Heritage",
+    cambridgeTitle: "Global Origins & Scientific Founding",
+    cambridgeDesc: "Founded in 2015, WaterScope is a social impact 'spin-in' start-up based at the University of Cambridge. Our founding team is comprised of biologists, physicists, material scientists, and engineers who designed and iterated the WaterScope system specifically for and with end-users in low- and middle-income countries.",
+    cambridgeFunding: "£900,000+ Non-Dilutive Funding",
+    cambridgeFundingDesc: "Raised over £900,000 in non-dilutive research and humanitarian innovation grants, enabling rigorous academic validation, international field trials, and open-source hardware development.",
+    founder1Name: "Dr. Alexander Patto",
+    founder1Role: "CEO & Co-Founder (WaterScope UK)",
+    founder1Bio: "PhD in Genetics, Royal Academy of Engineering Enterprise Fellow & Borysiewicz Biomedical Fellow at the University of Cambridge. Pioneer in accessible diagnostics.",
+    founder2Name: "Sammy Mahdi",
+    founder2Role: "COO & Co-Founder (WaterScope UK)",
+    founder2Bio: "MRes + PhD in Sensor Technologies & Applications, Institute for Manufacturing, University of Cambridge. Expert in scalable systems and IoT field telemetry.",
+    founder3Name: "Dr. Richard Bowman",
+    founder3Role: "Co-Founder & Optical Hardware Pioneer",
+    founder3Bio: "University of Cambridge / University of Bath. Co-creator of the OpenFlexure 3D-printed digital microscope, democratizing optical pathogen detection worldwide.",
 
-    missionBadge: "Our Mission",
-    missionTitle: "Why We Are Developing Accessible Water Testing",
-    missionP1: "Access to clean, safe drinking water is a fundamental human right, yet contaminated water supplies remain one of the leading global causes of preventable childhood illness and mortality. Conventional microbiological testing methods are centralized in distant laboratories, requiring costly sample couriers, delicate glassware, and protracted incubation times that leave communities vulnerable during contamination events.",
-    missionP2: "AquaScope brings the laboratory to the water source. Our interdisciplinary team of biologists, optical physicists, and software engineers designed a robust, portable testing system from the ground up—working in close collaboration with WASH officers, community caretakers, and public health researchers.",
+    // Slide 6
+    headerBadge: "Building Local Capacity",
+    headerTitle: "Our Committed Team",
+    headerDesc: "We are a dedicated group of young Ethiopian engineers focused on enhancing local water diagnostics and fostering innovation through collaboration with communities and educational institutions. However, technology alone is not enough. Our work is focused not only on deploying devices, but on building local technical capacity. We collaborate with communities, government stakeholders, and universities — including Bahir Dar University. Our goal is to ensure that diagnostic capacity is built locally, sustained locally, and scaled locally. African-led innovation is central to our model.",
 
-    pillar1Title: "User-Centred Design",
-    pillar1Desc: "Built for the real conditions of field deployment. Intuitive workflows ensure local operators can perform reliable tests with standard operating procedures.",
-    pillar2Title: "Scientific Rigor",
-    pillar2Desc: "Strict adherence to ISO 9308-1 membrane filtration standards and verified through independent accredited microbiology laboratories.",
-    pillar3Title: "Decentralized Telemetry",
-    pillar3Desc: "Test data is uploaded directly to shared water quality dashboards, allowing regional utilities and WASH agencies to target infrastructure repairs effectively.",
+    // Slide 2
+    missionBadge: "The Public Health Challenge",
+    missionTitle: "Water access is often discussed in terms of infrastructure — but surveillance is equally critical.",
+    missionP1: "Globally, 2.2 billion individuals do not have access to safe drinking water, contributing to widespread health issues and emphasizing the urgent need for sustainable water solutions. In Ethiopia, 60–80% of communicable diseases are linked to inadequate water, sanitation, and hygiene conditions, with diarrhea responsible for approximately 25,000 under-five deaths annually, making it the third leading cause of child mortality.",
+    missionP2: "The challenge is not only water access — it is the lack of reliable, scalable monitoring systems. What differentiates us is not only the device — but the systems innovation model. This shifts water testing from external dependency to regional resilience, bringing open-source, field-adapted diagnostic tools directly into local hands.",
 
-    val1Title: "Inclusive Participation",
-    val1Desc: "We believe water safety should not be restricted to centralized urban laboratories. We enable local communities to test their own water supplies autonomously.",
-    val2Title: "Verifiable Transparency",
-    val2Desc: "We do not claim our product detects every contaminant. We clearly communicate its exact microbiological scope: rapid, sensitive detection of E. coli and coliform bacteria.",
-    val3Title: "Human Dignity & Health",
-    val3Desc: "Every test performed has a direct human objective: preventing waterborne infection, guiding chlorination interventions, and safeguarding community health.",
+    // Slide 7: What Makes Us Different
+    pillar1Title: "Cost Reduction",
+    pillar1Desc: "Local manufacturing significantly lowers costs by up to 80%, making water testing accessible to communities in need.",
+    pillar2Title: "Capacity Building",
+    pillar2Desc: "Our approach builds local technical and research capacity within the country, empowering communities to take control of their water quality solutions.",
+    pillar3Title: "Self-Reliance",
+    pillar3Desc: "Strengthening local capacity ensures communities can manage their water resources effectively and sustainably over time, reducing dependency on imported diagnostics.",
+    pillar4Title: "Job Opportunities",
+    pillar4Desc: "Creating local manufacturing jobs empowers individuals and stimulates economic growth in regions affected by water scarcity.",
 
-    ctaTitle: "Partner With Us on Water Safety",
-    ctaDesc: "Whether you represent a humanitarian organization, a municipal water utility, or an academic research team, we welcome collaboration to validate and scale accessible water testing.",
-    ctaBtn1: "Get in Touch",
-    ctaBtn2: "Explore Our Field Projects"
+    // Slide 9
+    progressTitle: "Early Progress: Manufacturing and Training",
+    progressDesc: "We have begun local manufacturing using 3D printing and machining technologies. We conduct training programs for water technicians. And we are building partnerships across sectors. This is the beginning of a localized diagnostic ecosystem.",
+
+    // Slide 10
+    collabTitle: "The Collaboration Invitation",
+    collabDesc: "We are open to collaboration in research, scale, and deployment. This platform enables work in environmental microbiology, antimicrobial resistance surveillance, AI-driven pathogen detection, and implementation science. We invite Canada–Africa academic collaboration — joint grants, co-supervision of students, pilot programs, and regional deployment strategies. Water surveillance should be equitable, collaborative, and locally empowered.",
+    collab1Title: "Scale & Deployment",
+    collab1Desc: "Partner on pilot programs, regional rollouts, and integration with existing water quality monitoring systems.",
+    collab2Title: "Partnership in Africa",
+    collab2Desc: "We are interested in collaborating with organizations in African nations that are actively engaged in water testing initiatives.",
+
+    // Slide 12
+    ctaTitle: "Get in Touch",
+    ctaDesc: "Water quality surveillance should not depend solely on imported laboratories. Young African engineers can build scalable, validated, research-driven solutions. Through equitable academic collaboration, we can transform water safety monitoring across Africa.",
+    ctaBtn1: "Contact Our Team",
+    ctaBtn2: "Explore Our Work"
   },
 
   am: {
-    headerBadge: "ዓላማችን እና አካሄዳችን",
-    headerTitle: "ዘመናዊ፣ ቀላል የውሃ ምርመራ — ለሁሉም።",
-    headerDesc: "AquaScope የተመሰረተው አስተማማኝ የመጠጥ ውሃ ምርመራን የሚገድቡ ቴክኒካዊ፣ ፋይናንሳዊ እና ሎጂስቲክሳዊ እንቅፋቶችን ለማስወገድ ነው፤ ይህም በየትኛውም ቦታ የሚገኙ ማህበረሰቦች የውሃቸውን ደህንነት በቦታው እንዲያረጋግጡ ያስችላል።",
+    // waterscope.org Cambridge Heritage
+    cambridgeBadge: "የካምብሪጅ ዩኒቨርሲቲ ቅርስ",
+    cambridgeTitle: "አለም አቀፍ አመጣጥ እና ሳይንሳዊ አመራር",
+    cambridgeDesc: "በ 2015 የተመሰረተው WaterScope በካምብሪጅ ዩኒቨርሲቲ ውስጥ የተፈጠረ የማህበራዊ ተፅእኖ ጀማሪ ድርጅት ነው። መስራች ቡድናችን የ WaterScope ስርዓትን ዝቅተኛ እና መካከለኛ ገቢ ባላቸው ሀገራት ውስጥ ላሉ ተጠቃሚዎች ሆን ብለው የነደፉ እና ያዳበሩ ባዮሎጂስቶች፣ የፊዚክስ ሊቃውንት እና መሐንዲሶችን ያቀፈ ነው።",
+    cambridgeFunding: "£900,000+ የምርምር ድጋፍ",
+    cambridgeFundingDesc: "ከ 900,000 የእንግሊዝ ፓውንድ በላይ የምርምር እና የፈጠራ ድጋፍ በማሰባሰብ ጥብቅ የአካዳሚክ ማረጋገጫን፣ አለም አቀፍ የመስክ ሙከራዎችን እና ክፍት የቴክኖሎጂ እድገትን አስችሏል።",
+    founder1Name: "ዶ/ር አሌክሳንደር ፓቶ",
+    founder1Role: "ዋና ስራ አስፈፃሚ እና ተባባሪ መስራች (WaterScope UK)",
+    founder1Bio: "በጄኔቲክስ ፒኤችዲ፣ የሮያል ኢንጂነሪንግ አካዳሚ ኢንተርፕራይዝ ፌሎው እና በካምብሪጅ ዩኒቨርሲቲ ባዮሜዲካል ፌሎው።",
+    founder2Name: "ሳሚ ማህዲ",
+    founder2Role: "ዋና ኦፕሬሽን ኦፊሰር እና ተባባሪ መስራች (WaterScope UK)",
+    founder2Bio: "በሴንሰር ቴክኖሎጂዎች ማስተርስ እና ፒኤችዲ፣ የማኑፋክቸሪንግ ኢንስቲትዩት፣ የካምብሪጅ ዩኒቨርሲቲ።",
+    founder3Name: "ዶ/ር ሪቻርድ ቦውማን",
+    founder3Role: "ተባባሪ መስራች እና የኦፕቲካል ሃርድዌር መሐንዲስ",
+    founder3Bio: "የካምብሪጅ ዩኒቨርሲቲ / ባዝ ዩኒቨርሲቲ። የ OpenFlexure 3D የታተመ ዲጂታል ማይክሮስኮፕ ተባባሪ ፈጣሪ።",
 
-    missionBadge: "ተልዕኳችን",
-    missionTitle: "ተደራሽ የውሃ ምርመራን ለምን እናለማለን?",
-    missionP1: "ንጹህና ደህንነቱ የተጠበቀ የመጠጥ ውሃ ማግኘት መሰረታዊ የሰው ልጅ መብት ነው፤ ሆኖም የተበከሉ የውሃ አቅርቦቶች አሁንም በዓለም ዙሪያ ለህጻናት ህመም እና ሞት ዋነኛ መንስኤ ሆነው ቀጥለዋል። ባህላዊ የማይክሮባዮሎጂ ምርመራዎች በሩቅ ላብራቶሪዎች የተወሰኑ በመሆናቸው፣ ውድ የናሙና ማጓጓዝን፣ ተሰባሪ የመስታወት እቃዎችን እና ረጅም የምርመራ ጊዜን የሚሹ በመሆናቸው ማህበረሰቦችን ለአደጋ ያጋልጣሉ።",
-    missionP2: "AquaScope ላብራቶሪውን በቀጥታ ወደ ውሃው ምንጭ ያመጣል። የባዮሎጂስቶች፣ የኦፕቲካል ፊዚክስ ባለሙያዎች እና የሶፍትዌር መሐንዲሶች ቡድናችን ከ WASH ባለሙያዎች፣ ከማህበረሰብ ተቆጣጣሪዎች እና ከህዝብ ጤና ተመራማሪዎች ጋር በቅርበት በመስራት ጠንካራና ተንቀሳቃሽ የመመርመሪያ ስርዓት ፈጥሯል።",
+    headerBadge: "የአገር ውስጥ አቅም ግንባታ",
+    headerTitle: "ቁርጠኛ ቡድናችን",
+    headerDesc: "እኛ የአገር ውስጥ የውሃ ምርመራን ለማሳደግ እና ከማህበረሰቦች እና የትምህርት ተቋማት ጋር በመተባበር ፈጠራን ለማበረታታት ያተኮርን ወጣት የኢትዮጵያ መሐንዲሶች ስብስብ ነን። ሆኖም ቴክኖሎጂ ብቻውን በቂ አይደለም። ስራችን መሳሪያዎችን በማሰማራት ላይ ብቻ ሳይሆን የአካባቢ ቴክኒካዊ አቅምን በመገንባት ላይ ያተኮረ ነው። ከማህበረሰቦች፣ ከመንግስት ባለድርሻ አካላት እና ከዩኒቨርሲቲዎች — ባህር ዳር ዩኒቨርሲቲን ጨምሮ አብረን እንሰራለን። ግባችን የመመርመር አቅም በአገር ውስጥ እንዲገነባ፣ በዚያው እንዲቀጥል እና በአገር ውስጥ እንዲስፋፋ ማድረግ ነው። አፍሪካ መር ፈጠራ ለሞዴላችን ማዕከላዊ ነው።",
 
-    pillar1Title: "ተጠቃሚን ማዕከል ያደረገ ንድፍ",
-    pillar1Desc: "ለእውነተኛ የመስክ ስራ ሁኔታዎች የተሰራ። ቀላል የአሰራር ቅደም ተከተሎች የአካባቢው ኦፕሬተሮች ደረጃውን የጠበቀ አስተማማኝ ምርመራ እንዲያካሂዱ ያረጋግጣሉ።",
-    pillar2Title: "ሳይንሳዊ ጥንካሬ",
-    pillar2Desc: "የ ISO 9308-1 የሜምብሬን ማጣሪያ ደረጃዎችን በጥብቅ የተከተለ እና በገለልተኛ እውቅና ባላቸው ማይክሮባዮሎጂ ላብራቶሪዎች የተረጋገጠ።",
-    pillar3Title: "ያልተማከለ የመረጃ ልውውጥ",
-    pillar3Desc: "የምርመራ መረጃ በቀጥታ ወደ የጋራ የውሃ ጥራት ዳሽቦርድ ይላካል፤ ይህም የክልል የውሃ ተቋማት እና የ WASH ድርጅቶች የመሰረተ ልማት ጥገናዎችን በትክክል እንዲያነጣጥሩ ያስችላል።",
+    missionBadge: "የህዝብ ጤና ፈተና",
+    missionTitle: "የውሃ አቅርቦት ብዙ ጊዜ ከመሰረተ ልማት አንፃር ይነሳል — ነገር ግን ክትትል እኩል ወሳኝ ነው።",
+    missionP1: "በአለም አቀፍ ደረጃ 2.2 ቢሊዮን ሰዎች ንጹህ የመጠጥ ውሃ አያገኙም፤ ይህም ለተስፋፋ የጤና ችግሮች መንስኤ በመሆን ዘላቂ የውሃ መፍትሄዎች አስቸኳይ አስፈላጊነትን ያጎላል። በኢትዮጵያ ውስጥ 60–80% የሚሆኑት ተላላፊ በሽታዎች በቂ ካልሆነ የውሃ፣ የንፅህና እና የሳኒቴሽን ሁኔታዎች ጋር የተያያዙ ናቸው፤ ተቅማጥ በየዓመቱ ለግምት 25,000 ከ 5 ዓመት በታች ህፃናት ሞት ተጠያቂ ሲሆን ይህም በህፃናት ሞት ሶስተኛው ዋነኛ መንስኤ ያደርገዋል።",
+    missionP2: "ፈተናው የውሃ አቅርቦት ማጣት ብቻ አይደለም — አስተማማኝ እና ሊሰፉ የሚችሉ የክትትል ስርዓቶች እጥረት ጭምር ነው። ልዩ የሚያደርገን መሳሪያው ብቻ ሳይሆን የስርዓት ፈጠራ ሞዴሉ ነው። ይህ የውሃ ምርመራን ከውጭ ጥገኝነት ወደ ክልላዊ ጽናት ይለውጣል።",
 
-    val1Title: "ሁሉን አቀፍ ተሳትፎ",
-    val1Desc: "የውሃ ደህንነት በከተማ ማዕከላዊ ላብራቶሪዎች ብቻ መወሰን የለበትም ብለን እናምናለን። የአካባቢ ማህበረሰቦች የራሳቸውን የውሃ አቅርቦት ራሳቸውን ችለው እንዲመረምሩ እናበቃለን።",
-    val2Title: "ሊረጋገጥ የሚችል ግልጽነት",
-    val2Desc: "ምርታችን ሁሉንም በካዮች ያውቃል የሚል የውሸት የይስሙላ ማስታወቂያ አንሰራም። ትክክለኛውን የማይክሮባዮሎጂ ወሰኑን በግልጽ እናሳውቃለን፡ ፈጣን እና ስሜታዊ የሆነ የኢ. ኮላይ እና ኮሊፎርም ባክቴሪያ መለያ ነው።",
-    val3Title: "የሰው ልጅ ክብር እና ጤና",
-    val3Desc: "እያንዳንዱ የሚካሄድ ምርመራ ቀጥተኛ ሰብአዊ ዓላማ አለው፡ በውሃ ወለድ የሚመጡ በሽታዎችን መከላከል፣ የክሎሪን ህክምናን መምራት እና የማህበረሰብ ጤናን መጠበቅ።",
+    pillar1Title: "የወጪ ቅነሳ (Cost Reduction)",
+    pillar1Desc: "የአገር ውስጥ ማምረት ወጪን እስከ 80% በከፍተኛ ሁኔታ ይቀንሳል፤ ይህም የውሃ ምርመራ ለተቸገሩ ማህበረሰቦች ተደራሽ ያደርገዋል።",
+    pillar2Title: "አቅም ግንባታ (Capacity Building)",
+    pillar2Desc: "አካሄዳችን በአገር ውስጥ የቴክኒክ እና የምርምር አቅምን ይገነባል፤ ማህበረሰቦች የውሃ ጥራት መፍትሄዎቻቸውን እንዲቆጣጠሩ ያበቃል።",
+    pillar3Title: "ራስን መቻል (Self-Reliance)",
+    pillar3Desc: "የአገር ውስጥ አቅምን ማጠናከር ማህበረሰቦች የውሃ ሀብታቸውን በዘላቂነት እንዲያስተዳድሩ ያረጋግጣል፤ ይህም ከውጭ በሚገቡ የመመርመሪያዎች ላይ ጥገኝነትን ይቀንሳል።",
+    pillar4Title: "የስራ እድሎች (Job Opportunities)",
+    pillar4Desc: "የአገር ውስጥ የማኑፋክቸሪንግ ስራዎችን መፍጠር ግለሰቦችን ያበቃል እንዲሁም በውሃ እጥረት በተጎዱ አካባቢዎች የኢኮኖሚ እድገትን ያነቃቃል።",
 
-    ctaTitle: "በውሃ ደህንነት ላይ አብረውን ይስሩ",
-    ctaDesc: "የሰብአዊ እርዳታ ድርጅትን፣ የማዘጋጃ ቤት የውሃ ተቋምን ወይም የአካዳሚክ የምርምር ቡድንን ቢወክሉ፣ ተደራሽ የውሃ ምርመራን ለማረጋገጥ እና ለማስፋፋት አብረን ለመስራት ክፍት ነን።",
-    ctaBtn1: "ያነጋግሩን",
-    ctaBtn2: "የመስክ ፕሮጀክቶቻችንን ይመልከቱ"
+    progressTitle: "ቀደምት እድገት፡ ማኑፋክቸሪንግ እና ስልጠና",
+    progressDesc: "የ 3D ህትመት እና የማሽን ቴክኖሎጂዎችን በመጠቀም የአገር ውስጥ ማምረት ጀምረናል። ለውሃ ቴክኒሻኖች የስልጠና ፕሮግራሞችን እናካሂዳለን። እንዲሁም በተለያዩ ዘርፎች ሽርክናዎችን እየገነባን ነው። ይህ የአካባቢያዊ የመመርመሪያ ስነ-ምህዳር ጅማሮ ነው።",
+
+    collabTitle: "የትብብር ግብዣ",
+    collabDesc: "በምርምር፣ በማስፋፋት እና በተግባራዊ ስራዎች ላይ ለትብብር ክፍት ነን። ይህ መድረክ በአካባቢ ማይክሮባዮሎጂ፣ በፀረ-ተህዋሲያን መቋቋም (AMR) ክትትል፣ በ AI በሽታ አምጪ ተህዋስያን መለየት እና በተግባራዊ ሳይንስ ላይ ስራዎችን ያስችላል። የካናዳ-አፍሪካ አካዳሚክ ትብብርን እንጋብዛለን — የጋራ እርዳታዎች፣ የተማሪዎች የጋራ ቁጥጥር፣ የፓይለት ፕሮግራሞች እና የክልላዊ ማስፋፊያ ስልቶች። የውሃ ክትትል ፍትሃዊ፣ የትብብር እና በአገር ውስጥ የዳበረ መሆን አለበት።",
+    collab1Title: "ማስፋፋት እና ማሰማራት",
+    collab1Desc: "በፓይለት ፕሮግራሞች፣ በክልላዊ ስርጭት እና ከነባር የውሃ ጥራት ክትትል ስርዓቶች ጋር በማቀናጀት ላይ አብሮ መስራት።",
+    collab2Title: "ሽርክና በአፍሪካ",
+    collab2Desc: "በውሃ ምርመራ ስራዎች ላይ በንቃት ከተሰማሩ የአፍሪካ አገራት ድርጅቶች ጋር ለመተባበር ፍላጎት አለን።",
+
+    ctaTitle: "ያግኙን",
+    ctaDesc: "የውሃ ጥራት ክትትል ከውጭ በሚገቡ ላብራቶሪዎች ላይ ብቻ ጥገኛ መሆን የለበትም። ወጣት አፍሪካውያን መሐንዲሶች ሊሰፉ የሚችሉ፣ የተረጋገጡ፣ በምርምር የተደገፉ መፍትሄዎችን መገንባት ይችላሉ። በፍትሃዊ የአካዳሚክ ትብብር በመላው አፍሪካ የውሃ ደህንነት ክትትልን መለወጥ እንችላለን።",
+    ctaBtn1: "ቡድናችንን ያነጋግሩ",
+    ctaBtn2: "ስራችንን ይመልከቱ"
   },
 
   om: {
-    headerBadge: "Kaayyoo fi Adeemsa Keenya",
-    headerTitle: "Qorannoo Bishaan Ammayyaa fi Salphaa — Hundaaf.",
-    headerDesc: "AquaScope gufuulee teeknikaa, maallaqaa fi loojistiksii qorannoo bishaan dhugaatii amansiisaa ta'e dhabamsiisuuf kan hundeeffame yoo ta'u, hawaasni bakka hundatti argamu nageenya bishaan isaanii achumatti akka mirkaneeffatan taasisa.",
+    // waterscope.org Cambridge Heritage
+    cambridgeBadge: "Dhaala Yuunivarsiitii Keembiriij",
+    cambridgeTitle: "Madda Addunyaa fi Hundeeffama Saayinsawaa",
+    cambridgeDesc: "Bara 2015 kan hundeeffame WaterScope Yuunivarsiitii Keembiriij keessatti dhaabbata hawaasummaa jalqabamedha. Gareen hundeeffamaa baayoloojistoota, fiizisistoota fi injinaroota sirna WaterScope biyyoota galii gadi aanaa fi giddu galeessaa qabaniif dizaayinii godhan irraa ijaarame.",
+    cambridgeFunding: "Deeggarsa Paawundii £900,000+",
+    cambridgeFundingDesc: "Deeggarsa qorannoo paawundii kuma 900 ol walitti qabuudhaan mirkaneessa saayinsawaa fi qorannoo dirree addunyaa dandeessiseera.",
+    founder1Name: "Dr. Alexander Patto",
+    founder1Role: "Hogganaa Ol'aanaa fi Walitti Qabaa (WaterScope UK)",
+    founder1Bio: "PhD Jiineetiksii, Royal Academy of Engineering Fellow, Yuunivarsiitii Keembiriij.",
+    founder2Name: "Sammy Mahdi",
+    founder2Role: "Hogganaa Hojii fi Walitti Qabaa (WaterScope UK)",
+    founder2Bio: "MRes + PhD Teeknooloojii Seensarii, Institute for Manufacturing, Yuunivarsiitii Keembiriij.",
+    founder3Name: "Dr. Richard Bowman",
+    founder3Role: "Walitti Qabaa fi Ogeessa Optikaalaa",
+    founder3Bio: "Yuunivarsiitii Keembiriij / Baaz. Kalaqaa maayikirooskooppii dijitaalaa 3D OpenFlexure.",
 
-    missionBadge: "Ergama Keenya",
-    missionTitle: "Qorannoo Bishaan Dhaqqabamaa Maaliif Hojjenna?",
-    missionP1: "Bishaan dhugaatii qulqulluu fi nagaa qabu argachuun mirga bu'uuraa dhala namaati; ta'us dhiyeessiin bishaan faalame addunyaa irratti dhukkuba fi du'a daa'immaniitiif sababa guddaa ta'ee itti fufeera. Malli qorannoo aadaa laabraatoorii fagoo keessatti kan daangeffame waan ta'eef, baasii guddaa, meeshaa fuullee laafaa fi yeroo dheeraa fudhachuun hawaasa miidhaaf saaxila.",
-    missionP2: "AquaScope laabraatoorii kallattiin gara burqaa bishaaniitti fida. Gareen ogeessota baayoloojii, fiiziksii optikaalaa fi injinaroota sooftiweerii keenyaa ogeessota WASH, kunuunsitoota hawaasaa fi qorattoota fayyaa wajjin ta'uun sirna qorannoo jabaataa fi socho'aa ta'e qopheessaniiru.",
+    headerBadge: "Dandeettii Biyya Keessaa Ijaaruu",
+    headerTitle: "Garee Keenya Kan Murannoo Qabu",
+    headerDesc: "Nuti garee injinaroota Itoophiyaa dargaggoota qorannoo bishaan biyya keessaa fooyyessuu fi hawaasa fi dhaabbilee barnootaa wajjin walta'uudhaan kalaqa guddisuu irratti xiyyeeffanneedha. Haa ta'u malee teeknooloojii qofti gahaa miti. Hojiin keenya meeshaalee fiduu qofa irratti utuu hin taane dandeettii teeknikaa biyya keessaa ijaaruu irratti kan xiyyeeffateedha. Hawaasa, qooda fudhattoota mootummaa fi yuunivarsiitota — Yuunivarsiitii Baahir Daar dabalatee waliin hojjanna. Kaayyoon keenya dandeettiin qorannoo biyya keessatti akka ijaaramu, akka itti fufu fi akka babal'atu gochuudha. Kalaqni Afrikaan durfamu moodeela keenyaaf giddu galeessa.",
 
-    pillar1Title: "Fayyedamaa Giddu-galeessa kan Godhate",
-    pillar1Desc: "Haala qabatamaa hojii dirreetiif kan hojjetame. Adeemsi salphaan ogeessotni naannoo ulaagaa eeguun qorannoo amansiisaa akka gaggeessan mirkaneessa.",
-    pillar2Title: "Cimina Saayinsii",
-    pillar2Desc: "Ulaagaalee calaltuu meembraanii ISO 9308-1 cimsanii hordofuu fi laabraatooriiwwan maaykiroobaayoloojii beekamoo ta'aniin kan mirkanaa'e.",
-    pillar3Title: "Ragaa Bittinaa'aa",
-    pillar3Desc: "Ragaan qorannoo kallattiin gara daashboordii qulqullina bishaaniitti ergamee dhaabbileen bishaanii fi WASH suphaa bu'uuraalee misoomaa sirriitti akka raawwatan gargaara.",
+    missionBadge: "Rakkoo Fayyaa Hawaasaa",
+    missionTitle: "Dhaqqabamummaan bishaanii yeroo baay'ee bu'uura misoomaa wajjin ka'a — garuu to'annoonis walqixa barbaachisaadha.",
+    missionP1: "Addunyaa irratti namoonni biliyoona 2.2 bishaan dhugaatii qulqulluu hin argatan; kunis rakkoolee fayyaatiif sababa ta'uun furmaata bishaanii itti fufiinsa qabuuf barbaachisummaa agarsiisa. Itoophiyaa keessatti dhibeewwan daddarboo keessaa dhibbeentaan 60–80 bishaan, qulqullina fi saaniiteeshinii gahaa hin taaneen kan walqabataniidha; garaa kaasaan waggaatti du'a daa'imman waggaa shanii gadii tilmaamaan 25,000tiif sababa ta'a, kunis sababa du'a daa'immanii isa sadaffaa isa taasisa.",
+    missionP2: "Rakkoon dhaqqabamummaa bishaanii qofa miti — sirna to'annoo amansiisaa fi babal'achuu danda'u dhabuudha. Wanti adda nu taasisu meeshaa qofa miti — moodeela kalaqa sirnaati. Kun qorannoo bishaanii hirkattummaa alaarraa gara dandeettii naannootti jijjiira.",
 
-    val1Title: "Hirmaannaa Hunda-Galeessa",
-    val1Desc: "Nageenyi bishaanii laabraatoorii magaalaa giddu-galeessaa qofatti daangeffamuu hin qabu jennee amanna. Hawaasni naannoo dhiyeessii bishaan isaanii of danda'anii akka qoratan dandeessifna.",
-    val2Title: "Ibsama Mirkanaa'uu Danda'u",
-    val2Desc: "Meeshaan keenya wantoota faalan hunda adda baasa jennee oduu sobaa hin beeksisnu. Daangaa maaykiroobaayoloojii isaa ifatti beeksifna: qorannoo saffisaa fi sirrii ta'e kan baakteeriyaa E. coli fi koliifoormiiti.",
-    val3Title: "Ulfinna Dhala Namaa fi Fayyaa",
-    val3Desc: "Qorannoon gaggeeffamu hundi kaayyoo namummaa kallattii qaba: dhukkuboota bishaaniin daddarban ittisuu, yaala kilooriinii qajeelchuu fi fayyaa hawaasaa eeguu.",
+    pillar1Title: "Gatii Hir'isuu (Cost Reduction)",
+    pillar1Desc: "Biyya keessatti oomishuun gatii hamma 80% hir'isa; kunis qorannoo bishaanii hawaasa barbaadaniif dhaqqabamaa taasisa.",
+    pillar2Title: "Dandeettii Ijaaruu (Capacity Building)",
+    pillar2Desc: "Adeemsi keenya dandeettii teeknikaa fi qorannoo biyya keessaa ijaara; hawaasni furmaata qulqullina bishaan isaanii akka to'atan humna kenna.",
+    pillar3Title: "Of Dandeessuu (Self-Reliance)",
+    pillar3Desc: "Dandeettii biyya keessaa cimsuun hawaasni qabeenya bishaan isaanii yeroo dheeraaf akka bulchan mirkaneessa, hirkattummaa meeshaalee biyya alaarraa hir'isa.",
+    pillar4Title: "Carraa Hojii (Job Opportunities)",
+    pillar4Desc: "Hojiiwwan oomishaa biyya keessatti uumuun namoota humneessa akkasumas guddina diinagdee naannolee hanqinni bishaanii jiran keessatti dammaqsa.",
 
-    ctaTitle: "Nageenya Bishaanii Irratti Nu Wajjin Hojjedhaa",
-    ctaDesc: "Dhaabbata namoomaa, tajaajila bishaan magaalaa, ykn garee qorannoo barnootaa yoo bakka buutan, qorannoo bishaan dhaqqabamaa ta'e mirkaneessuu fi babal'isuuf waliin hojjechuuf qophiidha.",
-    ctaBtn1: "Nu Qunnamaa",
-    ctaBtn2: "Piroojektiiwwan Dirree Keenya Ilaalaa"
-  },
+    progressTitle: "Guddina Jalqabaa: Oomisha fi Leenjii",
+    progressDesc: "Teeknooloojii Maxxansa 3D fi maashinoota fayyadamuun oomisha biyya keessaa jalqabneerra. Ogeessota bishaaniif sagantaalee leenjii ni gaggeessina. Akkasumas dameewwan hedduu keessatti michummaa ijaaraa jirra. Kun jalqaba ikkoosistamii qorannoo naannooti.",
 
-  ti: {
-    headerBadge: "ዕላማናን ኣካይዳናን",
-    headerTitle: "ዘመናዊ፣ ቀሊል ናይ ማይ መርመራ — ንኹሉ።",
-    headerDesc: "AquaScope ንዘተኣማምን ናይ መስተ ማይ መርመራ ዝዕንቅፉ ቴክኒካዊ፣ ፋይናንሳውን ሎጂስቲክሳውን ዕንቅፋታት ንምውጋድ ዝተመስረተ ኮይኑ፣ ኣብ ኩሉ ቦታታት ዝርከቡ ማሕበረሰባት ናይ ማዮም ድሕንነት ኣብቲ ቦታ ከረጋግጹ የኽእል።",
+    collabTitle: "Afeerraa Walta'iinsaa",
+    collabDesc: "Qorannoo, babal'isuu fi hojiirra oolchuu irratti walta'iinsaaf banaadha. Platformiin kun maayikiroobaayoloojii naannoo, to'annoo dandamanna qorichaa (AMR), beekumsa baakteeriyaa AI fi saayinsii hojiirra oolmaa keessatti hojii dandeessisa. Walta'iinsa barnootaa Kaanaadaa–Afrikaa afeerra — deeggarsa waloo, hordoffii barattootaa waloo, sagantaalee paayileetii fi tarsiimoo babal'isuu naannoo. To'annoon bishaanii haqa qabeessa, gamtaa fi naannootti humneeffame ta'uu qaba.",
+    collab1Title: "Babal'isuu fi Hojiirra Oolchuu",
+    collab1Desc: "Sagantaalee paayileetii, tamsaasa naannoo fi sirna to'annoo qulqullina bishaanii jiran wajjin qindeessuu irratti michoomuu.",
+    collab2Title: "Michummaa Afrikaa Keessatti",
+    collab2Desc: "Dhaabbilee biyyoota Afrikaa keessatti dhimma qorannoo bishaanii irratti hojjetan wajjin walta'uuf fedhii qabna.",
 
-    missionBadge: "ተልእኾና",
-    missionTitle: "ተበጻሒ ናይ ማይ መርመራ ንምንታይ ነማዕብል?",
-    missionP1: "ጽሩይን ድሑንን ናይ መስተ ማይ ምርካብ መሰረታዊ ናይ ሰብኣዊ መሰል እዩ፤ እንተኾነ ግን ዝተበከሉ ቀረባት ማይ ኣብ መላእ ዓለም ንሕማምን ሞትን ህጻናት ቀንዲ ጠንቂ ኮይኖም ይቕጽሉ ኣለዉ። ባህላዊ ናይ ላብራቶሪ መርመራታት ኣብ ርሑቕ ከተማታት ዝተሓጸሩ ብምዃኖም፣ ክቡር ዋጋ፣ ዝስበር ኣቑሑትን ነዊሕ ግዜን ዝሓቱ ስለዝኾኑ ንማሕበረሰባት ኣብ ሓደጋ የውድቑ።",
-    missionP2: "AquaScope ነቲ ላብራቶሪ ብቐጥታ ናብቲ ናይ ማይ ምንጪ የብጽሖ። ናይ ባዮሎጂ፣ ናይ ኦፕቲካል ፊዚክስን ናይ ሶፍትዌር መሃንድሳትን ጉጅለና ምስ ሰብ ሞያ WASH፣ ምስ ተቖጻጸርቲ ማሕበረሰብን ምስ ተመራመርቲ ጥዕናን ብቐረባ ብምስራሕ ድልዱልን ተንቀሳቓስን ናይ መርመራ ስርዓት ፈጢሮም ኣለዉ።",
-
-    pillar1Title: "ተጠቃሚ ማእከል ዝገበረ ዲዛይን",
-    pillar1Desc: "ንተግባራዊ ናይ ሜዳ ኩነታት ዝተሰርሐ። ቀለልቲ ናይ ኣሰራርሓ ቅደም ተኸተላት ናይ ከባቢ ኦፕሬተራት ደረጃ ዝሓለወ ዘተኣማምን መርመራ ከካይዱ የረጋግጹ።",
-    pillar2Title: "ሳይንሳዊ ድልዳለ",
-    pillar2Desc: "ናይ ISO 9308-1 ናይ ሜምብሬን ምጽራይ ደረጃታት ብጽኑዕ ዝተኸተለን ብናጻ ፍሉጣት ላብራቶሪታት ዝተረጋገጸን።",
-    pillar3Title: "ዘይተማእከለ ናይ መረዳእታ ምትእስሳር",
-    pillar3Desc: "መረዳእታ መርመራ ብቐጥታ ናብ ሓባራዊ ናይ ማይ ጽሬት ዳሽቦርድ ይለኣኽ፤ እዚ ድማ ትካላት ማይን ውድባት WASHን ናይ ጽገና ስራሕቲ ብትኽክል ከካይዱ የኽእሎም።",
-
-    val1Title: "ኩሉ-ሓቆፍ ተሳትፎ",
-    val1Desc: "ናይ ማይ ድሕንነት ኣብ ናይ ከተማ ማእከላይ ላብራቶሪታት ጥራይ ክድረት የብሉን ኢልና ንኣምን። ናይ ከባቢ ማሕበረሰባት ናይ ባዕሎም ቀረብ ማይ ባዕሎም ክምርምሩ ነብቅዕ።",
-    val2Title: "ክረጋገጽ ዝኽእል ግሉጽነት",
-    val2Desc: "ፍርያትና ኩሉ ዓይነት በከልቲ የለልይ እዩ ዝብል ናይ ሓሶት ምልክታ ኣይንሰርሕን። ትኽክለኛ ናይ ማይክሮባዮሎጂ ደረቱ ብግልጺ ነፍልጥ፡ ቅልጡፍን ተሃዋስን መለለዪ ናይ ኢ. ኮላይን ኮሊፎርምን ባክቴርያ እዩ።",
-    val3Title: "ናይ ሰብኣዊ ክብሪን ጥዕናን",
-    val3Desc: "ነፍሲ ወከፍ ዝካየድ መርመራ ቀጥታዊ ሰብኣዊ ዕላማ ኣለዎ፡ ብማይ ዝመሓላለፉ ሕማማት ምክልኻል፣ ናይ ክሎሪን ሕክምና ምምራሕን ናይ ማሕበረሰብ ጥዕና ምሕላውን።",
-
-    ctaTitle: "ኣብ ናይ ማይ ድሕንነት ምሳና ስርሑ",
-    ctaDesc: "ሰብኣዊ ውድብ፣ ናይ ማዘጋጃ ቤት ትካል ማይ፣ ወይ ናይ ምርምር ጉጅለ እንተወኪልኩም፣ ተበጻሒ ናይ ማይ መርመራ ንምርግጋጽን ንምስፋሕን ብሓባር ንምስራሕ ድሉዋት ኢና።",
-    ctaBtn1: "ተወከሱና",
-    ctaBtn2: "ናይ ሜዳ ፕሮጀክትታትና ተዓዘቡ"
+    ctaTitle: "Nu Qunnamaa",
+    ctaDesc: "To'annoon qulqullina bishaanii laabiraatoorii alaarraa dhufu qofa irratti hirkachuu hin qabu. Injinaroonni dargaggoonni Afrikaa furmaata qorannoon deeggaramee fi babal'achuu danda'u ijaaruu danda'u. Walta'iinsa barnootaa haqa qabeessaan to'annoo nageenya bishaanii Afrikaa keessatti jijjiiruu dandeenya.",
+    ctaBtn1: "Garee Keenya Qunnamaa",
+    ctaBtn2: "Hojii Keenya Qoradhaa"
   }
+};
+
+export const aboutContent: Record<Language, AboutPageContent> = {
+  en: data.en,
+  am: data.am,
+  om: data.om,
+  ti: data.am,
 };
