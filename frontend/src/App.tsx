@@ -72,7 +72,7 @@ export const App: React.FC = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/platform" element={<PlatformPage />} />
                 <Route path="/technology" element={<TechnologyPage />} />
-                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products" element={<Navigate to="/store" replace />} />
                 <Route path="/products/:slug" element={<ProductDetailPage />} />
                 <Route path="/store" element={<StorePage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />

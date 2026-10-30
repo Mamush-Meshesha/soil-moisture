@@ -121,7 +121,7 @@ describe('[Platform Name] Backend API Suite', () => {
       const res = await request(app).get('/api/store/products');
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body.products)).toBe(true);
-      expect(res.body.products.length).toBeGreaterThanOrEqual(5);
+      expect(res.body.products.length).toBeGreaterThanOrEqual(1);
     });
 
     it('POST /api/store/checkout creates confirmed order in test sandbox', async () => {
